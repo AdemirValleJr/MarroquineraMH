@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ABE75766-876E-4EC0-8E9B-E3BAC2017A61}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Orkidea.ComisionesMH.Business</RootNamespace>
+    <AssemblyName>Orkidea.ComisionesMH.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClsAccesoDatos">
+      <HintPath>..\..\..\..\..\Web Sites\EncuestaCorpac\Business\References\ClsAccesoDatos.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BizAdministradorasCartao.cs" />
+    <Compile Include="BizCadastroCliFor.cs" />
+    <Compile Include="BizComision.cs" />
+    <Compile Include="BizFiliais.cs" />
+    <Compile Include="BizFornecedores.cs" />
+    <Compile Include="BizLogin.cs" />
+    <Compile Include="BizLojasRede.cs" />
+    <Compile Include="BizLojaVendaParcelas.cs" />
+    <Compile Include="BizLojaVendaPgto.cs" />
+    <Compile Include="BizLojaVendaProduto.cs" />
+    <Compile Include="BizLojaVenda.cs" />
+    <Compile Include="BizLojaVendedores.cs" />
+    <Compile Include="BizParametroVendedor.cs" />
+    <Compile Include="BizPresupuestoTendas.cs" />
+    <Compile Include="BizPropLojasVarejo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Orkidea.ComisionesMH.DataAccessEF\Orkidea.ComisionesMH.DataAccessEF.csproj">
+      <Project>{3fdb9570-8018-40e2-b4fe-7aa2736ce337}</Project>
+      <Name>Orkidea.ComisionesMH.DataAccessEF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orkidea.ComisionesMH.Entities\Orkidea.ComisionesMH.Entities.csproj">
+      <Project>{dcc7bcb1-fb08-48ae-8b3e-e709eee3293d}</Project>
+      <Name>Orkidea.ComisionesMH.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orkidea.ComisionesMH.Utilities\Orkidea.ComisionesMH.Utilities.csproj">
+      <Project>{f6f6e305-d642-4dfc-8365-8d3e836ac5a3}</Project>
+      <Name>Orkidea.ComisionesMH.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

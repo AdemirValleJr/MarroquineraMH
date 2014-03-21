@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="01daeeb195e64442a36746cc56700563" Name="Diagram1">
+        <EntityTypeShape EntityType="MHERPModel.ADMINISTRADORAS_CARTAO" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHERPModel.LOJA_FORMAS_PGTO" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHERPModel.LOJA_VENDA" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHERPModel.LOJA_VENDA_PARCELAS" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHERPModel.LOJA_VENDA_PGTO" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHERPModel.LOJA_VENDEDORES" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHERPModel.PROP_LOJAS_VAREJO" Width="1.5" PointX="10" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHERPModel.PROPRIEDADE" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHERPModel.TIPOS_PGTO" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <AssociationConnector Association="MHERPModel.XFK12341_LOJA_VENDA_PARCELAS" ManuallyRouted="false" />
+        <AssociationConnector Association="MHERPModel.XFK12410_LOJA_VENDA_PGTO" ManuallyRouted="false" />
+        <AssociationConnector Association="MHERPModel.XFK12324_LOJA_VENDA_PARCELAS" ManuallyRouted="false" />
+        <AssociationConnector Association="MHERPModel.XFK12334_LOJA_VENDA_PARCELAS" ManuallyRouted="false" />
+        <AssociationConnector Association="MHERPModel.XFK12348_LOJA_VENDA_PGTO" ManuallyRouted="false" />
+        <AssociationConnector Association="MHERPModel.XFKP1_PROP_LOJAS_VAREJO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MHERPModel.LOJA_VENDA_PRODUTO" Width="1.5" PointX="9.75" PointY="5.75" />
+        <EntityTypeShape EntityType="MHERPModel.FILIAIS" Width="1.5" PointX="11.75" PointY="5.75" />
+        <EntityTypeShape EntityType="MHERPModel.CADASTRO_CLI_FOR" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MHERPModel.PRODUTOS" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MHERPModel.CSS_PARAMETRO_VENDEDOR" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MHERPModel.LOJAS_REDE" Width="1.5" PointX="2.684199712557811" PointY="11.806571086778572" />
+        <AssociationConnector Association="MHERPModel.XFK13051_PRODUTOS" />
+        <EntityTypeShape EntityType="MHERPModel.CSS_PRESUPUESTO_TIENDAS" Width="1.5" PointX="9.4735444977290673" PointY="19.194650077817332" />
+        <EntityTypeShape EntityType="MHERPModel.FORNECEDORES" Width="1.5" PointX="0.89201570343785719" PointY="29.563395081815958" />
+        <AssociationConnector Association="MHERPModel.XFK12594_FORNECEDORES" />
+        <AssociationConnector Association="MHERPModel.XFK12598_PRODUTOS" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

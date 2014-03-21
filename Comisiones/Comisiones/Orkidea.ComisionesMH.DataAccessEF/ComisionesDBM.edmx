@@ -1,0 +1,2242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MHERPModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MHERPModelStoreContainer">
+          <EntitySet Name="ADMINISTRADORAS_CARTAO" EntityType="MHERPModel.Store.ADMINISTRADORAS_CARTAO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CADASTRO_CLI_FOR" EntityType="MHERPModel.Store.CADASTRO_CLI_FOR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CSS_PARAMETRO_VENDEDOR" EntityType="MHERPModel.Store.CSS_PARAMETRO_VENDEDOR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CSS_PRESUPUESTO_TIENDAS" EntityType="MHERPModel.Store.CSS_PRESUPUESTO_TIENDAS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FILIAIS" EntityType="MHERPModel.Store.FILIAIS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FORNECEDORES" EntityType="MHERPModel.Store.FORNECEDORES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOJA_FORMAS_PGTO" EntityType="MHERPModel.Store.LOJA_FORMAS_PGTO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOJA_VENDA" EntityType="MHERPModel.Store.LOJA_VENDA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOJA_VENDA_PARCELAS" EntityType="MHERPModel.Store.LOJA_VENDA_PARCELAS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOJA_VENDA_PGTO" EntityType="MHERPModel.Store.LOJA_VENDA_PGTO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOJA_VENDA_PRODUTO" EntityType="MHERPModel.Store.LOJA_VENDA_PRODUTO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOJA_VENDEDORES" EntityType="MHERPModel.Store.LOJA_VENDEDORES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOJAS_REDE" EntityType="MHERPModel.Store.LOJAS_REDE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PRODUTOS" EntityType="MHERPModel.Store.PRODUTOS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PROP_LOJAS_VAREJO" EntityType="MHERPModel.Store.PROP_LOJAS_VAREJO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PROPRIEDADE" EntityType="MHERPModel.Store.PROPRIEDADE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TIPOS_PGTO" EntityType="MHERPModel.Store.TIPOS_PGTO" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="XFK12324_LOJA_VENDA_PARCELAS" Association="MHERPModel.Store.XFK12324_LOJA_VENDA_PARCELAS">
+            <End Role="LOJA_VENDA_PGTO" EntitySet="LOJA_VENDA_PGTO" />
+            <End Role="LOJA_VENDA_PARCELAS" EntitySet="LOJA_VENDA_PARCELAS" />
+          </AssociationSet>
+          <AssociationSet Name="XFK12334_LOJA_VENDA_PARCELAS" Association="MHERPModel.Store.XFK12334_LOJA_VENDA_PARCELAS">
+            <End Role="TIPOS_PGTO" EntitySet="TIPOS_PGTO" />
+            <End Role="LOJA_VENDA_PARCELAS" EntitySet="LOJA_VENDA_PARCELAS" />
+          </AssociationSet>
+          <AssociationSet Name="XFK12341_LOJA_VENDA_PARCELAS" Association="MHERPModel.Store.XFK12341_LOJA_VENDA_PARCELAS">
+            <End Role="ADMINISTRADORAS_CARTAO" EntitySet="ADMINISTRADORAS_CARTAO" />
+            <End Role="LOJA_VENDA_PARCELAS" EntitySet="LOJA_VENDA_PARCELAS" />
+          </AssociationSet>
+          <AssociationSet Name="XFK12348_LOJA_VENDA_PGTO" Association="MHERPModel.Store.XFK12348_LOJA_VENDA_PGTO">
+            <End Role="LOJA_VENDEDORES" EntitySet="LOJA_VENDEDORES" />
+            <End Role="LOJA_VENDA_PGTO" EntitySet="LOJA_VENDA_PGTO" />
+          </AssociationSet>
+          <AssociationSet Name="XFK12410_LOJA_VENDA_PGTO" Association="MHERPModel.Store.XFK12410_LOJA_VENDA_PGTO">
+            <End Role="LOJA_FORMAS_PGTO" EntitySet="LOJA_FORMAS_PGTO" />
+            <End Role="LOJA_VENDA_PGTO" EntitySet="LOJA_VENDA_PGTO" />
+          </AssociationSet>
+          <AssociationSet Name="XFK12594_FORNECEDORES" Association="MHERPModel.Store.XFK12594_FORNECEDORES">
+            <End Role="CADASTRO_CLI_FOR" EntitySet="CADASTRO_CLI_FOR" />
+            <End Role="FORNECEDORES" EntitySet="FORNECEDORES" />
+          </AssociationSet>
+          <AssociationSet Name="XFK12598_PRODUTOS" Association="MHERPModel.Store.XFK12598_PRODUTOS">
+            <End Role="FORNECEDORES" EntitySet="FORNECEDORES" />
+            <End Role="PRODUTOS" EntitySet="PRODUTOS" />
+          </AssociationSet>
+          <AssociationSet Name="XFK13051_PRODUTOS" Association="MHERPModel.Store.XFK13051_PRODUTOS">
+            <End Role="LOJAS_REDE" EntitySet="LOJAS_REDE" />
+            <End Role="PRODUTOS" EntitySet="PRODUTOS" />
+          </AssociationSet>
+          <AssociationSet Name="XFKP1_PROP_LOJAS_VAREJO" Association="MHERPModel.Store.XFKP1_PROP_LOJAS_VAREJO">
+            <End Role="PROPRIEDADE" EntitySet="PROPRIEDADE" />
+            <End Role="PROP_LOJAS_VAREJO" EntitySet="PROP_LOJAS_VAREJO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ADMINISTRADORAS_CARTAO">
+          <Key>
+            <PropertyRef Name="CODIGO_ADMINISTRADORA" />
+          </Key>
+          <Property Name="CODIGO_ADMINISTRADORA" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="ADMINISTRADORA" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="TAXA_ADMINISTRACAO" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="DIA_ACERTO" Type="int" />
+          <Property Name="CARTAO_TELEFONE" Type="char" MaxLength="18" />
+          <Property Name="CARTAO_NOSSO_NUM" Type="char" MaxLength="18" />
+          <Property Name="CARTAO_TEL_VOZ" Type="char" MaxLength="18" />
+          <Property Name="CARTAO_PRE_PARCELAS" Type="int" Nullable="false" />
+          <Property Name="ACEITA_PARCELAMENTO" Type="bit" Nullable="false" />
+          <Property Name="TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="PARCELAS_JUROS_LOJA" Type="smallint" />
+          <Property Name="TIPO_CARTAO" Type="smallint" />
+          <Property Name="DIAS_ENTRE_PARCELAS" Type="int" />
+          <Property Name="PARCELAS_MES_FECHADO" Type="smallint" />
+          <Property Name="SUGESTAO_PARCELAMENTO" Type="smallint" />
+          <Property Name="REDE_CONTROLADORA" Type="char" MaxLength="8" />
+          <Property Name="LX_COD_ADMINISTRADORA" Type="char" MaxLength="5" />
+          <Property Name="INATIVO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CADASTRO_CLI_FOR">
+          <Key>
+            <PropertyRef Name="NOME_CLIFOR" />
+          </Key>
+          <Property Name="NOME_CLIFOR" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="CARTEIRA" Type="varchar" MaxLength="25" />
+          <Property Name="BANCO" Type="char" MaxLength="5" />
+          <Property Name="CONTA_CONTABIL" Type="varchar" MaxLength="20" />
+          <Property Name="CLIFOR" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="CGC_CPF" Type="varchar" Nullable="false" MaxLength="19" />
+          <Property Name="RAZAO_SOCIAL" Type="varchar" Nullable="false" MaxLength="90" />
+          <Property Name="PJ_PF" Type="bit" Nullable="false" />
+          <Property Name="RG_IE" Type="varchar" Nullable="false" MaxLength="19" />
+          <Property Name="CEP" Type="varchar" MaxLength="9" />
+          <Property Name="ENDERECO" Type="varchar" MaxLength="90" />
+          <Property Name="BAIRRO" Type="varchar" MaxLength="25" />
+          <Property Name="CIDADE" Type="varchar" MaxLength="35" />
+          <Property Name="UF" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="TELEFONE1" Type="varchar" MaxLength="10" />
+          <Property Name="PAIS" Type="varchar" MaxLength="35" />
+          <Property Name="DDI" Type="char" MaxLength="5" />
+          <Property Name="TELEFONE2" Type="varchar" MaxLength="10" />
+          <Property Name="FAX" Type="varchar" MaxLength="10" />
+          <Property Name="DDD1" Type="char" MaxLength="5" />
+          <Property Name="RAMAL1" Type="char" MaxLength="5" />
+          <Property Name="RAMAL2" Type="char" MaxLength="5" />
+          <Property Name="DDD2" Type="char" MaxLength="5" />
+          <Property Name="COBRANCA_ENDERECO" Type="varchar" MaxLength="90" />
+          <Property Name="COBRANCA_CIDADE" Type="varchar" MaxLength="35" />
+          <Property Name="COBRANCA_BAIRRO" Type="varchar" MaxLength="25" />
+          <Property Name="DDDFAX" Type="char" MaxLength="5" />
+          <Property Name="COBRANCA_UF" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="COBRANCA_CEP" Type="varchar" MaxLength="9" />
+          <Property Name="COBRANCA_TELEFONE" Type="varchar" MaxLength="10" />
+          <Property Name="ENTREGA_ENDERECO" Type="varchar" MaxLength="90" />
+          <Property Name="ENTREGA_CIDADE" Type="varchar" MaxLength="35" />
+          <Property Name="ENTREGA_UF" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="ENTREGA_BAIRRO" Type="varchar" MaxLength="25" />
+          <Property Name="ENTREGA_CEP" Type="varchar" MaxLength="9" />
+          <Property Name="ENTREGA_TELEFONE" Type="varchar" MaxLength="10" />
+          <Property Name="COBRANCA_DDD" Type="char" MaxLength="5" />
+          <Property Name="CONTATO" Type="varchar" MaxLength="40" />
+          <Property Name="COBRANCA_CGC" Type="varchar" Nullable="false" MaxLength="19" />
+          <Property Name="CADASTRAMENTO" Type="datetime" Nullable="false" />
+          <Property Name="COBRANCA_IE" Type="varchar" Nullable="false" MaxLength="19" />
+          <Property Name="ANIVERSARIO" Type="datetime" />
+          <Property Name="INDICA_FORNECEDOR" Type="bit" Nullable="false" />
+          <Property Name="INDICA_CLIENTE" Type="bit" Nullable="false" />
+          <Property Name="IND_REPRESENTANTE" Type="bit" Nullable="false" />
+          <Property Name="INDICA_FILIAL" Type="bit" Nullable="false" />
+          <Property Name="ENTREGA_DDD" Type="char" MaxLength="5" />
+          <Property Name="ENTREGA_CGC" Type="varchar" Nullable="false" MaxLength="19" />
+          <Property Name="ENTREGA_IE" Type="varchar" Nullable="false" MaxLength="19" />
+          <Property Name="CC_AGENCIA" Type="varchar" MaxLength="20" />
+          <Property Name="CC_CONTA" Type="varchar" MaxLength="20" />
+          <Property Name="CC_NOME_AGENCIA" Type="varchar" MaxLength="30" />
+          <Property Name="REF_ANTERIOR" Type="char" MaxLength="7" />
+          <Property Name="ATUALIZACAO_EXPORTAR" Type="datetime" />
+          <Property Name="DATA_EXPORTACAO" Type="datetime" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="40" />
+          <Property Name="STATUS_ENVIO" Type="char" MaxLength="1" />
+          <Property Name="TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="INATIVO" Type="bit" Nullable="false" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="ENTREGA_PAIS" Type="varchar" MaxLength="35" />
+          <Property Name="COBRANCA_PAIS" Type="varchar" MaxLength="35" />
+          <Property Name="ENTREGA_DDI" Type="char" MaxLength="5" />
+          <Property Name="COBRANCA_DDI" Type="char" MaxLength="5" />
+          <Property Name="OBS_DE_FATURAMENTO" Type="text" />
+          <Property Name="ISENTO_IPI" Type="bit" Nullable="false" />
+          <Property Name="ISENTO_ICMS" Type="bit" Nullable="false" />
+          <Property Name="IRRF" Type="numeric" Precision="8" Scale="5" />
+          <Property Name="MESES_SEM_VENCIMENTO" Type="varchar" MaxLength="20" />
+          <Property Name="DATA_FIXA_PGTO" Type="varchar" MaxLength="20" />
+          <Property Name="ACEITA_AGRUPAR_FATURA" Type="smallint" />
+          <Property Name="PASSWEB" Type="varchar" MaxLength="10" />
+          <Property Name="VENCIMENTO_PASSWEB" Type="datetime" />
+          <Property Name="NUMERO_VIAS_FATURA" Type="smallint" />
+          <Property Name="REPORT_FATURA" Type="char" MaxLength="9" />
+          <Property Name="DIAS_ANTECIPACAO_PGTO" Type="smallint" />
+          <Property Name="POSSUI_RECARGO" Type="tinyint" />
+          <Property Name="CODIGO_CHAVE" Type="char" MaxLength="10" />
+          <Property Name="TIPO_RELACAO_COMERCIAL" Type="smallint" />
+          <Property Name="ID_CLASIF_CLIFOR" Type="int" />
+          <Property Name="ENTREGA_RAZAO_SOCIAL" Type="varchar" MaxLength="90" />
+          <Property Name="COBRANCA_RAZAO_SOCIAL" Type="varchar" MaxLength="90" />
+          <Property Name="ACEITA_DIAS_FIXO" Type="bit" Nullable="false" />
+          <Property Name="COD_CLIFOR" Type="char" MaxLength="6" />
+          <Property Name="CTB_CONTA_CONTABIL" Type="varchar" MaxLength="20" />
+          <Property Name="INDICADOR_FISCAL_TERCEIRO" Type="tinyint" />
+          <Property Name="ID_EXCECAO_GRUPO" Type="int" />
+          <Property Name="AGRUPAMENTO_ITENS" Type="smallint" />
+          <Property Name="CODIGO_CONTATO" Type="char" MaxLength="8" />
+          <Property Name="IM" Type="varchar" MaxLength="14" />
+          <Property Name="IM_ENTREGA" Type="varchar" MaxLength="14" />
+          <Property Name="IM_COBRANCA" Type="varchar" MaxLength="14" />
+        </EntityType>
+        <EntityType Name="CSS_PARAMETRO_VENDEDOR">
+          <Key>
+            <PropertyRef Name="vendedor" />
+          </Key>
+          <Property Name="vendedor" Type="char" Nullable="false" MaxLength="4" />
+          <Property Name="comisionCumple" Type="decimal" Nullable="false" Precision="14" Scale="2" />
+          <Property Name="comisionNoCumple" Type="decimal" Nullable="false" Precision="14" Scale="2" />
+        </EntityType>
+        <EntityType Name="CSS_PRESUPUESTO_TIENDAS">
+          <Key>
+            <PropertyRef Name="ano" />
+            <PropertyRef Name="mes" />
+            <PropertyRef Name="tienda" />
+          </Key>
+          <Property Name="ano" Type="int" Nullable="false" />
+          <Property Name="mes" Type="int" Nullable="false" />
+          <Property Name="tienda" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="presupuesto" Type="numeric" Nullable="false" Precision="14" Scale="2" />
+        </EntityType>
+        <EntityType Name="FILIAIS">
+          <Key>
+            <PropertyRef Name="FILIAL" />
+          </Key>
+          <Property Name="FILIAL" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="EMPRESA" Type="int" Nullable="false" />
+          <Property Name="CONTA_CONTABIL" Type="char" MaxLength="20" />
+          <Property Name="TIPO_ESTOQUE_IDEAL" Type="char" MaxLength="6" />
+          <Property Name="COD_FILIAL" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="TIPO_FILIAL" Type="varchar" MaxLength="25" />
+          <Property Name="CLIFOR" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="FILIAL_PROPRIA" Type="bit" Nullable="false" />
+          <Property Name="CGC_CPF" Type="varchar" Nullable="false" MaxLength="19" />
+          <Property Name="MATRIZ" Type="varchar" MaxLength="25" />
+          <Property Name="REGIAO" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="ESTOQUE_CTRL_PECA_UNICA" Type="bit" Nullable="false" />
+          <Property Name="ESTOQUE_CTRL_PECA" Type="bit" Nullable="false" />
+          <Property Name="SEQUENCIA_PECAS" Type="char" MaxLength="7" />
+          <Property Name="TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="TEMPO_ATENDIMENTO" Type="smallint" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="REDE_LOJAS" Type="char" MaxLength="6" />
+          <Property Name="NAO_GERA_ENTRADA_LOJA_AUTO" Type="smallint" />
+          <Property Name="FATOR_CUSTO_LOJA" Type="numeric" Precision="8" Scale="3" />
+          <Property Name="PERMITE_EST_NEGATIVO" Type="bit" Nullable="false" />
+          <Property Name="CTRL_ESTOQUE_MATERIAL" Type="bit" Nullable="false" />
+          <Property Name="CTRL_ESTOQUE_PRODUTO" Type="bit" Nullable="false" />
+          <Property Name="CTRL_LOJA_VAREJO" Type="bit" Nullable="false" />
+          <Property Name="CTRL_PRODUCAO_PRODUTO" Type="bit" Nullable="false" />
+          <Property Name="CTRL_VENDA_PRODUTO" Type="bit" Nullable="false" />
+          <Property Name="CTRL_VENDA_MATERIAL" Type="bit" Nullable="false" />
+          <Property Name="CTRL_PRODUCAO_MATERIAL" Type="bit" Nullable="false" />
+          <Property Name="AREA_M2" Type="int" />
+          <Property Name="VENDEDOR_PADRAO_FRANQUIA" Type="char" MaxLength="4" />
+          <Property Name="FORMA_PGTO_PADRAO_FRANQUIA" Type="char" MaxLength="2" />
+          <Property Name="CLIENTE_VAREJO_PADRAO_FRANQUIA" Type="varchar" MaxLength="14" />
+          <Property Name="RECEBER_PADRAO_FRANQUIA" Type="char" MaxLength="1" />
+          <Property Name="EXPORTA_PGTOS_FRANQUIA" Type="smallint" />
+          <Property Name="INDICA_ARMAZEM" Type="bit" Nullable="false" />
+          <Property Name="INDICA_SEGUNDA_QUALIDADE" Type="bit" Nullable="false" />
+          <Property Name="INDICA_BENEFICIADOR" Type="bit" Nullable="false" />
+          <Property Name="REGIAO_SUPERVISAO" Type="varchar" MaxLength="25" />
+          <Property Name="INDICA_FRANQUIA" Type="bit" Nullable="false" />
+          <Property Name="MATRIZ_FISCAL" Type="varchar" MaxLength="25" />
+          <Property Name="CTB_CONTA_CONTABIL" Type="varchar" MaxLength="20" />
+          <Property Name="SOMENTE_ARMAZEM" Type="bit" Nullable="false" />
+          <Property Name="INDICA_CFOP_SOMENTE_REVENDA" Type="bit" Nullable="false" />
+          <Property Name="SEQUENCIA_MAPA_RESUMO" Type="varchar" MaxLength="7" />
+          <Property Name="FATOR_P" Type="tinyint" />
+          <Property Name="FATOR_Q" Type="tinyint" />
+          <Property Name="FATOR_F" Type="tinyint" />
+          <Property Name="COD_FORMA_PGTO_FLUXO" Type="char" MaxLength="2" />
+          <Property Name="FECHA_CUSTO_MEDIO" Type="bit" Nullable="false" />
+          <Property Name="FECHA_CM_AJUSTE_INFLACAO" Type="bit" Nullable="false" />
+          <Property Name="CODIGO_CONTATO" Type="char" MaxLength="8" />
+          <Property Name="TIPO_ESTOQUE_IDEAL_MIN" Type="char" MaxLength="6" />
+          <Property Name="TIPO_ESTOQUE_IDEAL_MAX" Type="char" MaxLength="6" />
+          <Property Name="FATOR_S" Type="tinyint" />
+          <Property Name="FATOR_W" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="FORNECEDORES">
+          <Key>
+            <PropertyRef Name="FORNECEDOR" />
+          </Key>
+          <Property Name="FORNECEDOR" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="CENTRO_CUSTO" Type="varchar" MaxLength="25" />
+          <Property Name="TIPO" Type="varchar" MaxLength="25" />
+          <Property Name="SUBTIPO_FORNECEDOR" Type="varchar" MaxLength="40" />
+          <Property Name="COD_FORNECEDOR" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="CLIFOR" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="CONDICAO_PGTO" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="CGC_CPF" Type="varchar" Nullable="false" MaxLength="19" />
+          <Property Name="FORNECE_MATERIAIS" Type="bit" Nullable="false" />
+          <Property Name="FORNECE_PROD_ACAB" Type="bit" Nullable="false" />
+          <Property Name="FORNECE_MAT_CONSUMO" Type="bit" Nullable="false" />
+          <Property Name="BENEFICIADOR" Type="bit" Nullable="false" />
+          <Property Name="FORNECE_OUTROS" Type="bit" Nullable="false" />
+          <Property Name="MOEDA" Type="char" MaxLength="6" />
+          <Property Name="INATIVO" Type="bit" Nullable="false" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="LICENCIADO" Type="smallint" />
+          <Property Name="LICENDIADO_ROYALTIES" Type="numeric" Precision="8" Scale="5" />
+          <Property Name="CONTA_CONTABIL" Type="char" MaxLength="20" />
+          <Property Name="CTB_CONTA_CONTABIL" Type="varchar" MaxLength="20" />
+          <Property Name="LICENCIADO_ROYALTIES" Type="numeric" Precision="13" Scale="10" />
+          <Property Name="CQFOR_CLASSIFICACAO" Type="int" />
+          <Property Name="INDICA_CQFOR" Type="bit" Nullable="false" />
+          <Property Name="DIAS_DESCONTO_VENCIMENTO" Type="int" Nullable="false" />
+          <Property Name="DESCONTO_VENCIMENTO" Type="numeric" Nullable="false" Precision="13" Scale="10" />
+        </EntityType>
+        <EntityType Name="LOJA_FORMAS_PGTO">
+          <Key>
+            <PropertyRef Name="COD_FORMA_PGTO" />
+          </Key>
+          <Property Name="COD_FORMA_PGTO" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="FORMA_PGTO" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="DATA_CRIACAO" Type="datetime" />
+          <Property Name="PERMITE_ALTERAR" Type="bit" Nullable="false" />
+          <Property Name="ATIVAR_EM" Type="datetime" />
+          <Property Name="DESATIVAR_EM" Type="datetime" />
+          <Property Name="TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="VALOR_MINIMO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="VALOR_MAXIMO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="VENC_RELATIVO" Type="datetime" />
+          <Property Name="DESCONTO_POR_ITEM" Type="int" Nullable="false" />
+          <Property Name="PARCELAS_CARTAO_INICIAL" Type="smallint" />
+        </EntityType>
+        <EntityType Name="LOJA_VENDA">
+          <Key>
+            <PropertyRef Name="CODIGO_FILIAL" />
+            <PropertyRef Name="TICKET" />
+            <PropertyRef Name="DATA_VENDA" />
+          </Key>
+          <Property Name="CODIGO_FILIAL" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="TICKET" Type="char" Nullable="false" MaxLength="8" />
+          <Property Name="DATA_VENDA" Type="datetime" Nullable="false" />
+          <Property Name="CODIGO_DESCONTO" Type="char" MaxLength="2" />
+          <Property Name="CODIGO_CLIENTE" Type="varchar" MaxLength="14" />
+          <Property Name="PERIODO" Type="char" MaxLength="1" />
+          <Property Name="DATA_DIGITACAO" Type="datetime" />
+          <Property Name="VENDEDOR" Type="char" MaxLength="4" />
+          <Property Name="OPERACAO_VENDA" Type="char" MaxLength="3" />
+          <Property Name="CODIGO_TAB_PRECO" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="COMISSAO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="DESCONTO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="QTDE_TOTAL" Type="int" />
+          <Property Name="VALOR_TIKET" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="VALOR_PAGO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="VALOR_VENDA_BRUTA" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="VALOR_TROCA" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="QTDE_TROCA_TOTAL" Type="int" />
+          <Property Name="TICKET_IMPRESSO" Type="bit" Nullable="false" />
+          <Property Name="TERMINAL" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="GERENTE_LOJA" Type="char" Nullable="false" MaxLength="4" />
+          <Property Name="GERENTE_PERIODO" Type="char" Nullable="false" MaxLength="4" />
+          <Property Name="CODIGO_FILIAL_PGTO" Type="char" MaxLength="6" />
+          <Property Name="TERMINAL_PGTO" Type="char" MaxLength="3" />
+          <Property Name="LANCAMENTO_CAIXA" Type="char" MaxLength="7" />
+          <Property Name="TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="VALOR_CANCELADO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="TOTAL_QTDE_CANCELADA" Type="int" />
+          <Property Name="DATA_HORA_CANCELAMENTO" Type="datetime" />
+          <Property Name="PERIODO_FECHAMENTO" Type="char" MaxLength="2" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="FATOR" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="SUGESTAO_COD_FORMA_PGTO" Type="varchar" MaxLength="2" />
+          <Property Name="VALOR_IPI" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="QTDE_ITEM" Type="smallint" />
+          <Property Name="MOTIVO_CANCELAMENTO" Type="smallint" />
+          <Property Name="TERMINAL_VERNDA_SUSPENSA" Type="char" MaxLength="3" />
+          <Property Name="TERMINAL_VENDA_SUSPENSA" Type="char" MaxLength="3" />
+          <Property Name="COD_FIDELIDADE_PROGRAMA" Type="int" />
+          <Property Name="QTDE_PONTOS_ACUMULADOS" Type="numeric" Precision="7" Scale="2" />
+          <Property Name="QTDE_PONTOS_RESGATADOS" Type="numeric" Precision="7" Scale="2" />
+        </EntityType>
+        <EntityType Name="LOJA_VENDA_PARCELAS">
+          <Key>
+            <PropertyRef Name="TERMINAL" />
+            <PropertyRef Name="LANCAMENTO_CAIXA" />
+            <PropertyRef Name="CODIGO_FILIAL" />
+            <PropertyRef Name="PARCELA" />
+          </Key>
+          <Property Name="TERMINAL" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="LANCAMENTO_CAIXA" Type="char" Nullable="false" MaxLength="7" />
+          <Property Name="CODIGO_FILIAL" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="PARCELA" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="CODIGO_ADMINISTRADORA" Type="char" MaxLength="2" />
+          <Property Name="TIPO_PGTO" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="VALOR" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="VENCIMENTO" Type="datetime" />
+          <Property Name="NUMERO_TITULO" Type="varchar" MaxLength="15" />
+          <Property Name="MOEDA" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="AGENCIA" Type="char" MaxLength="4" />
+          <Property Name="BANCO" Type="char" MaxLength="5" />
+          <Property Name="CONTA_CORRENTE" Type="varchar" MaxLength="15" />
+          <Property Name="NUMERO_APROVACAO_CARTAO" Type="varchar" MaxLength="15" />
+          <Property Name="PARCELAS_CARTAO" Type="int" Nullable="false" />
+          <Property Name="VALOR_CANCELADO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="CHEQUE_CARTAO" Type="varchar" MaxLength="35" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="NUMERO_LOTE" Type="varchar" MaxLength="10" />
+          <Property Name="FINALIZACAO" Type="varchar" MaxLength="20" />
+          <Property Name="BAIXA" Type="smallint" />
+          <Property Name="REDE_CONTROLADORA" Type="char" MaxLength="8" />
+          <Property Name="COTACAO" Type="numeric" Precision="14" Scale="5" />
+          <Property Name="VALOR_MOEDA" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="ORIGEM_LOTE" Type="tinyint" />
+          <Property Name="TROCO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="DATA_HORA_TEF" Type="datetime" />
+          <Property Name="CHEQUE_DIGITO" Type="char" MaxLength="1" />
+          <Property Name="ID_DOCUMENTO_ECF" Type="int" />
+        </EntityType>
+        <EntityType Name="LOJA_VENDA_PGTO">
+          <Key>
+            <PropertyRef Name="CODIGO_FILIAL" />
+            <PropertyRef Name="TERMINAL" />
+            <PropertyRef Name="LANCAMENTO_CAIXA" />
+          </Key>
+          <Property Name="CODIGO_FILIAL" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="TERMINAL" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="LANCAMENTO_CAIXA" Type="char" Nullable="false" MaxLength="7" />
+          <Property Name="COD_FORMA_PGTO" Type="char" MaxLength="2" />
+          <Property Name="CAIXA_VENDEDOR" Type="char" MaxLength="4" />
+          <Property Name="DIGITACAO" Type="datetime" />
+          <Property Name="DATA" Type="datetime" />
+          <Property Name="NUMERO_CUPOM_FISCAL" Type="varchar" MaxLength="8" />
+          <Property Name="DESCONTO_PGTO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="TOTAL_VENDA" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="VALOR_CANCELADO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="PERIODO_FECHAMENTO" Type="char" MaxLength="2" />
+          <Property Name="TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="SERIE_NF_ENTRADA" Type="char" MaxLength="2" />
+          <Property Name="SERIE_NF_SAIDA" Type="char" MaxLength="2" />
+          <Property Name="FATOR" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="NUMERO_FISCAL_TROCA" Type="char" MaxLength="7" />
+          <Property Name="CANCELADO_FISCAL" Type="smallint" />
+          <Property Name="ID_EQUIPAMENTO" Type="varchar" MaxLength="20" />
+          <Property Name="IMPRIMIU_CUPOM_TROCA" Type="smallint" />
+          <Property Name="VENDA_FINALIZADA" Type="bit" Nullable="false" />
+          <Property Name="NUMERO_FISCAL_CANCELAMENTO" Type="char" MaxLength="7" />
+          <Property Name="NUMERO_FATURA_MANUAL" Type="varchar" MaxLength="8" />
+          <Property Name="SERIE_NF_CANCELAMENTO" Type="char" MaxLength="2" />
+          <Property Name="NUMERO_FISCAL_VENDA" Type="char" MaxLength="7" />
+          <Property Name="SERIE_NF" Type="char" MaxLength="2" />
+          <Property Name="NUMERO_CCF" Type="int" />
+          <Property Name="ID_DOCUMENTO_ECF_TROCA" Type="int" />
+          <Property Name="ID_DOCUMENTO_ECF_VALE" Type="int" />
+        </EntityType>
+        <EntityType Name="LOJA_VENDA_PRODUTO">
+          <Key>
+            <PropertyRef Name="TICKET" />
+            <PropertyRef Name="CODIGO_FILIAL" />
+            <PropertyRef Name="DATA_VENDA" />
+            <PropertyRef Name="ITEM" />
+          </Key>
+          <Property Name="TICKET" Type="char" Nullable="false" MaxLength="8" />
+          <Property Name="CODIGO_FILIAL" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="DATA_VENDA" Type="datetime" Nullable="false" />
+          <Property Name="ITEM" Type="char" Nullable="false" MaxLength="4" />
+          <Property Name="CODIGO_BARRA" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="PRODUTO" Type="char" MaxLength="12" />
+          <Property Name="COR_PRODUTO" Type="char" MaxLength="10" />
+          <Property Name="TAMANHO" Type="smallint" />
+          <Property Name="QTDE" Type="int" />
+          <Property Name="PRECO_LIQUIDO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="DESCONTO_ITEM" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="NUMERO_IMP_FISCAL" Type="varchar" MaxLength="10" />
+          <Property Name="QTDE_CANCELADA" Type="int" />
+          <Property Name="TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="CUSTO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="FATOR_DESCONTO_VENDA" Type="numeric" Precision="8" Scale="5" />
+          <Property Name="FATOR_VENDA_LIQ" Type="numeric" Precision="8" Scale="5" />
+          <Property Name="IPI" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="ALIQUOTA" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="ID_VENDEDOR" Type="smallint" />
+          <Property Name="ITEM_EXCLUIDO" Type="bit" Nullable="false" />
+          <Property Name="QTDE_BRINDE" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOJA_VENDEDORES">
+          <Key>
+            <PropertyRef Name="VENDEDOR" />
+          </Key>
+          <Property Name="VENDEDOR" Type="char" Nullable="false" MaxLength="4" />
+          <Property Name="CODIGO_FILIAL" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="VENDEDOR_APELIDO" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="NOME_VENDEDOR" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="OPERA_CAIXA" Type="bit" Nullable="false" />
+          <Property Name="COMISSAO" Type="numeric" Precision="8" Scale="5" />
+          <Property Name="RG" Type="varchar" MaxLength="19" />
+          <Property Name="ENDERECO" Type="varchar" MaxLength="90" />
+          <Property Name="COMPLEMENTO" Type="varchar" MaxLength="10" />
+          <Property Name="CIDADE" Type="varchar" MaxLength="35" />
+          <Property Name="UF" Type="char" MaxLength="18" />
+          <Property Name="CEP" Type="varchar" MaxLength="9" />
+          <Property Name="TELEFONE" Type="varchar" MaxLength="10" />
+          <Property Name="CPF" Type="varchar" MaxLength="19" />
+          <Property Name="GERENTE" Type="char" MaxLength="1" />
+          <Property Name="TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="SENHA" Type="nvarchar" MaxLength="128" />
+          <Property Name="DATA_DESATIVACAO" Type="datetime" />
+          <Property Name="DATA_ATIVACAO" Type="datetime" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="DESC_CARGO" Type="varchar" MaxLength="20" />
+          <Property Name="ACESSO_GERENCIAL" Type="bit" Nullable="false" />
+          <Property Name="CHECKSUM" Type="nvarchar" MaxLength="128" />
+          <Property Name="VENDEDOR_FRANQUIA" Type="char" MaxLength="4" />
+          <Property Name="COMISSAO_CLIENTE_AUSENTE" Type="numeric" Precision="8" Scale="5" />
+        </EntityType>
+        <EntityType Name="LOJAS_REDE">
+          <Key>
+            <PropertyRef Name="REDE_LOJAS" />
+          </Key>
+          <Property Name="REDE_LOJAS" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="DESC_REDE_LOJAS" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="REDE_SIGLA" Type="char" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="PRODUTOS">
+          <Key>
+            <PropertyRef Name="PRODUTO" />
+          </Key>
+          <Property Name="PRODUTO" Type="char" Nullable="false" MaxLength="12" />
+          <Property Name="CODIGO_PRECO" Type="char" MaxLength="4" />
+          <Property Name="MATERIAL" Type="char" MaxLength="11" />
+          <Property Name="PERIODO_PCP" Type="varchar" MaxLength="25" />
+          <Property Name="TABELA_OPERACOES" Type="varchar" MaxLength="25" />
+          <Property Name="FATOR_OPERACOES" Type="numeric" Precision="7" Scale="3" />
+          <Property Name="CLASSIF_FISCAL" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="TIPO_PRODUTO" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="TABELA_MEDIDAS" Type="varchar" MaxLength="25" />
+          <Property Name="DESC_PRODUTO" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="GRUPO_PRODUTO" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="SUBGRUPO_PRODUTO" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="COLECAO" Type="char" Nullable="false" MaxLength="6" />
+          <Property Name="GRADE" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="DESC_PROD_NF" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="LINHA" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="GRIFFE" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="CARTELA" Type="char" MaxLength="4" />
+          <Property Name="UNIDADE" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="PESO" Type="numeric" Precision="7" Scale="3" />
+          <Property Name="REVENDA" Type="bit" Nullable="false" />
+          <Property Name="REFER_FABRICANTE" Type="char" MaxLength="10" />
+          <Property Name="MODELAGEM" Type="char" MaxLength="10" />
+          <Property Name="SORTIMENTO_COR" Type="bit" Nullable="false" />
+          <Property Name="FABRICANTE" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="SORTIMENTO_TAMANHO" Type="bit" Nullable="false" />
+          <Property Name="VARIA_PRECO_COR" Type="bit" Nullable="false" />
+          <Property Name="VARIA_PRECO_TAM" Type="bit" Nullable="false" />
+          <Property Name="PONTEIRO_PRECO_TAM" Type="char" Nullable="false" MaxLength="48" />
+          <Property Name="VARIA_CUSTO_COR" Type="bit" Nullable="false" />
+          <Property Name="PERTENCE_A_CONJUNTO" Type="bit" Nullable="false" />
+          <Property Name="TRIBUT_ICMS" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="TRIBUT_ORIGEM" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="VARIA_CUSTO_TAM" Type="bit" Nullable="false" />
+          <Property Name="CUSTO_REPOSICAO1" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="CUSTO_REPOSICAO2" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="CUSTO_REPOSICAO3" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="CUSTO_REPOSICAO4" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="DATA_REPOSICAO" Type="datetime" />
+          <Property Name="ESTILISTA" Type="varchar" MaxLength="25" />
+          <Property Name="MODELISTA" Type="varchar" MaxLength="25" />
+          <Property Name="TAMANHO_BASE" Type="int" />
+          <Property Name="GIRO_ENTREGA" Type="int" />
+          <Property Name="TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="INATIVO" Type="bit" Nullable="false" />
+          <Property Name="ENVIA_LOJA_VAREJO" Type="bit" Nullable="false" />
+          <Property Name="ENVIA_LOJA_ATACADO" Type="bit" Nullable="false" />
+          <Property Name="ENVIA_REPRESENTANTE" Type="bit" Nullable="false" />
+          <Property Name="ENVIA_VAREJO_INTERNET" Type="bit" Nullable="false" />
+          <Property Name="ENVIA_ATACADO_INTERNET" Type="bit" Nullable="false" />
+          <Property Name="MODELO" Type="char" MaxLength="8" />
+          <Property Name="REDE_LOJAS" Type="char" MaxLength="6" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="FABRICANTE_ICMS_ABATER" Type="numeric" Precision="8" Scale="5" />
+          <Property Name="FABRICANTE_PRAZO_PGTO" Type="int" />
+          <Property Name="TAXA_JUROS_DEFLACIONAR" Type="numeric" Precision="8" Scale="5" />
+          <Property Name="TAXAS_IMPOSTOS_APLICAR" Type="numeric" Precision="8" Scale="5" />
+          <Property Name="PRECO_REPOSICAO_1" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="PRECO_REPOSICAO_2" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="PRECO_REPOSICAO_3" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="PRECO_REPOSICAO_4" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="PRECO_A_VISTA_REPOSICAO_1" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="PRECO_A_VISTA_REPOSICAO_2" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="PRECO_A_VISTA_REPOSICAO_3" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="PRECO_A_VISTA_REPOSICAO_4" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="FABRICANTE_FRETE" Type="numeric" Precision="8" Scale="5" />
+          <Property Name="DROP_DE_TAMANHOS" Type="smallint" />
+          <Property Name="DATA_CADASTRAMENTO" Type="datetime" />
+          <Property Name="STATUS_PRODUTO" Type="char" MaxLength="2" />
+          <Property Name="TIPO_STATUS_PRODUTO" Type="int" />
+          <Property Name="OBS" Type="text" />
+          <Property Name="COMPOSICAO" Type="char" MaxLength="6" />
+          <Property Name="RESTRICAO_LAVAGEM" Type="char" MaxLength="6" />
+          <Property Name="EMPRESA" Type="int" Nullable="false" />
+          <Property Name="ORCAMENTO" Type="varchar" MaxLength="25" />
+          <Property Name="CLIENTE_DO_PRODUTO" Type="varchar" MaxLength="25" />
+          <Property Name="CONTA_CONTABIL" Type="varchar" MaxLength="20" />
+          <Property Name="ESPESSURA" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="ALTURA" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="LARGURA" Type="numeric" Precision="10" Scale="5" />
+          <Property Name="COMPRIMENTO" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="EMPILHAMENTO_MAXIMO" Type="smallint" />
+          <Property Name="SEXO_TIPO" Type="smallint" />
+          <Property Name="PARTE_TIPO" Type="smallint" />
+          <Property Name="VERSAO_FICHA" Type="char" MaxLength="5" />
+          <Property Name="COD_FLUXO_PRODUTO" Type="char" MaxLength="5" />
+          <Property Name="DATA_INICIO_DESENVOLVIMENTO" Type="datetime" />
+          <Property Name="INDICADOR_CFOP" Type="tinyint" />
+          <Property Name="MONTAGEM_KIT" Type="tinyint" />
+          <Property Name="MRP_AGRUPAR_NECESSIDADE_DIAS" Type="int" />
+          <Property Name="MRP_AGRUPAR_NECESSIDADE_TIPO" Type="int" />
+          <Property Name="MRP_DIAS_SEGURANCA" Type="int" />
+          <Property Name="MRP_EMISSAO_LIBERACAO_DIAS" Type="int" />
+          <Property Name="MRP_ENTREGA_GIRO_DIAS" Type="int" />
+          <Property Name="MRP_PARTICIPANTE" Type="int" />
+          <Property Name="MRP_MAIOR_GIRO_MP_DIAS" Type="int" />
+          <Property Name="MRP_FP" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="MRP_RR" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="OP_POR_COR" Type="bit" Nullable="false" />
+          <Property Name="OP_QTDE_MAXIMA" Type="int" />
+          <Property Name="OP_QTDE_MINIMA" Type="int" />
+          <Property Name="QUALIDADE" Type="tinyint" />
+          <Property Name="SEMI_ACABADO" Type="int" />
+          <Property Name="CONTA_CONTABIL_COMPRA" Type="varchar" MaxLength="20" />
+          <Property Name="CONTA_CONTABIL_VENDA" Type="varchar" MaxLength="20" />
+          <Property Name="CONTA_CONTABIL_DEV_COMPRA" Type="varchar" MaxLength="20" />
+          <Property Name="CONTA_CONTABIL_DEV_VENDA" Type="varchar" MaxLength="20" />
+          <Property Name="ID_EXCECAO_GRUPO" Type="int" />
+          <Property Name="ID_EXCECAO_IMPOSTO" Type="int" />
+          <Property Name="DIAS_COMPRA" Type="varchar" MaxLength="50" />
+          <Property Name="FATOR_P" Type="tinyint" />
+          <Property Name="FATOR_Q" Type="tinyint" />
+          <Property Name="FATOR_F" Type="tinyint" />
+          <Property Name="CONTINUIDADE" Type="tinyint" />
+          <Property Name="COD_CATEGORIA" Type="char" MaxLength="2" />
+          <Property Name="COD_SUBCATEGORIA" Type="char" MaxLength="2" />
+          <Property Name="COD_PRODUTO_SOLUCAO" Type="int" />
+          <Property Name="COD_PRODUTO_SEGMENTO" Type="int" />
+        </EntityType>
+        <EntityType Name="PROP_LOJAS_VAREJO">
+          <Key>
+            <PropertyRef Name="PROPRIEDADE" />
+            <PropertyRef Name="ITEM_PROPRIEDADE" />
+            <PropertyRef Name="CODIGO_FILIAL" />
+          </Key>
+          <Property Name="PROPRIEDADE" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="ITEM_PROPRIEDADE" Type="smallint" Nullable="false" />
+          <Property Name="VALOR_PROPRIEDADE" Type="varchar" MaxLength="70" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="CODIGO_FILIAL" Type="char" Nullable="false" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="PROPRIEDADE">
+          <Key>
+            <PropertyRef Name="PROPRIEDADE" />
+          </Key>
+          <Property Name="PROPRIEDADE" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="FAIXA_FINAL" Type="varchar" MaxLength="70" />
+          <Property Name="FAIXA_INICIAL" Type="varchar" MaxLength="70" />
+          <Property Name="MASCARA_VALOR" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="DESC_PROPRIEDADE" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="PROPRIEDADE_REQUERIDA" Type="bit" Nullable="false" />
+          <Property Name="TIPO_PROPRIEDADE" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="TIPO_VALIDACAO" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="DATA_ATIVACAO" Type="datetime" />
+          <Property Name="DATA_DESATIVACAO" Type="datetime" />
+          <Property Name="FILTRO_DE_PROPRIEDADES" Type="varchar" MaxLength="250" />
+          <Property Name="TITULO_PROPRIEDADE" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="TABELA" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="VALIDACAO_TABELA_CAMPO" Type="varchar" MaxLength="100" />
+          <Property Name="VALOR_PADRAO" Type="varchar" MaxLength="70" />
+          <Property Name="CONSULTA_ATIVA" Type="bit" Nullable="false" />
+          <Property Name="COD_GRUPO" Type="varchar" MaxLength="6" />
+          <Property Name="RESPONSAVEL" Type="varchar" MaxLength="40" />
+          <Property Name="COLUNAS_AUXILIARES" Type="varchar" MaxLength="254" />
+          <Property Name="FILTRO_AUXILIAR" Type="varchar" MaxLength="254" />
+          <Property Name="TABELAS_AUXILIARES" Type="varchar" MaxLength="254" />
+        </EntityType>
+        <EntityType Name="TIPOS_PGTO">
+          <Key>
+            <PropertyRef Name="TIPO_PGTO" />
+          </Key>
+          <Property Name="TIPO_PGTO" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="DESC_TIPO_PGTO" Type="varchar" MaxLength="40" />
+          <Property Name="TIPO_A_VISTA" Type="bit" Nullable="false" />
+          <Property Name="TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="datetime" />
+          <Property Name="INATIVO" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="XFK12324_LOJA_VENDA_PARCELAS">
+          <End Role="LOJA_VENDA_PGTO" Type="MHERPModel.Store.LOJA_VENDA_PGTO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LOJA_VENDA_PARCELAS" Type="MHERPModel.Store.LOJA_VENDA_PARCELAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOJA_VENDA_PGTO">
+              <PropertyRef Name="CODIGO_FILIAL" />
+              <PropertyRef Name="TERMINAL" />
+              <PropertyRef Name="LANCAMENTO_CAIXA" />
+            </Principal>
+            <Dependent Role="LOJA_VENDA_PARCELAS">
+              <PropertyRef Name="CODIGO_FILIAL" />
+              <PropertyRef Name="TERMINAL" />
+              <PropertyRef Name="LANCAMENTO_CAIXA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK12334_LOJA_VENDA_PARCELAS">
+          <End Role="TIPOS_PGTO" Type="MHERPModel.Store.TIPOS_PGTO" Multiplicity="1" />
+          <End Role="LOJA_VENDA_PARCELAS" Type="MHERPModel.Store.LOJA_VENDA_PARCELAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_PGTO">
+              <PropertyRef Name="TIPO_PGTO" />
+            </Principal>
+            <Dependent Role="LOJA_VENDA_PARCELAS">
+              <PropertyRef Name="TIPO_PGTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK12341_LOJA_VENDA_PARCELAS">
+          <End Role="ADMINISTRADORAS_CARTAO" Type="MHERPModel.Store.ADMINISTRADORAS_CARTAO" Multiplicity="0..1" />
+          <End Role="LOJA_VENDA_PARCELAS" Type="MHERPModel.Store.LOJA_VENDA_PARCELAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMINISTRADORAS_CARTAO">
+              <PropertyRef Name="CODIGO_ADMINISTRADORA" />
+            </Principal>
+            <Dependent Role="LOJA_VENDA_PARCELAS">
+              <PropertyRef Name="CODIGO_ADMINISTRADORA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK12348_LOJA_VENDA_PGTO">
+          <End Role="LOJA_VENDEDORES" Type="MHERPModel.Store.LOJA_VENDEDORES" Multiplicity="0..1" />
+          <End Role="LOJA_VENDA_PGTO" Type="MHERPModel.Store.LOJA_VENDA_PGTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOJA_VENDEDORES">
+              <PropertyRef Name="VENDEDOR" />
+            </Principal>
+            <Dependent Role="LOJA_VENDA_PGTO">
+              <PropertyRef Name="CAIXA_VENDEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK12410_LOJA_VENDA_PGTO">
+          <End Role="LOJA_FORMAS_PGTO" Type="MHERPModel.Store.LOJA_FORMAS_PGTO" Multiplicity="0..1" />
+          <End Role="LOJA_VENDA_PGTO" Type="MHERPModel.Store.LOJA_VENDA_PGTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOJA_FORMAS_PGTO">
+              <PropertyRef Name="COD_FORMA_PGTO" />
+            </Principal>
+            <Dependent Role="LOJA_VENDA_PGTO">
+              <PropertyRef Name="COD_FORMA_PGTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK12594_FORNECEDORES">
+          <End Role="CADASTRO_CLI_FOR" Type="MHERPModel.Store.CADASTRO_CLI_FOR" Multiplicity="1" />
+          <End Role="FORNECEDORES" Type="MHERPModel.Store.FORNECEDORES" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CADASTRO_CLI_FOR">
+              <PropertyRef Name="NOME_CLIFOR" />
+            </Principal>
+            <Dependent Role="FORNECEDORES">
+              <PropertyRef Name="FORNECEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK12598_PRODUTOS">
+          <End Role="FORNECEDORES" Type="MHERPModel.Store.FORNECEDORES" Multiplicity="1" />
+          <End Role="PRODUTOS" Type="MHERPModel.Store.PRODUTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORNECEDORES">
+              <PropertyRef Name="FORNECEDOR" />
+            </Principal>
+            <Dependent Role="PRODUTOS">
+              <PropertyRef Name="FABRICANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK13051_PRODUTOS">
+          <End Role="LOJAS_REDE" Type="MHERPModel.Store.LOJAS_REDE" Multiplicity="0..1" />
+          <End Role="PRODUTOS" Type="MHERPModel.Store.PRODUTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOJAS_REDE">
+              <PropertyRef Name="REDE_LOJAS" />
+            </Principal>
+            <Dependent Role="PRODUTOS">
+              <PropertyRef Name="REDE_LOJAS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFKP1_PROP_LOJAS_VAREJO">
+          <End Role="PROPRIEDADE" Type="MHERPModel.Store.PROPRIEDADE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROP_LOJAS_VAREJO" Type="MHERPModel.Store.PROP_LOJAS_VAREJO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROPRIEDADE">
+              <PropertyRef Name="PROPRIEDADE" />
+            </Principal>
+            <Dependent Role="PROP_LOJAS_VAREJO">
+              <PropertyRef Name="PROPRIEDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MHERPModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="MHERPEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ADMINISTRADORAS_CARTAO" EntityType="MHERPModel.ADMINISTRADORAS_CARTAO" />
+          <EntitySet Name="LOJA_FORMAS_PGTO" EntityType="MHERPModel.LOJA_FORMAS_PGTO" />
+          <EntitySet Name="LOJA_VENDA" EntityType="MHERPModel.LOJA_VENDA" />
+          <EntitySet Name="LOJA_VENDA_PARCELAS" EntityType="MHERPModel.LOJA_VENDA_PARCELAS" />
+          <EntitySet Name="LOJA_VENDA_PGTO" EntityType="MHERPModel.LOJA_VENDA_PGTO" />
+          <EntitySet Name="LOJA_VENDEDORES" EntityType="MHERPModel.LOJA_VENDEDORES" />
+          <EntitySet Name="PROP_LOJAS_VAREJO" EntityType="MHERPModel.PROP_LOJAS_VAREJO" />
+          <EntitySet Name="PROPRIEDADEs" EntityType="MHERPModel.PROPRIEDADE" />
+          <EntitySet Name="TIPOS_PGTO" EntityType="MHERPModel.TIPOS_PGTO" />
+          <AssociationSet Name="XFK12341_LOJA_VENDA_PARCELAS" Association="MHERPModel.XFK12341_LOJA_VENDA_PARCELAS">
+            <End Role="ADMINISTRADORAS_CARTAO" EntitySet="ADMINISTRADORAS_CARTAO" />
+            <End Role="LOJA_VENDA_PARCELAS" EntitySet="LOJA_VENDA_PARCELAS" />
+          </AssociationSet>
+          <AssociationSet Name="XFK12410_LOJA_VENDA_PGTO" Association="MHERPModel.XFK12410_LOJA_VENDA_PGTO">
+            <End Role="LOJA_FORMAS_PGTO" EntitySet="LOJA_FORMAS_PGTO" />
+            <End Role="LOJA_VENDA_PGTO" EntitySet="LOJA_VENDA_PGTO" />
+          </AssociationSet>
+          <AssociationSet Name="XFK12324_LOJA_VENDA_PARCELAS" Association="MHERPModel.XFK12324_LOJA_VENDA_PARCELAS">
+            <End Role="LOJA_VENDA_PGTO" EntitySet="LOJA_VENDA_PGTO" />
+            <End Role="LOJA_VENDA_PARCELAS" EntitySet="LOJA_VENDA_PARCELAS" />
+          </AssociationSet>
+          <AssociationSet Name="XFK12334_LOJA_VENDA_PARCELAS" Association="MHERPModel.XFK12334_LOJA_VENDA_PARCELAS">
+            <End Role="TIPOS_PGTO" EntitySet="TIPOS_PGTO" />
+            <End Role="LOJA_VENDA_PARCELAS" EntitySet="LOJA_VENDA_PARCELAS" />
+          </AssociationSet>
+          <AssociationSet Name="XFK12348_LOJA_VENDA_PGTO" Association="MHERPModel.XFK12348_LOJA_VENDA_PGTO">
+            <End Role="LOJA_VENDEDORES" EntitySet="LOJA_VENDEDORES" />
+            <End Role="LOJA_VENDA_PGTO" EntitySet="LOJA_VENDA_PGTO" />
+          </AssociationSet>
+          <AssociationSet Name="XFKP1_PROP_LOJAS_VAREJO" Association="MHERPModel.XFKP1_PROP_LOJAS_VAREJO">
+            <End Role="PROPRIEDADE" EntitySet="PROPRIEDADEs" />
+            <End Role="PROP_LOJAS_VAREJO" EntitySet="PROP_LOJAS_VAREJO" />
+          </AssociationSet>
+          <EntitySet Name="LOJA_VENDA_PRODUTO" EntityType="MHERPModel.LOJA_VENDA_PRODUTO" />
+          <EntitySet Name="FILIAIS" EntityType="MHERPModel.FILIAIS" />
+          <EntitySet Name="CADASTRO_CLI_FOR" EntityType="MHERPModel.CADASTRO_CLI_FOR" />
+          <EntitySet Name="PRODUTOS" EntityType="MHERPModel.PRODUTOS" />
+          <EntitySet Name="CSS_PARAMETRO_VENDEDOR" EntityType="MHERPModel.CSS_PARAMETRO_VENDEDOR" />
+          <EntitySet Name="LOJAS_REDE" EntityType="MHERPModel.LOJAS_REDE" />
+          <AssociationSet Name="XFK13051_PRODUTOS" Association="MHERPModel.XFK13051_PRODUTOS">
+            <End Role="LOJAS_REDE" EntitySet="LOJAS_REDE" />
+            <End Role="PRODUTOS" EntitySet="PRODUTOS" />
+          </AssociationSet>
+          <EntitySet Name="CSS_PRESUPUESTO_TIENDAS" EntityType="MHERPModel.CSS_PRESUPUESTO_TIENDAS" />
+          <EntitySet Name="FORNECEDORES" EntityType="MHERPModel.FORNECEDORES" />
+          <AssociationSet Name="XFK12594_FORNECEDORES" Association="MHERPModel.XFK12594_FORNECEDORES">
+            <End Role="CADASTRO_CLI_FOR" EntitySet="CADASTRO_CLI_FOR" />
+            <End Role="FORNECEDORES" EntitySet="FORNECEDORES" />
+          </AssociationSet>
+          <AssociationSet Name="XFK12598_PRODUTOS" Association="MHERPModel.XFK12598_PRODUTOS">
+            <End Role="FORNECEDORES" EntitySet="FORNECEDORES" />
+            <End Role="PRODUTOS" EntitySet="PRODUTOS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ADMINISTRADORAS_CARTAO">
+          <Key>
+            <PropertyRef Name="CODIGO_ADMINISTRADORA" />
+          </Key>
+          <Property Name="CODIGO_ADMINISTRADORA" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="ADMINISTRADORA" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="TAXA_ADMINISTRACAO" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="DIA_ACERTO" Type="Int32" />
+          <Property Name="CARTAO_TELEFONE" Type="String" MaxLength="18" Unicode="false" FixedLength="true" />
+          <Property Name="CARTAO_NOSSO_NUM" Type="String" MaxLength="18" Unicode="false" FixedLength="true" />
+          <Property Name="CARTAO_TEL_VOZ" Type="String" MaxLength="18" Unicode="false" FixedLength="true" />
+          <Property Name="CARTAO_PRE_PARCELAS" Type="Int32" Nullable="false" />
+          <Property Name="ACEITA_PARCELAMENTO" Type="Boolean" Nullable="false" />
+          <Property Name="TIMESTAMP" Type="Binary" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="DateTime" Precision="3" />
+          <Property Name="PARCELAS_JUROS_LOJA" Type="Int16" />
+          <Property Name="TIPO_CARTAO" Type="Int16" />
+          <Property Name="DIAS_ENTRE_PARCELAS" Type="Int32" />
+          <Property Name="PARCELAS_MES_FECHADO" Type="Int16" />
+          <Property Name="SUGESTAO_PARCELAMENTO" Type="Int16" />
+          <Property Name="REDE_CONTROLADORA" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="LX_COD_ADMINISTRADORA" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="INATIVO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LOJA_VENDA_PARCELAS" Relationship="MHERPModel.XFK12341_LOJA_VENDA_PARCELAS" FromRole="ADMINISTRADORAS_CARTAO" ToRole="LOJA_VENDA_PARCELAS" />
+        </EntityType>
+        <EntityType Name="LOJA_FORMAS_PGTO">
+          <Key>
+            <PropertyRef Name="COD_FORMA_PGTO" />
+          </Key>
+          <Property Name="COD_FORMA_PGTO" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="FORMA_PGTO" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="DATA_CRIACAO" Type="DateTime" Precision="3" />
+          <Property Name="PERMITE_ALTERAR" Type="Boolean" Nullable="false" />
+          <Property Name="ATIVAR_EM" Type="DateTime" Precision="3" />
+          <Property Name="DESATIVAR_EM" Type="DateTime" Precision="3" />
+          <Property Name="TIMESTAMP" Type="Binary" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="VALOR_MINIMO" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="VALOR_MAXIMO" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="DateTime" Precision="3" />
+          <Property Name="VENC_RELATIVO" Type="DateTime" Precision="3" />
+          <Property Name="DESCONTO_POR_ITEM" Type="Int32" Nullable="false" />
+          <Property Name="PARCELAS_CARTAO_INICIAL" Type="Int16" />
+          <NavigationProperty Name="LOJA_VENDA_PGTO" Relationship="MHERPModel.XFK12410_LOJA_VENDA_PGTO" FromRole="LOJA_FORMAS_PGTO" ToRole="LOJA_VENDA_PGTO" />
+        </EntityType>
+        <EntityType Name="LOJA_VENDA">
+          <Key>
+            <PropertyRef Name="CODIGO_FILIAL" />
+            <PropertyRef Name="TICKET" />
+            <PropertyRef Name="DATA_VENDA" />
+          </Key>
+          <Property Name="CODIGO_FILIAL" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="true" />
+          <Property Name="TICKET" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="DATA_VENDA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CODIGO_DESCONTO" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="CODIGO_CLIENTE" Type="String" MaxLength="14" Unicode="false" FixedLength="false" />
+          <Property Name="PERIODO" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="DATA_DIGITACAO" Type="DateTime" Precision="3" />
+          <Property Name="VENDEDOR" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="OPERACAO_VENDA" Type="String" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="CODIGO_TAB_PRECO" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="COMISSAO" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="DESCONTO" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="QTDE_TOTAL" Type="Int32" />
+          <Property Name="VALOR_TIKET" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="VALOR_PAGO" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="VALOR_VENDA_BRUTA" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="VALOR_TROCA" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="QTDE_TROCA_TOTAL" Type="Int32" />
+          <Property Name="TICKET_IMPRESSO" Type="Boolean" Nullable="false" />
+          <Property Name="TERMINAL" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="GERENTE_LOJA" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="GERENTE_PERIODO" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="CODIGO_FILIAL_PGTO" Type="String" MaxLength="6" Unicode="false" FixedLength="true" />
+          <Property Name="TERMINAL_PGTO" Type="String" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="LANCAMENTO_CAIXA" Type="String" MaxLength="7" Unicode="false" FixedLength="true" />
+          <Property Name="TIMESTAMP" Type="Binary" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="VALOR_CANCELADO" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="TOTAL_QTDE_CANCELADA" Type="Int32" />
+          <Property Name="DATA_HORA_CANCELAMENTO" Type="DateTime" Precision="3" />
+          <Property Name="PERIODO_FECHAMENTO" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="DateTime" Precision="3" />
+          <Property Name="FATOR" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="SUGESTAO_COD_FORMA_PGTO" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="VALOR_IPI" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="QTDE_ITEM" Type="Int16" />
+          <Property Name="MOTIVO_CANCELAMENTO" Type="Int16" />
+          <Property Name="TERMINAL_VERNDA_SUSPENSA" Type="String" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="TERMINAL_VENDA_SUSPENSA" Type="String" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="COD_FIDELIDADE_PROGRAMA" Type="Int32" />
+          <Property Name="QTDE_PONTOS_ACUMULADOS" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="QTDE_PONTOS_RESGATADOS" Type="Decimal" Precision="7" Scale="2" />
+        </EntityType>
+        <EntityType Name="LOJA_VENDA_PARCELAS">
+          <Key>
+            <PropertyRef Name="TERMINAL" />
+            <PropertyRef Name="LANCAMENTO_CAIXA" />
+            <PropertyRef Name="CODIGO_FILIAL" />
+            <PropertyRef Name="PARCELA" />
+          </Key>
+          <Property Name="TERMINAL" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="LANCAMENTO_CAIXA" Type="String" Nullable="false" MaxLength="7" Unicode="false" FixedLength="true" />
+          <Property Name="CODIGO_FILIAL" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="true" />
+          <Property Name="PARCELA" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="CODIGO_ADMINISTRADORA" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="TIPO_PGTO" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="VALOR" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="VENCIMENTO" Type="DateTime" Precision="3" />
+          <Property Name="NUMERO_TITULO" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="MOEDA" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="true" />
+          <Property Name="AGENCIA" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="BANCO" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="CONTA_CORRENTE" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="NUMERO_APROVACAO_CARTAO" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="PARCELAS_CARTAO" Type="Int32" Nullable="false" />
+          <Property Name="VALOR_CANCELADO" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="CHEQUE_CARTAO" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="DateTime" Precision="3" />
+          <Property Name="NUMERO_LOTE" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="FINALIZACAO" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="BAIXA" Type="Int16" />
+          <Property Name="REDE_CONTROLADORA" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="COTACAO" Type="Decimal" Precision="14" Scale="5" />
+          <Property Name="VALOR_MOEDA" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="ORIGEM_LOTE" Type="Byte" />
+          <Property Name="TROCO" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="DATA_HORA_TEF" Type="DateTime" Precision="3" />
+          <Property Name="CHEQUE_DIGITO" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="ID_DOCUMENTO_ECF" Type="Int32" />
+          <NavigationProperty Name="ADMINISTRADORAS_CARTAO" Relationship="MHERPModel.XFK12341_LOJA_VENDA_PARCELAS" FromRole="LOJA_VENDA_PARCELAS" ToRole="ADMINISTRADORAS_CARTAO" />
+          <NavigationProperty Name="LOJA_VENDA_PGTO" Relationship="MHERPModel.XFK12324_LOJA_VENDA_PARCELAS" FromRole="LOJA_VENDA_PARCELAS" ToRole="LOJA_VENDA_PGTO" />
+          <NavigationProperty Name="TIPOS_PGTO" Relationship="MHERPModel.XFK12334_LOJA_VENDA_PARCELAS" FromRole="LOJA_VENDA_PARCELAS" ToRole="TIPOS_PGTO" />
+        </EntityType>
+        <EntityType Name="LOJA_VENDA_PGTO">
+          <Key>
+            <PropertyRef Name="CODIGO_FILIAL" />
+            <PropertyRef Name="TERMINAL" />
+            <PropertyRef Name="LANCAMENTO_CAIXA" />
+          </Key>
+          <Property Name="CODIGO_FILIAL" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="true" />
+          <Property Name="TERMINAL" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="LANCAMENTO_CAIXA" Type="String" Nullable="false" MaxLength="7" Unicode="false" FixedLength="true" />
+          <Property Name="COD_FORMA_PGTO" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="CAIXA_VENDEDOR" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="DIGITACAO" Type="DateTime" Precision="3" />
+          <Property Name="DATA" Type="DateTime" Precision="3" />
+          <Property Name="NUMERO_CUPOM_FISCAL" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="DESCONTO_PGTO" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="TOTAL_VENDA" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="VALOR_CANCELADO" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="PERIODO_FECHAMENTO" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="TIMESTAMP" Type="Binary" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="DateTime" Precision="3" />
+          <Property Name="SERIE_NF_ENTRADA" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="SERIE_NF_SAIDA" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="FATOR" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="NUMERO_FISCAL_TROCA" Type="String" MaxLength="7" Unicode="false" FixedLength="true" />
+          <Property Name="CANCELADO_FISCAL" Type="Int16" />
+          <Property Name="ID_EQUIPAMENTO" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="IMPRIMIU_CUPOM_TROCA" Type="Int16" />
+          <Property Name="VENDA_FINALIZADA" Type="Boolean" Nullable="false" />
+          <Property Name="NUMERO_FISCAL_CANCELAMENTO" Type="String" MaxLength="7" Unicode="false" FixedLength="true" />
+          <Property Name="NUMERO_FATURA_MANUAL" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="SERIE_NF_CANCELAMENTO" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="NUMERO_FISCAL_VENDA" Type="String" MaxLength="7" Unicode="false" FixedLength="true" />
+          <Property Name="SERIE_NF" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="NUMERO_CCF" Type="Int32" />
+          <Property Name="ID_DOCUMENTO_ECF_TROCA" Type="Int32" />
+          <Property Name="ID_DOCUMENTO_ECF_VALE" Type="Int32" />
+          <NavigationProperty Name="LOJA_FORMAS_PGTO" Relationship="MHERPModel.XFK12410_LOJA_VENDA_PGTO" FromRole="LOJA_VENDA_PGTO" ToRole="LOJA_FORMAS_PGTO" />
+          <NavigationProperty Name="LOJA_VENDA_PARCELAS" Relationship="MHERPModel.XFK12324_LOJA_VENDA_PARCELAS" FromRole="LOJA_VENDA_PGTO" ToRole="LOJA_VENDA_PARCELAS" />
+          <NavigationProperty Name="LOJA_VENDEDORES" Relationship="MHERPModel.XFK12348_LOJA_VENDA_PGTO" FromRole="LOJA_VENDA_PGTO" ToRole="LOJA_VENDEDORES" />
+        </EntityType>
+        <EntityType Name="LOJA_VENDEDORES">
+          <Key>
+            <PropertyRef Name="VENDEDOR" />
+          </Key>
+          <Property Name="VENDEDOR" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="CODIGO_FILIAL" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="true" />
+          <Property Name="VENDEDOR_APELIDO" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="NOME_VENDEDOR" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="OPERA_CAIXA" Type="Boolean" Nullable="false" />
+          <Property Name="COMISSAO" Type="Decimal" Precision="8" Scale="5" />
+          <Property Name="RG" Type="String" MaxLength="19" Unicode="false" FixedLength="false" />
+          <Property Name="ENDERECO" Type="String" MaxLength="90" Unicode="false" FixedLength="false" />
+          <Property Name="COMPLEMENTO" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="CIDADE" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="UF" Type="String" MaxLength="18" Unicode="false" FixedLength="true" />
+          <Property Name="CEP" Type="String" MaxLength="9" Unicode="false" FixedLength="false" />
+          <Property Name="TELEFONE" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="CPF" Type="String" MaxLength="19" Unicode="false" FixedLength="false" />
+          <Property Name="GERENTE" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="TIMESTAMP" Type="Binary" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="SENHA" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="DATA_DESATIVACAO" Type="DateTime" Precision="3" />
+          <Property Name="DATA_ATIVACAO" Type="DateTime" Precision="3" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="DateTime" Precision="3" />
+          <Property Name="DESC_CARGO" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ACESSO_GERENCIAL" Type="Boolean" Nullable="false" />
+          <Property Name="CHECKSUM" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="VENDEDOR_FRANQUIA" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="COMISSAO_CLIENTE_AUSENTE" Type="Decimal" Precision="8" Scale="5" />
+          <NavigationProperty Name="LOJA_VENDA_PGTO" Relationship="MHERPModel.XFK12348_LOJA_VENDA_PGTO" FromRole="LOJA_VENDEDORES" ToRole="LOJA_VENDA_PGTO" />
+        </EntityType>
+        <EntityType Name="PROP_LOJAS_VAREJO">
+          <Key>
+            <PropertyRef Name="PROPRIEDADE" />
+            <PropertyRef Name="ITEM_PROPRIEDADE" />
+            <PropertyRef Name="CODIGO_FILIAL" />
+          </Key>
+          <Property Name="PROPRIEDADE" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="ITEM_PROPRIEDADE" Type="Int16" Nullable="false" />
+          <Property Name="VALOR_PROPRIEDADE" Type="String" MaxLength="70" Unicode="false" FixedLength="false" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="DateTime" Precision="3" />
+          <Property Name="CODIGO_FILIAL" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="PROPRIEDADE1" Relationship="MHERPModel.XFKP1_PROP_LOJAS_VAREJO" FromRole="PROP_LOJAS_VAREJO" ToRole="PROPRIEDADE" />
+        </EntityType>
+        <EntityType Name="PROPRIEDADE">
+          <Key>
+            <PropertyRef Name="PROPRIEDADE1" />
+          </Key>
+          <Property Name="PROPRIEDADE1" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="FAIXA_FINAL" Type="String" MaxLength="70" Unicode="false" FixedLength="false" />
+          <Property Name="FAIXA_INICIAL" Type="String" MaxLength="70" Unicode="false" FixedLength="false" />
+          <Property Name="MASCARA_VALOR" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="DESC_PROPRIEDADE" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="PROPRIEDADE_REQUERIDA" Type="Boolean" Nullable="false" />
+          <Property Name="TIPO_PROPRIEDADE" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="TIPO_VALIDACAO" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="DateTime" Precision="3" />
+          <Property Name="DATA_ATIVACAO" Type="DateTime" Precision="3" />
+          <Property Name="DATA_DESATIVACAO" Type="DateTime" Precision="3" />
+          <Property Name="FILTRO_DE_PROPRIEDADES" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="TITULO_PROPRIEDADE" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="TABELA" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="VALIDACAO_TABELA_CAMPO" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="VALOR_PADRAO" Type="String" MaxLength="70" Unicode="false" FixedLength="false" />
+          <Property Name="CONSULTA_ATIVA" Type="Boolean" Nullable="false" />
+          <Property Name="COD_GRUPO" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="RESPONSAVEL" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="COLUNAS_AUXILIARES" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+          <Property Name="FILTRO_AUXILIAR" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+          <Property Name="TABELAS_AUXILIARES" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PROP_LOJAS_VAREJO" Relationship="MHERPModel.XFKP1_PROP_LOJAS_VAREJO" FromRole="PROPRIEDADE" ToRole="PROP_LOJAS_VAREJO" />
+        </EntityType>
+        <EntityType Name="TIPOS_PGTO">
+          <Key>
+            <PropertyRef Name="TIPO_PGTO" />
+          </Key>
+          <Property Name="TIPO_PGTO" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="DESC_TIPO_PGTO" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="TIPO_A_VISTA" Type="Boolean" Nullable="false" />
+          <Property Name="TIMESTAMP" Type="Binary" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="DATA_PARA_TRANSFERENCIA" Type="DateTime" Precision="3" />
+          <Property Name="INATIVO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LOJA_VENDA_PARCELAS" Relationship="MHERPModel.XFK12334_LOJA_VENDA_PARCELAS" FromRole="TIPOS_PGTO" ToRole="LOJA_VENDA_PARCELAS" />
+        </EntityType>
+        <Association Name="XFK12341_LOJA_VENDA_PARCELAS">
+          <End Role="ADMINISTRADORAS_CARTAO" Type="MHERPModel.ADMINISTRADORAS_CARTAO" Multiplicity="0..1" />
+          <End Role="LOJA_VENDA_PARCELAS" Type="MHERPModel.LOJA_VENDA_PARCELAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMINISTRADORAS_CARTAO">
+              <PropertyRef Name="CODIGO_ADMINISTRADORA" />
+            </Principal>
+            <Dependent Role="LOJA_VENDA_PARCELAS">
+              <PropertyRef Name="CODIGO_ADMINISTRADORA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK12410_LOJA_VENDA_PGTO">
+          <End Role="LOJA_FORMAS_PGTO" Type="MHERPModel.LOJA_FORMAS_PGTO" Multiplicity="0..1" />
+          <End Role="LOJA_VENDA_PGTO" Type="MHERPModel.LOJA_VENDA_PGTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOJA_FORMAS_PGTO">
+              <PropertyRef Name="COD_FORMA_PGTO" />
+            </Principal>
+            <Dependent Role="LOJA_VENDA_PGTO">
+              <PropertyRef Name="COD_FORMA_PGTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK12324_LOJA_VENDA_PARCELAS">
+          <End Role="LOJA_VENDA_PGTO" Type="MHERPModel.LOJA_VENDA_PGTO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LOJA_VENDA_PARCELAS" Type="MHERPModel.LOJA_VENDA_PARCELAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOJA_VENDA_PGTO">
+              <PropertyRef Name="CODIGO_FILIAL" />
+              <PropertyRef Name="TERMINAL" />
+              <PropertyRef Name="LANCAMENTO_CAIXA" />
+            </Principal>
+            <Dependent Role="LOJA_VENDA_PARCELAS">
+              <PropertyRef Name="CODIGO_FILIAL" />
+              <PropertyRef Name="TERMINAL" />
+              <PropertyRef Name="LANCAMENTO_CAIXA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK12334_LOJA_VENDA_PARCELAS">
+          <End Role="TIPOS_PGTO" Type="MHERPModel.TIPOS_PGTO" Multiplicity="1" />
+          <End Role="LOJA_VENDA_PARCELAS" Type="MHERPModel.LOJA_VENDA_PARCELAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_PGTO">
+              <PropertyRef Name="TIPO_PGTO" />
+            </Principal>
+            <Dependent Role="LOJA_VENDA_PARCELAS">
+              <PropertyRef Name="TIPO_PGTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK12348_LOJA_VENDA_PGTO">
+          <End Role="LOJA_VENDEDORES" Type="MHERPModel.LOJA_VENDEDORES" Multiplicity="0..1" />
+          <End Role="LOJA_VENDA_PGTO" Type="MHERPModel.LOJA_VENDA_PGTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOJA_VENDEDORES">
+              <PropertyRef Name="VENDEDOR" />
+            </Principal>
+            <Dependent Role="LOJA_VENDA_PGTO">
+              <PropertyRef Name="CAIXA_VENDEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFKP1_PROP_LOJAS_VAREJO">
+          <End Role="PROPRIEDADE" Type="MHERPModel.PROPRIEDADE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROP_LOJAS_VAREJO" Type="MHERPModel.PROP_LOJAS_VAREJO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROPRIEDADE">
+              <PropertyRef Name="PROPRIEDADE1" />
+            </Principal>
+            <Dependent Role="PROP_LOJAS_VAREJO">
+              <PropertyRef Name="PROPRIEDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LOJA_VENDA_PRODUTO">
+          <Key>
+            <PropertyRef Name="TICKET" />
+            <PropertyRef Name="CODIGO_FILIAL" />
+            <PropertyRef Name="DATA_VENDA" />
+            <PropertyRef Name="ITEM" />
+          </Key>
+          <Property Type="String" Name="TICKET" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CODIGO_FILIAL" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="DATA_VENDA" Nullable="false" Precision="3" />
+          <Property Type="String" Name="ITEM" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CODIGO_BARRA" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PRODUTO" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="COR_PRODUTO" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="Int16" Name="TAMANHO" />
+          <Property Type="Int32" Name="QTDE" />
+          <Property Type="Decimal" Name="PRECO_LIQUIDO" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="DESCONTO_ITEM" Precision="14" Scale="2" />
+          <Property Type="String" Name="NUMERO_IMP_FISCAL" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="QTDE_CANCELADA" />
+          <Property Type="Binary" Name="TIMESTAMP" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="DateTime" Name="DATA_PARA_TRANSFERENCIA" Precision="3" />
+          <Property Type="Decimal" Name="CUSTO" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="FATOR_DESCONTO_VENDA" Precision="8" Scale="5" />
+          <Property Type="Decimal" Name="FATOR_VENDA_LIQ" Precision="8" Scale="5" />
+          <Property Type="Decimal" Name="IPI" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="ALIQUOTA" Precision="5" Scale="2" />
+          <Property Type="Int16" Name="ID_VENDEDOR" />
+          <Property Type="Boolean" Name="ITEM_EXCLUIDO" Nullable="false" />
+          <Property Type="Byte" Name="QTDE_BRINDE" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILIAIS">
+          <Key>
+            <PropertyRef Name="FILIAL" />
+          </Key>
+          <Property Type="String" Name="FILIAL" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="EMPRESA" Nullable="false" />
+          <Property Type="String" Name="CONTA_CONTABIL" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TIPO_ESTOQUE_IDEAL" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="COD_FILIAL" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TIPO_FILIAL" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CLIFOR" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="Boolean" Name="FILIAL_PROPRIA" Nullable="false" />
+          <Property Type="String" Name="CGC_CPF" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MATRIZ" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REGIAO" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="ESTOQUE_CTRL_PECA_UNICA" Nullable="false" />
+          <Property Type="Boolean" Name="ESTOQUE_CTRL_PECA" Nullable="false" />
+          <Property Type="String" Name="SEQUENCIA_PECAS" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Type="Binary" Name="TIMESTAMP" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int16" Name="TEMPO_ATENDIMENTO" />
+          <Property Type="DateTime" Name="DATA_PARA_TRANSFERENCIA" Precision="3" />
+          <Property Type="String" Name="REDE_LOJAS" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="Int16" Name="NAO_GERA_ENTRADA_LOJA_AUTO" />
+          <Property Type="Decimal" Name="FATOR_CUSTO_LOJA" Precision="8" Scale="3" />
+          <Property Type="Boolean" Name="PERMITE_EST_NEGATIVO" Nullable="false" />
+          <Property Type="Boolean" Name="CTRL_ESTOQUE_MATERIAL" Nullable="false" />
+          <Property Type="Boolean" Name="CTRL_ESTOQUE_PRODUTO" Nullable="false" />
+          <Property Type="Boolean" Name="CTRL_LOJA_VAREJO" Nullable="false" />
+          <Property Type="Boolean" Name="CTRL_PRODUCAO_PRODUTO" Nullable="false" />
+          <Property Type="Boolean" Name="CTRL_VENDA_PRODUTO" Nullable="false" />
+          <Property Type="Boolean" Name="CTRL_VENDA_MATERIAL" Nullable="false" />
+          <Property Type="Boolean" Name="CTRL_PRODUCAO_MATERIAL" Nullable="false" />
+          <Property Type="Int32" Name="AREA_M2" />
+          <Property Type="String" Name="VENDEDOR_PADRAO_FRANQUIA" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="FORMA_PGTO_PADRAO_FRANQUIA" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CLIENTE_VAREJO_PADRAO_FRANQUIA" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RECEBER_PADRAO_FRANQUIA" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Int16" Name="EXPORTA_PGTOS_FRANQUIA" />
+          <Property Type="Boolean" Name="INDICA_ARMAZEM" Nullable="false" />
+          <Property Type="Boolean" Name="INDICA_SEGUNDA_QUALIDADE" Nullable="false" />
+          <Property Type="Boolean" Name="INDICA_BENEFICIADOR" Nullable="false" />
+          <Property Type="String" Name="REGIAO_SUPERVISAO" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="INDICA_FRANQUIA" Nullable="false" />
+          <Property Type="String" Name="MATRIZ_FISCAL" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CTB_CONTA_CONTABIL" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="SOMENTE_ARMAZEM" Nullable="false" />
+          <Property Type="Boolean" Name="INDICA_CFOP_SOMENTE_REVENDA" Nullable="false" />
+          <Property Type="String" Name="SEQUENCIA_MAPA_RESUMO" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="FATOR_P" />
+          <Property Type="Byte" Name="FATOR_Q" />
+          <Property Type="Byte" Name="FATOR_F" />
+          <Property Type="String" Name="COD_FORMA_PGTO_FLUXO" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="Boolean" Name="FECHA_CUSTO_MEDIO" Nullable="false" />
+          <Property Type="Boolean" Name="FECHA_CM_AJUSTE_INFLACAO" Nullable="false" />
+          <Property Type="String" Name="CODIGO_CONTATO" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TIPO_ESTOQUE_IDEAL_MIN" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TIPO_ESTOQUE_IDEAL_MAX" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="Byte" Name="FATOR_S" />
+          <Property Type="Byte" Name="FATOR_W" />
+        </EntityType>
+        <EntityType Name="CADASTRO_CLI_FOR">
+          <Key>
+            <PropertyRef Name="NOME_CLIFOR" />
+          </Key>
+          <Property Type="String" Name="NOME_CLIFOR" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CARTEIRA" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BANCO" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CONTA_CONTABIL" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CLIFOR" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CGC_CPF" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RAZAO_SOCIAL" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="PJ_PF" Nullable="false" />
+          <Property Type="String" Name="RG_IE" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CEP" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENDERECO" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BAIRRO" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CIDADE" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UF" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TELEFONE1" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PAIS" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DDI" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TELEFONE2" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FAX" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DDD1" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RAMAL1" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RAMAL2" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="DDD2" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="COBRANCA_ENDERECO" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COBRANCA_CIDADE" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COBRANCA_BAIRRO" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DDDFAX" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="COBRANCA_UF" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="COBRANCA_CEP" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COBRANCA_TELEFONE" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENTREGA_ENDERECO" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENTREGA_CIDADE" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENTREGA_UF" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ENTREGA_BAIRRO" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENTREGA_CEP" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENTREGA_TELEFONE" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COBRANCA_DDD" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CONTATO" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COBRANCA_CGC" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CADASTRAMENTO" Nullable="false" Precision="3" />
+          <Property Type="String" Name="COBRANCA_IE" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ANIVERSARIO" Precision="3" />
+          <Property Type="Boolean" Name="INDICA_FORNECEDOR" Nullable="false" />
+          <Property Type="Boolean" Name="INDICA_CLIENTE" Nullable="false" />
+          <Property Type="Boolean" Name="IND_REPRESENTANTE" Nullable="false" />
+          <Property Type="Boolean" Name="INDICA_FILIAL" Nullable="false" />
+          <Property Type="String" Name="ENTREGA_DDD" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ENTREGA_CGC" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENTREGA_IE" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CC_AGENCIA" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CC_CONTA" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CC_NOME_AGENCIA" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REF_ANTERIOR" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="ATUALIZACAO_EXPORTAR" Precision="3" />
+          <Property Type="DateTime" Name="DATA_EXPORTACAO" Precision="3" />
+          <Property Type="String" Name="EMAIL" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="STATUS_ENVIO" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Binary" Name="TIMESTAMP" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Boolean" Name="INATIVO" Nullable="false" />
+          <Property Type="DateTime" Name="DATA_PARA_TRANSFERENCIA" Precision="3" />
+          <Property Type="String" Name="ENTREGA_PAIS" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COBRANCA_PAIS" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENTREGA_DDI" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="COBRANCA_DDI" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="OBS_DE_FATURAMENTO" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="ISENTO_IPI" Nullable="false" />
+          <Property Type="Boolean" Name="ISENTO_ICMS" Nullable="false" />
+          <Property Type="Decimal" Name="IRRF" Precision="8" Scale="5" />
+          <Property Type="String" Name="MESES_SEM_VENCIMENTO" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DATA_FIXA_PGTO" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="ACEITA_AGRUPAR_FATURA" />
+          <Property Type="String" Name="PASSWEB" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="VENCIMENTO_PASSWEB" Precision="3" />
+          <Property Type="Int16" Name="NUMERO_VIAS_FATURA" />
+          <Property Type="String" Name="REPORT_FATURA" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Type="Int16" Name="DIAS_ANTECIPACAO_PGTO" />
+          <Property Type="Byte" Name="POSSUI_RECARGO" />
+          <Property Type="String" Name="CODIGO_CHAVE" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="Int16" Name="TIPO_RELACAO_COMERCIAL" />
+          <Property Type="Int32" Name="ID_CLASIF_CLIFOR" />
+          <Property Type="String" Name="ENTREGA_RAZAO_SOCIAL" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COBRANCA_RAZAO_SOCIAL" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="ACEITA_DIAS_FIXO" Nullable="false" />
+          <Property Type="String" Name="COD_CLIFOR" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CTB_CONTA_CONTABIL" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="INDICADOR_FISCAL_TERCEIRO" />
+          <Property Type="Int32" Name="ID_EXCECAO_GRUPO" />
+          <Property Type="Int16" Name="AGRUPAMENTO_ITENS" />
+          <Property Type="String" Name="CODIGO_CONTATO" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="IM" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IM_ENTREGA" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IM_COBRANCA" MaxLength="14" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FORNECEDORES" Relationship="MHERPModel.XFK12594_FORNECEDORES" FromRole="CADASTRO_CLI_FOR" ToRole="FORNECEDORES" />
+        </EntityType>
+        <EntityType Name="PRODUTOS">
+          <Key>
+            <PropertyRef Name="PRODUTO" />
+          </Key>
+          <Property Type="String" Name="PRODUTO" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CODIGO_PRECO" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="MATERIAL" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="PERIODO_PCP" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TABELA_OPERACOES" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="FATOR_OPERACOES" Precision="7" Scale="3" />
+          <Property Type="String" Name="CLASSIF_FISCAL" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TIPO_PRODUTO" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TABELA_MEDIDAS" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DESC_PRODUTO" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GRUPO_PRODUTO" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SUBGRUPO_PRODUTO" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COLECAO" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="GRADE" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DESC_PROD_NF" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LINHA" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GRIFFE" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CARTELA" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="UNIDADE" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="Decimal" Name="PESO" Precision="7" Scale="3" />
+          <Property Type="Boolean" Name="REVENDA" Nullable="false" />
+          <Property Type="String" Name="REFER_FABRICANTE" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="MODELAGEM" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="Boolean" Name="SORTIMENTO_COR" Nullable="false" />
+          <Property Type="String" Name="FABRICANTE" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="SORTIMENTO_TAMANHO" Nullable="false" />
+          <Property Type="Boolean" Name="VARIA_PRECO_COR" Nullable="false" />
+          <Property Type="Boolean" Name="VARIA_PRECO_TAM" Nullable="false" />
+          <Property Type="String" Name="PONTEIRO_PRECO_TAM" Nullable="false" MaxLength="48" FixedLength="true" Unicode="false" />
+          <Property Type="Boolean" Name="VARIA_CUSTO_COR" Nullable="false" />
+          <Property Type="Boolean" Name="PERTENCE_A_CONJUNTO" Nullable="false" />
+          <Property Type="String" Name="TRIBUT_ICMS" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TRIBUT_ORIGEM" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="Boolean" Name="VARIA_CUSTO_TAM" Nullable="false" />
+          <Property Type="Decimal" Name="CUSTO_REPOSICAO1" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="CUSTO_REPOSICAO2" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="CUSTO_REPOSICAO3" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="CUSTO_REPOSICAO4" Precision="14" Scale="2" />
+          <Property Type="DateTime" Name="DATA_REPOSICAO" Precision="3" />
+          <Property Type="String" Name="ESTILISTA" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MODELISTA" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TAMANHO_BASE" />
+          <Property Type="Int32" Name="GIRO_ENTREGA" />
+          <Property Type="Binary" Name="TIMESTAMP" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Boolean" Name="INATIVO" Nullable="false" />
+          <Property Type="Boolean" Name="ENVIA_LOJA_VAREJO" Nullable="false" />
+          <Property Type="Boolean" Name="ENVIA_LOJA_ATACADO" Nullable="false" />
+          <Property Type="Boolean" Name="ENVIA_REPRESENTANTE" Nullable="false" />
+          <Property Type="Boolean" Name="ENVIA_VAREJO_INTERNET" Nullable="false" />
+          <Property Type="Boolean" Name="ENVIA_ATACADO_INTERNET" Nullable="false" />
+          <Property Type="String" Name="MODELO" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="REDE_LOJAS" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="DATA_PARA_TRANSFERENCIA" Precision="3" />
+          <Property Type="Decimal" Name="FABRICANTE_ICMS_ABATER" Precision="8" Scale="5" />
+          <Property Type="Int32" Name="FABRICANTE_PRAZO_PGTO" />
+          <Property Type="Decimal" Name="TAXA_JUROS_DEFLACIONAR" Precision="8" Scale="5" />
+          <Property Type="Decimal" Name="TAXAS_IMPOSTOS_APLICAR" Precision="8" Scale="5" />
+          <Property Type="Decimal" Name="PRECO_REPOSICAO_1" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="PRECO_REPOSICAO_2" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="PRECO_REPOSICAO_3" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="PRECO_REPOSICAO_4" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="PRECO_A_VISTA_REPOSICAO_1" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="PRECO_A_VISTA_REPOSICAO_2" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="PRECO_A_VISTA_REPOSICAO_3" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="PRECO_A_VISTA_REPOSICAO_4" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="FABRICANTE_FRETE" Precision="8" Scale="5" />
+          <Property Type="Int16" Name="DROP_DE_TAMANHOS" />
+          <Property Type="DateTime" Name="DATA_CADASTRAMENTO" Precision="3" />
+          <Property Type="String" Name="STATUS_PRODUTO" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="TIPO_STATUS_PRODUTO" />
+          <Property Type="String" Name="OBS" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COMPOSICAO" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RESTRICAO_LAVAGEM" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="EMPRESA" Nullable="false" />
+          <Property Type="String" Name="ORCAMENTO" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CLIENTE_DO_PRODUTO" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CONTA_CONTABIL" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ESPESSURA" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="ALTURA" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="LARGURA" Precision="10" Scale="5" />
+          <Property Type="Decimal" Name="COMPRIMENTO" Precision="14" Scale="2" />
+          <Property Type="Int16" Name="EMPILHAMENTO_MAXIMO" />
+          <Property Type="Int16" Name="SEXO_TIPO" />
+          <Property Type="Int16" Name="PARTE_TIPO" />
+          <Property Type="String" Name="VERSAO_FICHA" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="COD_FLUXO_PRODUTO" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="DATA_INICIO_DESENVOLVIMENTO" Precision="3" />
+          <Property Type="Byte" Name="INDICADOR_CFOP" />
+          <Property Type="Byte" Name="MONTAGEM_KIT" />
+          <Property Type="Int32" Name="MRP_AGRUPAR_NECESSIDADE_DIAS" />
+          <Property Type="Int32" Name="MRP_AGRUPAR_NECESSIDADE_TIPO" />
+          <Property Type="Int32" Name="MRP_DIAS_SEGURANCA" />
+          <Property Type="Int32" Name="MRP_EMISSAO_LIBERACAO_DIAS" />
+          <Property Type="Int32" Name="MRP_ENTREGA_GIRO_DIAS" />
+          <Property Type="Int32" Name="MRP_PARTICIPANTE" />
+          <Property Type="Int32" Name="MRP_MAIOR_GIRO_MP_DIAS" />
+          <Property Type="Int32" Name="MRP_FP" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="MRP_RR" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Boolean" Name="OP_POR_COR" Nullable="false" />
+          <Property Type="Int32" Name="OP_QTDE_MAXIMA" />
+          <Property Type="Int32" Name="OP_QTDE_MINIMA" />
+          <Property Type="Byte" Name="QUALIDADE" />
+          <Property Type="Int32" Name="SEMI_ACABADO" />
+          <Property Type="String" Name="CONTA_CONTABIL_COMPRA" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CONTA_CONTABIL_VENDA" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CONTA_CONTABIL_DEV_COMPRA" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CONTA_CONTABIL_DEV_VENDA" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ID_EXCECAO_GRUPO" />
+          <Property Type="Int32" Name="ID_EXCECAO_IMPOSTO" />
+          <Property Type="String" Name="DIAS_COMPRA" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="FATOR_P" />
+          <Property Type="Byte" Name="FATOR_Q" />
+          <Property Type="Byte" Name="FATOR_F" />
+          <Property Type="Byte" Name="CONTINUIDADE" />
+          <Property Type="String" Name="COD_CATEGORIA" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="COD_SUBCATEGORIA" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="COD_PRODUTO_SOLUCAO" />
+          <Property Type="Int32" Name="COD_PRODUTO_SEGMENTO" />
+          <NavigationProperty Name="LOJAS_REDE" Relationship="MHERPModel.XFK13051_PRODUTOS" FromRole="PRODUTOS" ToRole="LOJAS_REDE" />
+          <NavigationProperty Name="FORNECEDORES" Relationship="MHERPModel.XFK12598_PRODUTOS" FromRole="PRODUTOS" ToRole="FORNECEDORES" />
+        </EntityType>
+        <EntityType Name="CSS_PARAMETRO_VENDEDOR">
+          <Key>
+            <PropertyRef Name="vendedor" />
+          </Key>
+          <Property Type="String" Name="vendedor" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="Decimal" Name="comisionCumple" Nullable="false" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="comisionNoCumple" Nullable="false" Precision="14" Scale="2" />
+        </EntityType>
+        <EntityType Name="LOJAS_REDE">
+          <Key>
+            <PropertyRef Name="REDE_LOJAS" />
+          </Key>
+          <Property Type="String" Name="REDE_LOJAS" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="DESC_REDE_LOJAS" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DATA_PARA_TRANSFERENCIA" Precision="3" />
+          <Property Type="String" Name="REDE_SIGLA" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="PRODUTOS" Relationship="MHERPModel.XFK13051_PRODUTOS" FromRole="LOJAS_REDE" ToRole="PRODUTOS" />
+        </EntityType>
+        <Association Name="XFK13051_PRODUTOS">
+          <End Type="MHERPModel.LOJAS_REDE" Role="LOJAS_REDE" Multiplicity="0..1" />
+          <End Type="MHERPModel.PRODUTOS" Role="PRODUTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOJAS_REDE">
+              <PropertyRef Name="REDE_LOJAS" />
+            </Principal>
+            <Dependent Role="PRODUTOS">
+              <PropertyRef Name="REDE_LOJAS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CSS_PRESUPUESTO_TIENDAS">
+          <Key>
+            <PropertyRef Name="ano" />
+            <PropertyRef Name="mes" />
+            <PropertyRef Name="tienda" />
+          </Key>
+          <Property Type="Int32" Name="ano" Nullable="false" />
+          <Property Type="Int32" Name="mes" Nullable="false" />
+          <Property Type="String" Name="tienda" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="presupuesto" Nullable="false" Precision="14" Scale="2" />
+        </EntityType>
+        <EntityType Name="FORNECEDORES">
+          <Key>
+            <PropertyRef Name="FORNECEDOR" />
+          </Key>
+          <Property Type="String" Name="FORNECEDOR" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CENTRO_CUSTO" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TIPO" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SUBTIPO_FORNECEDOR" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COD_FORNECEDOR" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CLIFOR" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CONDICAO_PGTO" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CGC_CPF" Nullable="false" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="FORNECE_MATERIAIS" Nullable="false" />
+          <Property Type="Boolean" Name="FORNECE_PROD_ACAB" Nullable="false" />
+          <Property Type="Boolean" Name="FORNECE_MAT_CONSUMO" Nullable="false" />
+          <Property Type="Boolean" Name="BENEFICIADOR" Nullable="false" />
+          <Property Type="Boolean" Name="FORNECE_OUTROS" Nullable="false" />
+          <Property Type="String" Name="MOEDA" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="Boolean" Name="INATIVO" Nullable="false" />
+          <Property Type="DateTime" Name="DATA_PARA_TRANSFERENCIA" Precision="3" />
+          <Property Type="Int16" Name="LICENCIADO" />
+          <Property Type="Decimal" Name="LICENDIADO_ROYALTIES" Precision="8" Scale="5" />
+          <Property Type="String" Name="CONTA_CONTABIL" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CTB_CONTA_CONTABIL" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="LICENCIADO_ROYALTIES" Precision="13" Scale="10" />
+          <Property Type="Int32" Name="CQFOR_CLASSIFICACAO" />
+          <Property Type="Boolean" Name="INDICA_CQFOR" Nullable="false" />
+          <Property Type="Int32" Name="DIAS_DESCONTO_VENCIMENTO" Nullable="false" />
+          <Property Type="Decimal" Name="DESCONTO_VENCIMENTO" Nullable="false" Precision="13" Scale="10" />
+          <NavigationProperty Name="CADASTRO_CLI_FOR" Relationship="MHERPModel.XFK12594_FORNECEDORES" FromRole="FORNECEDORES" ToRole="CADASTRO_CLI_FOR" />
+          <NavigationProperty Name="PRODUTOS" Relationship="MHERPModel.XFK12598_PRODUTOS" FromRole="FORNECEDORES" ToRole="PRODUTOS" />
+        </EntityType>
+        <Association Name="XFK12594_FORNECEDORES">
+          <End Type="MHERPModel.CADASTRO_CLI_FOR" Role="CADASTRO_CLI_FOR" Multiplicity="1" />
+          <End Type="MHERPModel.FORNECEDORES" Role="FORNECEDORES" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CADASTRO_CLI_FOR">
+              <PropertyRef Name="NOME_CLIFOR" />
+            </Principal>
+            <Dependent Role="FORNECEDORES">
+              <PropertyRef Name="FORNECEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="XFK12598_PRODUTOS">
+          <End Type="MHERPModel.FORNECEDORES" Role="FORNECEDORES" Multiplicity="1" />
+          <End Type="MHERPModel.PRODUTOS" Role="PRODUTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORNECEDORES">
+              <PropertyRef Name="FORNECEDOR" />
+            </Principal>
+            <Dependent Role="PRODUTOS">
+              <PropertyRef Name="FABRICANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MHERPModelStoreContainer" CdmEntityContainer="MHERPEntities">
+          <EntitySetMapping Name="ADMINISTRADORAS_CARTAO">
+            <EntityTypeMapping TypeName="MHERPModel.ADMINISTRADORAS_CARTAO">
+              <MappingFragment StoreEntitySet="ADMINISTRADORAS_CARTAO">
+                <ScalarProperty Name="CODIGO_ADMINISTRADORA" ColumnName="CODIGO_ADMINISTRADORA" />
+                <ScalarProperty Name="ADMINISTRADORA" ColumnName="ADMINISTRADORA" />
+                <ScalarProperty Name="TAXA_ADMINISTRACAO" ColumnName="TAXA_ADMINISTRACAO" />
+                <ScalarProperty Name="DIA_ACERTO" ColumnName="DIA_ACERTO" />
+                <ScalarProperty Name="CARTAO_TELEFONE" ColumnName="CARTAO_TELEFONE" />
+                <ScalarProperty Name="CARTAO_NOSSO_NUM" ColumnName="CARTAO_NOSSO_NUM" />
+                <ScalarProperty Name="CARTAO_TEL_VOZ" ColumnName="CARTAO_TEL_VOZ" />
+                <ScalarProperty Name="CARTAO_PRE_PARCELAS" ColumnName="CARTAO_PRE_PARCELAS" />
+                <ScalarProperty Name="ACEITA_PARCELAMENTO" ColumnName="ACEITA_PARCELAMENTO" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="PARCELAS_JUROS_LOJA" ColumnName="PARCELAS_JUROS_LOJA" />
+                <ScalarProperty Name="TIPO_CARTAO" ColumnName="TIPO_CARTAO" />
+                <ScalarProperty Name="DIAS_ENTRE_PARCELAS" ColumnName="DIAS_ENTRE_PARCELAS" />
+                <ScalarProperty Name="PARCELAS_MES_FECHADO" ColumnName="PARCELAS_MES_FECHADO" />
+                <ScalarProperty Name="SUGESTAO_PARCELAMENTO" ColumnName="SUGESTAO_PARCELAMENTO" />
+                <ScalarProperty Name="REDE_CONTROLADORA" ColumnName="REDE_CONTROLADORA" />
+                <ScalarProperty Name="LX_COD_ADMINISTRADORA" ColumnName="LX_COD_ADMINISTRADORA" />
+                <ScalarProperty Name="INATIVO" ColumnName="INATIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOJA_FORMAS_PGTO">
+            <EntityTypeMapping TypeName="MHERPModel.LOJA_FORMAS_PGTO">
+              <MappingFragment StoreEntitySet="LOJA_FORMAS_PGTO">
+                <ScalarProperty Name="COD_FORMA_PGTO" ColumnName="COD_FORMA_PGTO" />
+                <ScalarProperty Name="FORMA_PGTO" ColumnName="FORMA_PGTO" />
+                <ScalarProperty Name="DATA_CRIACAO" ColumnName="DATA_CRIACAO" />
+                <ScalarProperty Name="PERMITE_ALTERAR" ColumnName="PERMITE_ALTERAR" />
+                <ScalarProperty Name="ATIVAR_EM" ColumnName="ATIVAR_EM" />
+                <ScalarProperty Name="DESATIVAR_EM" ColumnName="DESATIVAR_EM" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+                <ScalarProperty Name="VALOR_MINIMO" ColumnName="VALOR_MINIMO" />
+                <ScalarProperty Name="VALOR_MAXIMO" ColumnName="VALOR_MAXIMO" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="VENC_RELATIVO" ColumnName="VENC_RELATIVO" />
+                <ScalarProperty Name="DESCONTO_POR_ITEM" ColumnName="DESCONTO_POR_ITEM" />
+                <ScalarProperty Name="PARCELAS_CARTAO_INICIAL" ColumnName="PARCELAS_CARTAO_INICIAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOJA_VENDA">
+            <EntityTypeMapping TypeName="MHERPModel.LOJA_VENDA">
+              <MappingFragment StoreEntitySet="LOJA_VENDA">
+                <ScalarProperty Name="CODIGO_FILIAL" ColumnName="CODIGO_FILIAL" />
+                <ScalarProperty Name="TICKET" ColumnName="TICKET" />
+                <ScalarProperty Name="DATA_VENDA" ColumnName="DATA_VENDA" />
+                <ScalarProperty Name="CODIGO_DESCONTO" ColumnName="CODIGO_DESCONTO" />
+                <ScalarProperty Name="CODIGO_CLIENTE" ColumnName="CODIGO_CLIENTE" />
+                <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+                <ScalarProperty Name="DATA_DIGITACAO" ColumnName="DATA_DIGITACAO" />
+                <ScalarProperty Name="VENDEDOR" ColumnName="VENDEDOR" />
+                <ScalarProperty Name="OPERACAO_VENDA" ColumnName="OPERACAO_VENDA" />
+                <ScalarProperty Name="CODIGO_TAB_PRECO" ColumnName="CODIGO_TAB_PRECO" />
+                <ScalarProperty Name="COMISSAO" ColumnName="COMISSAO" />
+                <ScalarProperty Name="DESCONTO" ColumnName="DESCONTO" />
+                <ScalarProperty Name="QTDE_TOTAL" ColumnName="QTDE_TOTAL" />
+                <ScalarProperty Name="VALOR_TIKET" ColumnName="VALOR_TIKET" />
+                <ScalarProperty Name="VALOR_PAGO" ColumnName="VALOR_PAGO" />
+                <ScalarProperty Name="VALOR_VENDA_BRUTA" ColumnName="VALOR_VENDA_BRUTA" />
+                <ScalarProperty Name="VALOR_TROCA" ColumnName="VALOR_TROCA" />
+                <ScalarProperty Name="QTDE_TROCA_TOTAL" ColumnName="QTDE_TROCA_TOTAL" />
+                <ScalarProperty Name="TICKET_IMPRESSO" ColumnName="TICKET_IMPRESSO" />
+                <ScalarProperty Name="TERMINAL" ColumnName="TERMINAL" />
+                <ScalarProperty Name="GERENTE_LOJA" ColumnName="GERENTE_LOJA" />
+                <ScalarProperty Name="GERENTE_PERIODO" ColumnName="GERENTE_PERIODO" />
+                <ScalarProperty Name="CODIGO_FILIAL_PGTO" ColumnName="CODIGO_FILIAL_PGTO" />
+                <ScalarProperty Name="TERMINAL_PGTO" ColumnName="TERMINAL_PGTO" />
+                <ScalarProperty Name="LANCAMENTO_CAIXA" ColumnName="LANCAMENTO_CAIXA" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+                <ScalarProperty Name="VALOR_CANCELADO" ColumnName="VALOR_CANCELADO" />
+                <ScalarProperty Name="TOTAL_QTDE_CANCELADA" ColumnName="TOTAL_QTDE_CANCELADA" />
+                <ScalarProperty Name="DATA_HORA_CANCELAMENTO" ColumnName="DATA_HORA_CANCELAMENTO" />
+                <ScalarProperty Name="PERIODO_FECHAMENTO" ColumnName="PERIODO_FECHAMENTO" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="FATOR" ColumnName="FATOR" />
+                <ScalarProperty Name="SUGESTAO_COD_FORMA_PGTO" ColumnName="SUGESTAO_COD_FORMA_PGTO" />
+                <ScalarProperty Name="VALOR_IPI" ColumnName="VALOR_IPI" />
+                <ScalarProperty Name="QTDE_ITEM" ColumnName="QTDE_ITEM" />
+                <ScalarProperty Name="MOTIVO_CANCELAMENTO" ColumnName="MOTIVO_CANCELAMENTO" />
+                <ScalarProperty Name="TERMINAL_VERNDA_SUSPENSA" ColumnName="TERMINAL_VERNDA_SUSPENSA" />
+                <ScalarProperty Name="TERMINAL_VENDA_SUSPENSA" ColumnName="TERMINAL_VENDA_SUSPENSA" />
+                <ScalarProperty Name="COD_FIDELIDADE_PROGRAMA" ColumnName="COD_FIDELIDADE_PROGRAMA" />
+                <ScalarProperty Name="QTDE_PONTOS_ACUMULADOS" ColumnName="QTDE_PONTOS_ACUMULADOS" />
+                <ScalarProperty Name="QTDE_PONTOS_RESGATADOS" ColumnName="QTDE_PONTOS_RESGATADOS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOJA_VENDA_PARCELAS">
+            <EntityTypeMapping TypeName="MHERPModel.LOJA_VENDA_PARCELAS">
+              <MappingFragment StoreEntitySet="LOJA_VENDA_PARCELAS">
+                <ScalarProperty Name="TERMINAL" ColumnName="TERMINAL" />
+                <ScalarProperty Name="LANCAMENTO_CAIXA" ColumnName="LANCAMENTO_CAIXA" />
+                <ScalarProperty Name="CODIGO_FILIAL" ColumnName="CODIGO_FILIAL" />
+                <ScalarProperty Name="PARCELA" ColumnName="PARCELA" />
+                <ScalarProperty Name="CODIGO_ADMINISTRADORA" ColumnName="CODIGO_ADMINISTRADORA" />
+                <ScalarProperty Name="TIPO_PGTO" ColumnName="TIPO_PGTO" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="VENCIMENTO" ColumnName="VENCIMENTO" />
+                <ScalarProperty Name="NUMERO_TITULO" ColumnName="NUMERO_TITULO" />
+                <ScalarProperty Name="MOEDA" ColumnName="MOEDA" />
+                <ScalarProperty Name="AGENCIA" ColumnName="AGENCIA" />
+                <ScalarProperty Name="BANCO" ColumnName="BANCO" />
+                <ScalarProperty Name="CONTA_CORRENTE" ColumnName="CONTA_CORRENTE" />
+                <ScalarProperty Name="NUMERO_APROVACAO_CARTAO" ColumnName="NUMERO_APROVACAO_CARTAO" />
+                <ScalarProperty Name="PARCELAS_CARTAO" ColumnName="PARCELAS_CARTAO" />
+                <ScalarProperty Name="VALOR_CANCELADO" ColumnName="VALOR_CANCELADO" />
+                <ScalarProperty Name="CHEQUE_CARTAO" ColumnName="CHEQUE_CARTAO" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="NUMERO_LOTE" ColumnName="NUMERO_LOTE" />
+                <ScalarProperty Name="FINALIZACAO" ColumnName="FINALIZACAO" />
+                <ScalarProperty Name="BAIXA" ColumnName="BAIXA" />
+                <ScalarProperty Name="REDE_CONTROLADORA" ColumnName="REDE_CONTROLADORA" />
+                <ScalarProperty Name="COTACAO" ColumnName="COTACAO" />
+                <ScalarProperty Name="VALOR_MOEDA" ColumnName="VALOR_MOEDA" />
+                <ScalarProperty Name="ORIGEM_LOTE" ColumnName="ORIGEM_LOTE" />
+                <ScalarProperty Name="TROCO" ColumnName="TROCO" />
+                <ScalarProperty Name="DATA_HORA_TEF" ColumnName="DATA_HORA_TEF" />
+                <ScalarProperty Name="CHEQUE_DIGITO" ColumnName="CHEQUE_DIGITO" />
+                <ScalarProperty Name="ID_DOCUMENTO_ECF" ColumnName="ID_DOCUMENTO_ECF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOJA_VENDA_PGTO">
+            <EntityTypeMapping TypeName="MHERPModel.LOJA_VENDA_PGTO">
+              <MappingFragment StoreEntitySet="LOJA_VENDA_PGTO">
+                <ScalarProperty Name="CODIGO_FILIAL" ColumnName="CODIGO_FILIAL" />
+                <ScalarProperty Name="TERMINAL" ColumnName="TERMINAL" />
+                <ScalarProperty Name="LANCAMENTO_CAIXA" ColumnName="LANCAMENTO_CAIXA" />
+                <ScalarProperty Name="COD_FORMA_PGTO" ColumnName="COD_FORMA_PGTO" />
+                <ScalarProperty Name="CAIXA_VENDEDOR" ColumnName="CAIXA_VENDEDOR" />
+                <ScalarProperty Name="DIGITACAO" ColumnName="DIGITACAO" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="NUMERO_CUPOM_FISCAL" ColumnName="NUMERO_CUPOM_FISCAL" />
+                <ScalarProperty Name="DESCONTO_PGTO" ColumnName="DESCONTO_PGTO" />
+                <ScalarProperty Name="TOTAL_VENDA" ColumnName="TOTAL_VENDA" />
+                <ScalarProperty Name="VALOR_CANCELADO" ColumnName="VALOR_CANCELADO" />
+                <ScalarProperty Name="PERIODO_FECHAMENTO" ColumnName="PERIODO_FECHAMENTO" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="SERIE_NF_ENTRADA" ColumnName="SERIE_NF_ENTRADA" />
+                <ScalarProperty Name="SERIE_NF_SAIDA" ColumnName="SERIE_NF_SAIDA" />
+                <ScalarProperty Name="FATOR" ColumnName="FATOR" />
+                <ScalarProperty Name="NUMERO_FISCAL_TROCA" ColumnName="NUMERO_FISCAL_TROCA" />
+                <ScalarProperty Name="CANCELADO_FISCAL" ColumnName="CANCELADO_FISCAL" />
+                <ScalarProperty Name="ID_EQUIPAMENTO" ColumnName="ID_EQUIPAMENTO" />
+                <ScalarProperty Name="IMPRIMIU_CUPOM_TROCA" ColumnName="IMPRIMIU_CUPOM_TROCA" />
+                <ScalarProperty Name="VENDA_FINALIZADA" ColumnName="VENDA_FINALIZADA" />
+                <ScalarProperty Name="NUMERO_FISCAL_CANCELAMENTO" ColumnName="NUMERO_FISCAL_CANCELAMENTO" />
+                <ScalarProperty Name="NUMERO_FATURA_MANUAL" ColumnName="NUMERO_FATURA_MANUAL" />
+                <ScalarProperty Name="SERIE_NF_CANCELAMENTO" ColumnName="SERIE_NF_CANCELAMENTO" />
+                <ScalarProperty Name="NUMERO_FISCAL_VENDA" ColumnName="NUMERO_FISCAL_VENDA" />
+                <ScalarProperty Name="SERIE_NF" ColumnName="SERIE_NF" />
+                <ScalarProperty Name="NUMERO_CCF" ColumnName="NUMERO_CCF" />
+                <ScalarProperty Name="ID_DOCUMENTO_ECF_TROCA" ColumnName="ID_DOCUMENTO_ECF_TROCA" />
+                <ScalarProperty Name="ID_DOCUMENTO_ECF_VALE" ColumnName="ID_DOCUMENTO_ECF_VALE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOJA_VENDEDORES">
+            <EntityTypeMapping TypeName="MHERPModel.LOJA_VENDEDORES">
+              <MappingFragment StoreEntitySet="LOJA_VENDEDORES">
+                <ScalarProperty Name="VENDEDOR" ColumnName="VENDEDOR" />
+                <ScalarProperty Name="CODIGO_FILIAL" ColumnName="CODIGO_FILIAL" />
+                <ScalarProperty Name="VENDEDOR_APELIDO" ColumnName="VENDEDOR_APELIDO" />
+                <ScalarProperty Name="NOME_VENDEDOR" ColumnName="NOME_VENDEDOR" />
+                <ScalarProperty Name="OPERA_CAIXA" ColumnName="OPERA_CAIXA" />
+                <ScalarProperty Name="COMISSAO" ColumnName="COMISSAO" />
+                <ScalarProperty Name="RG" ColumnName="RG" />
+                <ScalarProperty Name="ENDERECO" ColumnName="ENDERECO" />
+                <ScalarProperty Name="COMPLEMENTO" ColumnName="COMPLEMENTO" />
+                <ScalarProperty Name="CIDADE" ColumnName="CIDADE" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="TELEFONE" ColumnName="TELEFONE" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="GERENTE" ColumnName="GERENTE" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+                <ScalarProperty Name="SENHA" ColumnName="SENHA" />
+                <ScalarProperty Name="DATA_DESATIVACAO" ColumnName="DATA_DESATIVACAO" />
+                <ScalarProperty Name="DATA_ATIVACAO" ColumnName="DATA_ATIVACAO" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="DESC_CARGO" ColumnName="DESC_CARGO" />
+                <ScalarProperty Name="ACESSO_GERENCIAL" ColumnName="ACESSO_GERENCIAL" />
+                <ScalarProperty Name="CHECKSUM" ColumnName="CHECKSUM" />
+                <ScalarProperty Name="VENDEDOR_FRANQUIA" ColumnName="VENDEDOR_FRANQUIA" />
+                <ScalarProperty Name="COMISSAO_CLIENTE_AUSENTE" ColumnName="COMISSAO_CLIENTE_AUSENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROP_LOJAS_VAREJO">
+            <EntityTypeMapping TypeName="MHERPModel.PROP_LOJAS_VAREJO">
+              <MappingFragment StoreEntitySet="PROP_LOJAS_VAREJO">
+                <ScalarProperty Name="PROPRIEDADE" ColumnName="PROPRIEDADE" />
+                <ScalarProperty Name="ITEM_PROPRIEDADE" ColumnName="ITEM_PROPRIEDADE" />
+                <ScalarProperty Name="VALOR_PROPRIEDADE" ColumnName="VALOR_PROPRIEDADE" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="CODIGO_FILIAL" ColumnName="CODIGO_FILIAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROPRIEDADEs">
+            <EntityTypeMapping TypeName="MHERPModel.PROPRIEDADE">
+              <MappingFragment StoreEntitySet="PROPRIEDADE">
+                <ScalarProperty Name="PROPRIEDADE1" ColumnName="PROPRIEDADE" />
+                <ScalarProperty Name="FAIXA_FINAL" ColumnName="FAIXA_FINAL" />
+                <ScalarProperty Name="FAIXA_INICIAL" ColumnName="FAIXA_INICIAL" />
+                <ScalarProperty Name="MASCARA_VALOR" ColumnName="MASCARA_VALOR" />
+                <ScalarProperty Name="DESC_PROPRIEDADE" ColumnName="DESC_PROPRIEDADE" />
+                <ScalarProperty Name="PROPRIEDADE_REQUERIDA" ColumnName="PROPRIEDADE_REQUERIDA" />
+                <ScalarProperty Name="TIPO_PROPRIEDADE" ColumnName="TIPO_PROPRIEDADE" />
+                <ScalarProperty Name="TIPO_VALIDACAO" ColumnName="TIPO_VALIDACAO" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="DATA_ATIVACAO" ColumnName="DATA_ATIVACAO" />
+                <ScalarProperty Name="DATA_DESATIVACAO" ColumnName="DATA_DESATIVACAO" />
+                <ScalarProperty Name="FILTRO_DE_PROPRIEDADES" ColumnName="FILTRO_DE_PROPRIEDADES" />
+                <ScalarProperty Name="TITULO_PROPRIEDADE" ColumnName="TITULO_PROPRIEDADE" />
+                <ScalarProperty Name="TABELA" ColumnName="TABELA" />
+                <ScalarProperty Name="VALIDACAO_TABELA_CAMPO" ColumnName="VALIDACAO_TABELA_CAMPO" />
+                <ScalarProperty Name="VALOR_PADRAO" ColumnName="VALOR_PADRAO" />
+                <ScalarProperty Name="CONSULTA_ATIVA" ColumnName="CONSULTA_ATIVA" />
+                <ScalarProperty Name="COD_GRUPO" ColumnName="COD_GRUPO" />
+                <ScalarProperty Name="RESPONSAVEL" ColumnName="RESPONSAVEL" />
+                <ScalarProperty Name="COLUNAS_AUXILIARES" ColumnName="COLUNAS_AUXILIARES" />
+                <ScalarProperty Name="FILTRO_AUXILIAR" ColumnName="FILTRO_AUXILIAR" />
+                <ScalarProperty Name="TABELAS_AUXILIARES" ColumnName="TABELAS_AUXILIARES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_PGTO">
+            <EntityTypeMapping TypeName="MHERPModel.TIPOS_PGTO">
+              <MappingFragment StoreEntitySet="TIPOS_PGTO">
+                <ScalarProperty Name="TIPO_PGTO" ColumnName="TIPO_PGTO" />
+                <ScalarProperty Name="DESC_TIPO_PGTO" ColumnName="DESC_TIPO_PGTO" />
+                <ScalarProperty Name="TIPO_A_VISTA" ColumnName="TIPO_A_VISTA" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="INATIVO" ColumnName="INATIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOJA_VENDA_PRODUTO">
+            <EntityTypeMapping TypeName="MHERPModel.LOJA_VENDA_PRODUTO">
+              <MappingFragment StoreEntitySet="LOJA_VENDA_PRODUTO">
+                <ScalarProperty Name="QTDE_BRINDE" ColumnName="QTDE_BRINDE" />
+                <ScalarProperty Name="ITEM_EXCLUIDO" ColumnName="ITEM_EXCLUIDO" />
+                <ScalarProperty Name="ID_VENDEDOR" ColumnName="ID_VENDEDOR" />
+                <ScalarProperty Name="ALIQUOTA" ColumnName="ALIQUOTA" />
+                <ScalarProperty Name="IPI" ColumnName="IPI" />
+                <ScalarProperty Name="FATOR_VENDA_LIQ" ColumnName="FATOR_VENDA_LIQ" />
+                <ScalarProperty Name="FATOR_DESCONTO_VENDA" ColumnName="FATOR_DESCONTO_VENDA" />
+                <ScalarProperty Name="CUSTO" ColumnName="CUSTO" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+                <ScalarProperty Name="QTDE_CANCELADA" ColumnName="QTDE_CANCELADA" />
+                <ScalarProperty Name="NUMERO_IMP_FISCAL" ColumnName="NUMERO_IMP_FISCAL" />
+                <ScalarProperty Name="DESCONTO_ITEM" ColumnName="DESCONTO_ITEM" />
+                <ScalarProperty Name="PRECO_LIQUIDO" ColumnName="PRECO_LIQUIDO" />
+                <ScalarProperty Name="QTDE" ColumnName="QTDE" />
+                <ScalarProperty Name="TAMANHO" ColumnName="TAMANHO" />
+                <ScalarProperty Name="COR_PRODUTO" ColumnName="COR_PRODUTO" />
+                <ScalarProperty Name="PRODUTO" ColumnName="PRODUTO" />
+                <ScalarProperty Name="CODIGO_BARRA" ColumnName="CODIGO_BARRA" />
+                <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+                <ScalarProperty Name="DATA_VENDA" ColumnName="DATA_VENDA" />
+                <ScalarProperty Name="CODIGO_FILIAL" ColumnName="CODIGO_FILIAL" />
+                <ScalarProperty Name="TICKET" ColumnName="TICKET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILIAIS">
+            <EntityTypeMapping TypeName="MHERPModel.FILIAIS">
+              <MappingFragment StoreEntitySet="FILIAIS">
+                <ScalarProperty Name="FATOR_W" ColumnName="FATOR_W" />
+                <ScalarProperty Name="FATOR_S" ColumnName="FATOR_S" />
+                <ScalarProperty Name="TIPO_ESTOQUE_IDEAL_MAX" ColumnName="TIPO_ESTOQUE_IDEAL_MAX" />
+                <ScalarProperty Name="TIPO_ESTOQUE_IDEAL_MIN" ColumnName="TIPO_ESTOQUE_IDEAL_MIN" />
+                <ScalarProperty Name="CODIGO_CONTATO" ColumnName="CODIGO_CONTATO" />
+                <ScalarProperty Name="FECHA_CM_AJUSTE_INFLACAO" ColumnName="FECHA_CM_AJUSTE_INFLACAO" />
+                <ScalarProperty Name="FECHA_CUSTO_MEDIO" ColumnName="FECHA_CUSTO_MEDIO" />
+                <ScalarProperty Name="COD_FORMA_PGTO_FLUXO" ColumnName="COD_FORMA_PGTO_FLUXO" />
+                <ScalarProperty Name="FATOR_F" ColumnName="FATOR_F" />
+                <ScalarProperty Name="FATOR_Q" ColumnName="FATOR_Q" />
+                <ScalarProperty Name="FATOR_P" ColumnName="FATOR_P" />
+                <ScalarProperty Name="SEQUENCIA_MAPA_RESUMO" ColumnName="SEQUENCIA_MAPA_RESUMO" />
+                <ScalarProperty Name="INDICA_CFOP_SOMENTE_REVENDA" ColumnName="INDICA_CFOP_SOMENTE_REVENDA" />
+                <ScalarProperty Name="SOMENTE_ARMAZEM" ColumnName="SOMENTE_ARMAZEM" />
+                <ScalarProperty Name="CTB_CONTA_CONTABIL" ColumnName="CTB_CONTA_CONTABIL" />
+                <ScalarProperty Name="MATRIZ_FISCAL" ColumnName="MATRIZ_FISCAL" />
+                <ScalarProperty Name="INDICA_FRANQUIA" ColumnName="INDICA_FRANQUIA" />
+                <ScalarProperty Name="REGIAO_SUPERVISAO" ColumnName="REGIAO_SUPERVISAO" />
+                <ScalarProperty Name="INDICA_BENEFICIADOR" ColumnName="INDICA_BENEFICIADOR" />
+                <ScalarProperty Name="INDICA_SEGUNDA_QUALIDADE" ColumnName="INDICA_SEGUNDA_QUALIDADE" />
+                <ScalarProperty Name="INDICA_ARMAZEM" ColumnName="INDICA_ARMAZEM" />
+                <ScalarProperty Name="EXPORTA_PGTOS_FRANQUIA" ColumnName="EXPORTA_PGTOS_FRANQUIA" />
+                <ScalarProperty Name="RECEBER_PADRAO_FRANQUIA" ColumnName="RECEBER_PADRAO_FRANQUIA" />
+                <ScalarProperty Name="CLIENTE_VAREJO_PADRAO_FRANQUIA" ColumnName="CLIENTE_VAREJO_PADRAO_FRANQUIA" />
+                <ScalarProperty Name="FORMA_PGTO_PADRAO_FRANQUIA" ColumnName="FORMA_PGTO_PADRAO_FRANQUIA" />
+                <ScalarProperty Name="VENDEDOR_PADRAO_FRANQUIA" ColumnName="VENDEDOR_PADRAO_FRANQUIA" />
+                <ScalarProperty Name="AREA_M2" ColumnName="AREA_M2" />
+                <ScalarProperty Name="CTRL_PRODUCAO_MATERIAL" ColumnName="CTRL_PRODUCAO_MATERIAL" />
+                <ScalarProperty Name="CTRL_VENDA_MATERIAL" ColumnName="CTRL_VENDA_MATERIAL" />
+                <ScalarProperty Name="CTRL_VENDA_PRODUTO" ColumnName="CTRL_VENDA_PRODUTO" />
+                <ScalarProperty Name="CTRL_PRODUCAO_PRODUTO" ColumnName="CTRL_PRODUCAO_PRODUTO" />
+                <ScalarProperty Name="CTRL_LOJA_VAREJO" ColumnName="CTRL_LOJA_VAREJO" />
+                <ScalarProperty Name="CTRL_ESTOQUE_PRODUTO" ColumnName="CTRL_ESTOQUE_PRODUTO" />
+                <ScalarProperty Name="CTRL_ESTOQUE_MATERIAL" ColumnName="CTRL_ESTOQUE_MATERIAL" />
+                <ScalarProperty Name="PERMITE_EST_NEGATIVO" ColumnName="PERMITE_EST_NEGATIVO" />
+                <ScalarProperty Name="FATOR_CUSTO_LOJA" ColumnName="FATOR_CUSTO_LOJA" />
+                <ScalarProperty Name="NAO_GERA_ENTRADA_LOJA_AUTO" ColumnName="NAO_GERA_ENTRADA_LOJA_AUTO" />
+                <ScalarProperty Name="REDE_LOJAS" ColumnName="REDE_LOJAS" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="TEMPO_ATENDIMENTO" ColumnName="TEMPO_ATENDIMENTO" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+                <ScalarProperty Name="SEQUENCIA_PECAS" ColumnName="SEQUENCIA_PECAS" />
+                <ScalarProperty Name="ESTOQUE_CTRL_PECA" ColumnName="ESTOQUE_CTRL_PECA" />
+                <ScalarProperty Name="ESTOQUE_CTRL_PECA_UNICA" ColumnName="ESTOQUE_CTRL_PECA_UNICA" />
+                <ScalarProperty Name="REGIAO" ColumnName="REGIAO" />
+                <ScalarProperty Name="MATRIZ" ColumnName="MATRIZ" />
+                <ScalarProperty Name="CGC_CPF" ColumnName="CGC_CPF" />
+                <ScalarProperty Name="FILIAL_PROPRIA" ColumnName="FILIAL_PROPRIA" />
+                <ScalarProperty Name="CLIFOR" ColumnName="CLIFOR" />
+                <ScalarProperty Name="TIPO_FILIAL" ColumnName="TIPO_FILIAL" />
+                <ScalarProperty Name="COD_FILIAL" ColumnName="COD_FILIAL" />
+                <ScalarProperty Name="TIPO_ESTOQUE_IDEAL" ColumnName="TIPO_ESTOQUE_IDEAL" />
+                <ScalarProperty Name="CONTA_CONTABIL" ColumnName="CONTA_CONTABIL" />
+                <ScalarProperty Name="EMPRESA" ColumnName="EMPRESA" />
+                <ScalarProperty Name="FILIAL" ColumnName="FILIAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CADASTRO_CLI_FOR">
+            <EntityTypeMapping TypeName="MHERPModel.CADASTRO_CLI_FOR">
+              <MappingFragment StoreEntitySet="CADASTRO_CLI_FOR">
+                <ScalarProperty Name="IM_COBRANCA" ColumnName="IM_COBRANCA" />
+                <ScalarProperty Name="IM_ENTREGA" ColumnName="IM_ENTREGA" />
+                <ScalarProperty Name="IM" ColumnName="IM" />
+                <ScalarProperty Name="CODIGO_CONTATO" ColumnName="CODIGO_CONTATO" />
+                <ScalarProperty Name="AGRUPAMENTO_ITENS" ColumnName="AGRUPAMENTO_ITENS" />
+                <ScalarProperty Name="ID_EXCECAO_GRUPO" ColumnName="ID_EXCECAO_GRUPO" />
+                <ScalarProperty Name="INDICADOR_FISCAL_TERCEIRO" ColumnName="INDICADOR_FISCAL_TERCEIRO" />
+                <ScalarProperty Name="CTB_CONTA_CONTABIL" ColumnName="CTB_CONTA_CONTABIL" />
+                <ScalarProperty Name="COD_CLIFOR" ColumnName="COD_CLIFOR" />
+                <ScalarProperty Name="ACEITA_DIAS_FIXO" ColumnName="ACEITA_DIAS_FIXO" />
+                <ScalarProperty Name="COBRANCA_RAZAO_SOCIAL" ColumnName="COBRANCA_RAZAO_SOCIAL" />
+                <ScalarProperty Name="ENTREGA_RAZAO_SOCIAL" ColumnName="ENTREGA_RAZAO_SOCIAL" />
+                <ScalarProperty Name="ID_CLASIF_CLIFOR" ColumnName="ID_CLASIF_CLIFOR" />
+                <ScalarProperty Name="TIPO_RELACAO_COMERCIAL" ColumnName="TIPO_RELACAO_COMERCIAL" />
+                <ScalarProperty Name="CODIGO_CHAVE" ColumnName="CODIGO_CHAVE" />
+                <ScalarProperty Name="POSSUI_RECARGO" ColumnName="POSSUI_RECARGO" />
+                <ScalarProperty Name="DIAS_ANTECIPACAO_PGTO" ColumnName="DIAS_ANTECIPACAO_PGTO" />
+                <ScalarProperty Name="REPORT_FATURA" ColumnName="REPORT_FATURA" />
+                <ScalarProperty Name="NUMERO_VIAS_FATURA" ColumnName="NUMERO_VIAS_FATURA" />
+                <ScalarProperty Name="VENCIMENTO_PASSWEB" ColumnName="VENCIMENTO_PASSWEB" />
+                <ScalarProperty Name="PASSWEB" ColumnName="PASSWEB" />
+                <ScalarProperty Name="ACEITA_AGRUPAR_FATURA" ColumnName="ACEITA_AGRUPAR_FATURA" />
+                <ScalarProperty Name="DATA_FIXA_PGTO" ColumnName="DATA_FIXA_PGTO" />
+                <ScalarProperty Name="MESES_SEM_VENCIMENTO" ColumnName="MESES_SEM_VENCIMENTO" />
+                <ScalarProperty Name="IRRF" ColumnName="IRRF" />
+                <ScalarProperty Name="ISENTO_ICMS" ColumnName="ISENTO_ICMS" />
+                <ScalarProperty Name="ISENTO_IPI" ColumnName="ISENTO_IPI" />
+                <ScalarProperty Name="OBS_DE_FATURAMENTO" ColumnName="OBS_DE_FATURAMENTO" />
+                <ScalarProperty Name="COBRANCA_DDI" ColumnName="COBRANCA_DDI" />
+                <ScalarProperty Name="ENTREGA_DDI" ColumnName="ENTREGA_DDI" />
+                <ScalarProperty Name="COBRANCA_PAIS" ColumnName="COBRANCA_PAIS" />
+                <ScalarProperty Name="ENTREGA_PAIS" ColumnName="ENTREGA_PAIS" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="INATIVO" ColumnName="INATIVO" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+                <ScalarProperty Name="STATUS_ENVIO" ColumnName="STATUS_ENVIO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DATA_EXPORTACAO" ColumnName="DATA_EXPORTACAO" />
+                <ScalarProperty Name="ATUALIZACAO_EXPORTAR" ColumnName="ATUALIZACAO_EXPORTAR" />
+                <ScalarProperty Name="REF_ANTERIOR" ColumnName="REF_ANTERIOR" />
+                <ScalarProperty Name="CC_NOME_AGENCIA" ColumnName="CC_NOME_AGENCIA" />
+                <ScalarProperty Name="CC_CONTA" ColumnName="CC_CONTA" />
+                <ScalarProperty Name="CC_AGENCIA" ColumnName="CC_AGENCIA" />
+                <ScalarProperty Name="ENTREGA_IE" ColumnName="ENTREGA_IE" />
+                <ScalarProperty Name="ENTREGA_CGC" ColumnName="ENTREGA_CGC" />
+                <ScalarProperty Name="ENTREGA_DDD" ColumnName="ENTREGA_DDD" />
+                <ScalarProperty Name="INDICA_FILIAL" ColumnName="INDICA_FILIAL" />
+                <ScalarProperty Name="IND_REPRESENTANTE" ColumnName="IND_REPRESENTANTE" />
+                <ScalarProperty Name="INDICA_CLIENTE" ColumnName="INDICA_CLIENTE" />
+                <ScalarProperty Name="INDICA_FORNECEDOR" ColumnName="INDICA_FORNECEDOR" />
+                <ScalarProperty Name="ANIVERSARIO" ColumnName="ANIVERSARIO" />
+                <ScalarProperty Name="COBRANCA_IE" ColumnName="COBRANCA_IE" />
+                <ScalarProperty Name="CADASTRAMENTO" ColumnName="CADASTRAMENTO" />
+                <ScalarProperty Name="COBRANCA_CGC" ColumnName="COBRANCA_CGC" />
+                <ScalarProperty Name="CONTATO" ColumnName="CONTATO" />
+                <ScalarProperty Name="COBRANCA_DDD" ColumnName="COBRANCA_DDD" />
+                <ScalarProperty Name="ENTREGA_TELEFONE" ColumnName="ENTREGA_TELEFONE" />
+                <ScalarProperty Name="ENTREGA_CEP" ColumnName="ENTREGA_CEP" />
+                <ScalarProperty Name="ENTREGA_BAIRRO" ColumnName="ENTREGA_BAIRRO" />
+                <ScalarProperty Name="ENTREGA_UF" ColumnName="ENTREGA_UF" />
+                <ScalarProperty Name="ENTREGA_CIDADE" ColumnName="ENTREGA_CIDADE" />
+                <ScalarProperty Name="ENTREGA_ENDERECO" ColumnName="ENTREGA_ENDERECO" />
+                <ScalarProperty Name="COBRANCA_TELEFONE" ColumnName="COBRANCA_TELEFONE" />
+                <ScalarProperty Name="COBRANCA_CEP" ColumnName="COBRANCA_CEP" />
+                <ScalarProperty Name="COBRANCA_UF" ColumnName="COBRANCA_UF" />
+                <ScalarProperty Name="DDDFAX" ColumnName="DDDFAX" />
+                <ScalarProperty Name="COBRANCA_BAIRRO" ColumnName="COBRANCA_BAIRRO" />
+                <ScalarProperty Name="COBRANCA_CIDADE" ColumnName="COBRANCA_CIDADE" />
+                <ScalarProperty Name="COBRANCA_ENDERECO" ColumnName="COBRANCA_ENDERECO" />
+                <ScalarProperty Name="DDD2" ColumnName="DDD2" />
+                <ScalarProperty Name="RAMAL2" ColumnName="RAMAL2" />
+                <ScalarProperty Name="RAMAL1" ColumnName="RAMAL1" />
+                <ScalarProperty Name="DDD1" ColumnName="DDD1" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="TELEFONE2" ColumnName="TELEFONE2" />
+                <ScalarProperty Name="DDI" ColumnName="DDI" />
+                <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+                <ScalarProperty Name="TELEFONE1" ColumnName="TELEFONE1" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="CIDADE" ColumnName="CIDADE" />
+                <ScalarProperty Name="BAIRRO" ColumnName="BAIRRO" />
+                <ScalarProperty Name="ENDERECO" ColumnName="ENDERECO" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="RG_IE" ColumnName="RG_IE" />
+                <ScalarProperty Name="PJ_PF" ColumnName="PJ_PF" />
+                <ScalarProperty Name="RAZAO_SOCIAL" ColumnName="RAZAO_SOCIAL" />
+                <ScalarProperty Name="CGC_CPF" ColumnName="CGC_CPF" />
+                <ScalarProperty Name="CLIFOR" ColumnName="CLIFOR" />
+                <ScalarProperty Name="CONTA_CONTABIL" ColumnName="CONTA_CONTABIL" />
+                <ScalarProperty Name="BANCO" ColumnName="BANCO" />
+                <ScalarProperty Name="CARTEIRA" ColumnName="CARTEIRA" />
+                <ScalarProperty Name="NOME_CLIFOR" ColumnName="NOME_CLIFOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUTOS">
+            <EntityTypeMapping TypeName="MHERPModel.PRODUTOS">
+              <MappingFragment StoreEntitySet="PRODUTOS">
+                <ScalarProperty Name="COD_PRODUTO_SEGMENTO" ColumnName="COD_PRODUTO_SEGMENTO" />
+                <ScalarProperty Name="COD_PRODUTO_SOLUCAO" ColumnName="COD_PRODUTO_SOLUCAO" />
+                <ScalarProperty Name="COD_SUBCATEGORIA" ColumnName="COD_SUBCATEGORIA" />
+                <ScalarProperty Name="COD_CATEGORIA" ColumnName="COD_CATEGORIA" />
+                <ScalarProperty Name="CONTINUIDADE" ColumnName="CONTINUIDADE" />
+                <ScalarProperty Name="FATOR_F" ColumnName="FATOR_F" />
+                <ScalarProperty Name="FATOR_Q" ColumnName="FATOR_Q" />
+                <ScalarProperty Name="FATOR_P" ColumnName="FATOR_P" />
+                <ScalarProperty Name="DIAS_COMPRA" ColumnName="DIAS_COMPRA" />
+                <ScalarProperty Name="ID_EXCECAO_IMPOSTO" ColumnName="ID_EXCECAO_IMPOSTO" />
+                <ScalarProperty Name="ID_EXCECAO_GRUPO" ColumnName="ID_EXCECAO_GRUPO" />
+                <ScalarProperty Name="CONTA_CONTABIL_DEV_VENDA" ColumnName="CONTA_CONTABIL_DEV_VENDA" />
+                <ScalarProperty Name="CONTA_CONTABIL_DEV_COMPRA" ColumnName="CONTA_CONTABIL_DEV_COMPRA" />
+                <ScalarProperty Name="CONTA_CONTABIL_VENDA" ColumnName="CONTA_CONTABIL_VENDA" />
+                <ScalarProperty Name="CONTA_CONTABIL_COMPRA" ColumnName="CONTA_CONTABIL_COMPRA" />
+                <ScalarProperty Name="SEMI_ACABADO" ColumnName="SEMI_ACABADO" />
+                <ScalarProperty Name="QUALIDADE" ColumnName="QUALIDADE" />
+                <ScalarProperty Name="OP_QTDE_MINIMA" ColumnName="OP_QTDE_MINIMA" />
+                <ScalarProperty Name="OP_QTDE_MAXIMA" ColumnName="OP_QTDE_MAXIMA" />
+                <ScalarProperty Name="OP_POR_COR" ColumnName="OP_POR_COR" />
+                <ScalarProperty Name="MRP_RR" ColumnName="MRP_RR" />
+                <ScalarProperty Name="MRP_FP" ColumnName="MRP_FP" />
+                <ScalarProperty Name="MRP_MAIOR_GIRO_MP_DIAS" ColumnName="MRP_MAIOR_GIRO_MP_DIAS" />
+                <ScalarProperty Name="MRP_PARTICIPANTE" ColumnName="MRP_PARTICIPANTE" />
+                <ScalarProperty Name="MRP_ENTREGA_GIRO_DIAS" ColumnName="MRP_ENTREGA_GIRO_DIAS" />
+                <ScalarProperty Name="MRP_EMISSAO_LIBERACAO_DIAS" ColumnName="MRP_EMISSAO_LIBERACAO_DIAS" />
+                <ScalarProperty Name="MRP_DIAS_SEGURANCA" ColumnName="MRP_DIAS_SEGURANCA" />
+                <ScalarProperty Name="MRP_AGRUPAR_NECESSIDADE_TIPO" ColumnName="MRP_AGRUPAR_NECESSIDADE_TIPO" />
+                <ScalarProperty Name="MRP_AGRUPAR_NECESSIDADE_DIAS" ColumnName="MRP_AGRUPAR_NECESSIDADE_DIAS" />
+                <ScalarProperty Name="MONTAGEM_KIT" ColumnName="MONTAGEM_KIT" />
+                <ScalarProperty Name="INDICADOR_CFOP" ColumnName="INDICADOR_CFOP" />
+                <ScalarProperty Name="DATA_INICIO_DESENVOLVIMENTO" ColumnName="DATA_INICIO_DESENVOLVIMENTO" />
+                <ScalarProperty Name="COD_FLUXO_PRODUTO" ColumnName="COD_FLUXO_PRODUTO" />
+                <ScalarProperty Name="VERSAO_FICHA" ColumnName="VERSAO_FICHA" />
+                <ScalarProperty Name="PARTE_TIPO" ColumnName="PARTE_TIPO" />
+                <ScalarProperty Name="SEXO_TIPO" ColumnName="SEXO_TIPO" />
+                <ScalarProperty Name="EMPILHAMENTO_MAXIMO" ColumnName="EMPILHAMENTO_MAXIMO" />
+                <ScalarProperty Name="COMPRIMENTO" ColumnName="COMPRIMENTO" />
+                <ScalarProperty Name="LARGURA" ColumnName="LARGURA" />
+                <ScalarProperty Name="ALTURA" ColumnName="ALTURA" />
+                <ScalarProperty Name="ESPESSURA" ColumnName="ESPESSURA" />
+                <ScalarProperty Name="CONTA_CONTABIL" ColumnName="CONTA_CONTABIL" />
+                <ScalarProperty Name="CLIENTE_DO_PRODUTO" ColumnName="CLIENTE_DO_PRODUTO" />
+                <ScalarProperty Name="ORCAMENTO" ColumnName="ORCAMENTO" />
+                <ScalarProperty Name="EMPRESA" ColumnName="EMPRESA" />
+                <ScalarProperty Name="RESTRICAO_LAVAGEM" ColumnName="RESTRICAO_LAVAGEM" />
+                <ScalarProperty Name="COMPOSICAO" ColumnName="COMPOSICAO" />
+                <ScalarProperty Name="OBS" ColumnName="OBS" />
+                <ScalarProperty Name="TIPO_STATUS_PRODUTO" ColumnName="TIPO_STATUS_PRODUTO" />
+                <ScalarProperty Name="STATUS_PRODUTO" ColumnName="STATUS_PRODUTO" />
+                <ScalarProperty Name="DATA_CADASTRAMENTO" ColumnName="DATA_CADASTRAMENTO" />
+                <ScalarProperty Name="DROP_DE_TAMANHOS" ColumnName="DROP_DE_TAMANHOS" />
+                <ScalarProperty Name="FABRICANTE_FRETE" ColumnName="FABRICANTE_FRETE" />
+                <ScalarProperty Name="PRECO_A_VISTA_REPOSICAO_4" ColumnName="PRECO_A_VISTA_REPOSICAO_4" />
+                <ScalarProperty Name="PRECO_A_VISTA_REPOSICAO_3" ColumnName="PRECO_A_VISTA_REPOSICAO_3" />
+                <ScalarProperty Name="PRECO_A_VISTA_REPOSICAO_2" ColumnName="PRECO_A_VISTA_REPOSICAO_2" />
+                <ScalarProperty Name="PRECO_A_VISTA_REPOSICAO_1" ColumnName="PRECO_A_VISTA_REPOSICAO_1" />
+                <ScalarProperty Name="PRECO_REPOSICAO_4" ColumnName="PRECO_REPOSICAO_4" />
+                <ScalarProperty Name="PRECO_REPOSICAO_3" ColumnName="PRECO_REPOSICAO_3" />
+                <ScalarProperty Name="PRECO_REPOSICAO_2" ColumnName="PRECO_REPOSICAO_2" />
+                <ScalarProperty Name="PRECO_REPOSICAO_1" ColumnName="PRECO_REPOSICAO_1" />
+                <ScalarProperty Name="TAXAS_IMPOSTOS_APLICAR" ColumnName="TAXAS_IMPOSTOS_APLICAR" />
+                <ScalarProperty Name="TAXA_JUROS_DEFLACIONAR" ColumnName="TAXA_JUROS_DEFLACIONAR" />
+                <ScalarProperty Name="FABRICANTE_PRAZO_PGTO" ColumnName="FABRICANTE_PRAZO_PGTO" />
+                <ScalarProperty Name="FABRICANTE_ICMS_ABATER" ColumnName="FABRICANTE_ICMS_ABATER" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="REDE_LOJAS" ColumnName="REDE_LOJAS" />
+                <ScalarProperty Name="MODELO" ColumnName="MODELO" />
+                <ScalarProperty Name="ENVIA_ATACADO_INTERNET" ColumnName="ENVIA_ATACADO_INTERNET" />
+                <ScalarProperty Name="ENVIA_VAREJO_INTERNET" ColumnName="ENVIA_VAREJO_INTERNET" />
+                <ScalarProperty Name="ENVIA_REPRESENTANTE" ColumnName="ENVIA_REPRESENTANTE" />
+                <ScalarProperty Name="ENVIA_LOJA_ATACADO" ColumnName="ENVIA_LOJA_ATACADO" />
+                <ScalarProperty Name="ENVIA_LOJA_VAREJO" ColumnName="ENVIA_LOJA_VAREJO" />
+                <ScalarProperty Name="INATIVO" ColumnName="INATIVO" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+                <ScalarProperty Name="GIRO_ENTREGA" ColumnName="GIRO_ENTREGA" />
+                <ScalarProperty Name="TAMANHO_BASE" ColumnName="TAMANHO_BASE" />
+                <ScalarProperty Name="MODELISTA" ColumnName="MODELISTA" />
+                <ScalarProperty Name="ESTILISTA" ColumnName="ESTILISTA" />
+                <ScalarProperty Name="DATA_REPOSICAO" ColumnName="DATA_REPOSICAO" />
+                <ScalarProperty Name="CUSTO_REPOSICAO4" ColumnName="CUSTO_REPOSICAO4" />
+                <ScalarProperty Name="CUSTO_REPOSICAO3" ColumnName="CUSTO_REPOSICAO3" />
+                <ScalarProperty Name="CUSTO_REPOSICAO2" ColumnName="CUSTO_REPOSICAO2" />
+                <ScalarProperty Name="CUSTO_REPOSICAO1" ColumnName="CUSTO_REPOSICAO1" />
+                <ScalarProperty Name="VARIA_CUSTO_TAM" ColumnName="VARIA_CUSTO_TAM" />
+                <ScalarProperty Name="TRIBUT_ORIGEM" ColumnName="TRIBUT_ORIGEM" />
+                <ScalarProperty Name="TRIBUT_ICMS" ColumnName="TRIBUT_ICMS" />
+                <ScalarProperty Name="PERTENCE_A_CONJUNTO" ColumnName="PERTENCE_A_CONJUNTO" />
+                <ScalarProperty Name="VARIA_CUSTO_COR" ColumnName="VARIA_CUSTO_COR" />
+                <ScalarProperty Name="PONTEIRO_PRECO_TAM" ColumnName="PONTEIRO_PRECO_TAM" />
+                <ScalarProperty Name="VARIA_PRECO_TAM" ColumnName="VARIA_PRECO_TAM" />
+                <ScalarProperty Name="VARIA_PRECO_COR" ColumnName="VARIA_PRECO_COR" />
+                <ScalarProperty Name="SORTIMENTO_TAMANHO" ColumnName="SORTIMENTO_TAMANHO" />
+                <ScalarProperty Name="FABRICANTE" ColumnName="FABRICANTE" />
+                <ScalarProperty Name="SORTIMENTO_COR" ColumnName="SORTIMENTO_COR" />
+                <ScalarProperty Name="MODELAGEM" ColumnName="MODELAGEM" />
+                <ScalarProperty Name="REFER_FABRICANTE" ColumnName="REFER_FABRICANTE" />
+                <ScalarProperty Name="REVENDA" ColumnName="REVENDA" />
+                <ScalarProperty Name="PESO" ColumnName="PESO" />
+                <ScalarProperty Name="UNIDADE" ColumnName="UNIDADE" />
+                <ScalarProperty Name="CARTELA" ColumnName="CARTELA" />
+                <ScalarProperty Name="GRIFFE" ColumnName="GRIFFE" />
+                <ScalarProperty Name="LINHA" ColumnName="LINHA" />
+                <ScalarProperty Name="DESC_PROD_NF" ColumnName="DESC_PROD_NF" />
+                <ScalarProperty Name="GRADE" ColumnName="GRADE" />
+                <ScalarProperty Name="COLECAO" ColumnName="COLECAO" />
+                <ScalarProperty Name="SUBGRUPO_PRODUTO" ColumnName="SUBGRUPO_PRODUTO" />
+                <ScalarProperty Name="GRUPO_PRODUTO" ColumnName="GRUPO_PRODUTO" />
+                <ScalarProperty Name="DESC_PRODUTO" ColumnName="DESC_PRODUTO" />
+                <ScalarProperty Name="TABELA_MEDIDAS" ColumnName="TABELA_MEDIDAS" />
+                <ScalarProperty Name="TIPO_PRODUTO" ColumnName="TIPO_PRODUTO" />
+                <ScalarProperty Name="CLASSIF_FISCAL" ColumnName="CLASSIF_FISCAL" />
+                <ScalarProperty Name="FATOR_OPERACOES" ColumnName="FATOR_OPERACOES" />
+                <ScalarProperty Name="TABELA_OPERACOES" ColumnName="TABELA_OPERACOES" />
+                <ScalarProperty Name="PERIODO_PCP" ColumnName="PERIODO_PCP" />
+                <ScalarProperty Name="MATERIAL" ColumnName="MATERIAL" />
+                <ScalarProperty Name="CODIGO_PRECO" ColumnName="CODIGO_PRECO" />
+                <ScalarProperty Name="PRODUTO" ColumnName="PRODUTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CSS_PARAMETRO_VENDEDOR">
+            <EntityTypeMapping TypeName="MHERPModel.CSS_PARAMETRO_VENDEDOR">
+              <MappingFragment StoreEntitySet="CSS_PARAMETRO_VENDEDOR">
+                <ScalarProperty Name="comisionNoCumple" ColumnName="comisionNoCumple" />
+                <ScalarProperty Name="comisionCumple" ColumnName="comisionCumple" />
+                <ScalarProperty Name="vendedor" ColumnName="vendedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOJAS_REDE">
+            <EntityTypeMapping TypeName="MHERPModel.LOJAS_REDE">
+              <MappingFragment StoreEntitySet="LOJAS_REDE">
+                <ScalarProperty Name="REDE_SIGLA" ColumnName="REDE_SIGLA" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="DESC_REDE_LOJAS" ColumnName="DESC_REDE_LOJAS" />
+                <ScalarProperty Name="REDE_LOJAS" ColumnName="REDE_LOJAS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CSS_PRESUPUESTO_TIENDAS">
+            <EntityTypeMapping TypeName="MHERPModel.CSS_PRESUPUESTO_TIENDAS">
+              <MappingFragment StoreEntitySet="CSS_PRESUPUESTO_TIENDAS">
+                <ScalarProperty Name="presupuesto" ColumnName="presupuesto" />
+                <ScalarProperty Name="tienda" ColumnName="tienda" />
+                <ScalarProperty Name="mes" ColumnName="mes" />
+                <ScalarProperty Name="ano" ColumnName="ano" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FORNECEDORES">
+            <EntityTypeMapping TypeName="MHERPModel.FORNECEDORES">
+              <MappingFragment StoreEntitySet="FORNECEDORES">
+                <ScalarProperty Name="DESCONTO_VENCIMENTO" ColumnName="DESCONTO_VENCIMENTO" />
+                <ScalarProperty Name="DIAS_DESCONTO_VENCIMENTO" ColumnName="DIAS_DESCONTO_VENCIMENTO" />
+                <ScalarProperty Name="INDICA_CQFOR" ColumnName="INDICA_CQFOR" />
+                <ScalarProperty Name="CQFOR_CLASSIFICACAO" ColumnName="CQFOR_CLASSIFICACAO" />
+                <ScalarProperty Name="LICENCIADO_ROYALTIES" ColumnName="LICENCIADO_ROYALTIES" />
+                <ScalarProperty Name="CTB_CONTA_CONTABIL" ColumnName="CTB_CONTA_CONTABIL" />
+                <ScalarProperty Name="CONTA_CONTABIL" ColumnName="CONTA_CONTABIL" />
+                <ScalarProperty Name="LICENDIADO_ROYALTIES" ColumnName="LICENDIADO_ROYALTIES" />
+                <ScalarProperty Name="LICENCIADO" ColumnName="LICENCIADO" />
+                <ScalarProperty Name="DATA_PARA_TRANSFERENCIA" ColumnName="DATA_PARA_TRANSFERENCIA" />
+                <ScalarProperty Name="INATIVO" ColumnName="INATIVO" />
+                <ScalarProperty Name="MOEDA" ColumnName="MOEDA" />
+                <ScalarProperty Name="FORNECE_OUTROS" ColumnName="FORNECE_OUTROS" />
+                <ScalarProperty Name="BENEFICIADOR" ColumnName="BENEFICIADOR" />
+                <ScalarProperty Name="FORNECE_MAT_CONSUMO" ColumnName="FORNECE_MAT_CONSUMO" />
+                <ScalarProperty Name="FORNECE_PROD_ACAB" ColumnName="FORNECE_PROD_ACAB" />
+                <ScalarProperty Name="FORNECE_MATERIAIS" ColumnName="FORNECE_MATERIAIS" />
+                <ScalarProperty Name="CGC_CPF" ColumnName="CGC_CPF" />
+                <ScalarProperty Name="CONDICAO_PGTO" ColumnName="CONDICAO_PGTO" />
+                <ScalarProperty Name="CLIFOR" ColumnName="CLIFOR" />
+                <ScalarProperty Name="COD_FORNECEDOR" ColumnName="COD_FORNECEDOR" />
+                <ScalarProperty Name="SUBTIPO_FORNECEDOR" ColumnName="SUBTIPO_FORNECEDOR" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="CENTRO_CUSTO" ColumnName="CENTRO_CUSTO" />
+                <ScalarProperty Name="FORNECEDOR" ColumnName="FORNECEDOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>
