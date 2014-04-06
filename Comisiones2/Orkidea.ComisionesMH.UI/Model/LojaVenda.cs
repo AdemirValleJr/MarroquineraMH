@@ -30,6 +30,23 @@ namespace Orkidea.ComisionesMH.UI.Model
 
         public string nombreVendedor { get; set; }
 
+        /* campos de detalle para el grid... */
+        public decimal ventaBrutasSinIva { get; set; }
+        public decimal pagosOtrasFormasDePAgo { get; set; }
+        public decimal ivaOtrasFormasDePago { get; set; }
+        public decimal otrasFormasDePagoSinIva { get; set; }
+        public decimal ivaTarjetas { get; set; }
+        public decimal pagosTarjetaSinIva { get; set; }
+        public decimal porBonosRedimidos { get; set; }
+        public decimal porBonosVendidos { get; set; }
+        public decimal bonosVendidosSinIva { get; set; }
+        public decimal bonosRedimidosSinIva { get; set; }
+        public decimal baseComisionBonosRedimidos { get; set; }
+        public decimal baseComisionBonosVendidos { get; set; }
+        public decimal baseComision { get; set; }
+        /* Fin campos de detalle para el grid... */
+
+
         public List<LOJA_VENDA_PRODUTO> lstLojaVendaProduto { get; set; }
         public List<LOJA_VENDA_PGTO> lstLojaVendaPgto { get; set; }
         public List<LOJA_VENDA_PARCELAS> lstLojaVendaParcela { get; set; }
@@ -70,6 +87,7 @@ namespace Orkidea.ComisionesMH.UI.Model
                 descuentoTotal = DESCONTO != null ? (decimal)DESCONTO : 0;
                 pagosTarjeta = 0;
                 bonosRedimidos = 0;
+                ivaTarjetas = 0;
 
                 foreach (LOJA_VENDA_PRODUTO item in lstLojaVendaProduto)
                 {
@@ -104,7 +122,7 @@ namespace Orkidea.ComisionesMH.UI.Model
                             pagosTarjeta += (decimal)itemParcelas.VALOR;
 
                             comisionTarjetas += ((decimal)itemParcelas.VALOR * (decimal)(porComision != null ? porComision : 0)) / 100;
-
+                            ivaTarjetas += ((decimal)itemParcelas.VALOR * (decimal)lojaDefinition.IVA) / (100 + lojaDefinition.IVA);
                         }
 
                         /* pagos con bonos */

@@ -91,7 +91,7 @@ namespace Orkidea.ComisionesMH.UI
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
-        {            
+        {
             lstLojaDefinition.Clear();
             BizLojaVenda bizLojaVenda = new BizLojaVenda();
             long num = Utilities.DateHelper.DateDiff(Utilities.DateInterval.Month, dtpDesde.Value, dtpHasta.Value);
@@ -262,10 +262,10 @@ namespace Orkidea.ComisionesMH.UI
                 decimal ventaBonosAdmin = (lstVentas[i].bonosVendidos);
                 decimal redencionBonosAdmin = (lstVentas[i].bonosRedimidos);
 
-                
-                decimal ventaBonosSinIva = (ventaBonos - lstVentas[i].ivaBonosVendidos) ;
-                decimal redencionBonosSinIva = (redencionBonos - lstVentas[i].ivaBonosRedimidos); 
-                decimal ventaBonosSinIvaAdmin = (ventaBonosAdmin - lstVentas[i].ivaBonosVendidos) ;
+
+                decimal ventaBonosSinIva = (ventaBonos - lstVentas[i].ivaBonosVendidos);
+                decimal redencionBonosSinIva = (redencionBonos - lstVentas[i].ivaBonosRedimidos);
+                decimal ventaBonosSinIvaAdmin = (ventaBonosAdmin - lstVentas[i].ivaBonosVendidos);
                 decimal redencionBonosSinIvaAdmin = (redencionBonosAdmin - lstVentas[i].ivaBonosRedimidos);
 
 
@@ -279,8 +279,23 @@ namespace Orkidea.ComisionesMH.UI
                 //decimal sellOutNeto = sellOutBrutoSinIvaSinComisionTarjetas + ventaBonosSinIva + redencionBonosSinIva;
                 //decimal sellOutNetoAdmin = sellOutBrutoSinIvaSinComisionTarjetas + ventaBonosSinIvaAdmin + redencionBonosSinIvaAdmin;
 
-                decimal sellOutNeto = (sellOutBrutoSinIvaSinComisionTarjetas-descuentos) - (ventaBonos + redencionBonos) + (ventaBonosSinIvaComi + redencionBonosSinIvaComi);
-                decimal sellOutNetoAdmin = (sellOutBrutoSinIvaSinComisionTarjetas-descuentos) - (ventaBonosAdmin + redencionBonosAdmin) + (ventaBonosSinIvaAdminComi + redencionBonosSinIvaAdminComi);
+                //decimal sellOutNeto = (sellOutBrutoSinIvaSinComisionTarjetas-descuentos) - (ventaBonos + redencionBonos) + (ventaBonosSinIvaComi + redencionBonosSinIvaComi);
+                //decimal sellOutNetoAdmin = (sellOutBrutoSinIvaSinComisionTarjetas-descuentos) - (ventaBonosAdmin + redencionBonosAdmin) + (ventaBonosSinIvaAdminComi + redencionBonosSinIvaAdminComi);
+
+                decimal sellOutNeto = sellOutBrutoSinIvaSinComisionTarjetas - (ventaBonosSinIva + redencionBonosSinIva) + (ventaBonosSinIvaComi + redencionBonosSinIvaComi);
+                decimal sellOutNetoAdmin = sellOutBrutoSinIvaSinComisionTarjetas - (ventaBonosSinIvaAdmin + redencionBonosSinIvaAdmin) + (ventaBonosSinIvaAdminComi + redencionBonosSinIvaAdminComi);
+
+
+                /*Campos detalle*/
+                lstVentas[i].ventaBrutasSinIva = lstVentas[i].SellOutBruto - lstVentas[i].vlrImpuestos;
+                lstVentas[i].pagosOtrasFormasDePAgo = lstVentas[i].SellOutBruto - (lstVentas[i].pagosTarjeta + lstVentas[i].bonosRedimidos);
+                lstVentas[i].ivaOtrasFormasDePago = lstVentas[i].vlrImpuestos - (lstVentas[i].ivaBonosRedimidos + lstVentas[i].ivaTarjetas);
+                lstVentas[i].pagosTarjetaSinIva = lstVentas[i].pagosTarjeta - lstVentas[i].ivaTarjetas;
+                lstVentas[i].bonosRedimidosSinIva = lstVentas[i].bonosRedimidos - lstVentas[i].ivaBonosRedimidos;
+                lstVentas[i].bonosVendidosSinIva = lstVentas[i].bonosVendidos - lstVentas[i].ivaBonosVendidos;
+
+                /*Fin Campos detalle*/
+
 
                 lstVentas[i].sellOutNeto = sellOutNeto;
                 lstVentas[i].comisionAdministrador = (sellOutNetoAdmin * porComisionAdministrador) / 100;
@@ -413,21 +428,34 @@ namespace Orkidea.ComisionesMH.UI
         {
             try
             {
+                int mostrarError = int.Parse(ConfigurationManager.AppSettings["MostrarError"].ToString());
 
                 BizFornecedores bizFornecedores = new BizFornecedores();
                 BizLojaVendedores bizLojaVendedores = new BizLojaVendedores();
                 BizParametroVendedor bizParametroVendedor = new BizParametroVendedor();
-
-                List<LOJA_VENDEDORES> lstVendedores = bizLojaVendedores.GetVendedorList();
-
                 List<LojaResumenVendaVendedor> lstVtasAdmin = new List<LojaResumenVendaVendedor>();
                 List<LojaResumenVendaVendedor> lstVtasVendedor = new List<LojaResumenVendaVendedor>();
                 List<LojaVenda> lstVtasTienda = new List<LojaVenda>();
+
+                //if (mostrarError == 1)
+                //    MessageBox.Show("Instancias correctas");
+
+                List<LOJA_VENDEDORES> lstVendedores = bizLojaVendedores.GetVendedorList();
+
+                //if (mostrarError == 1)
+                //    MessageBox.Show("Vendedores correctos");
+                
                 List<CSS_PARAMETRO_VENDEDOR> lstParametroVendedor = bizParametroVendedor.getParametroVendedorList();
+
+                //if (mostrarError == 1)
+                //    MessageBox.Show("Parametros vendedores correctos");
 
                 grdAdmin.DataSource = null;
                 grdVendedor.DataSource = null;
                 grdDetalle.DataSource = null;
+
+                //if (mostrarError == 1)
+                //    MessageBox.Show("vaciar grids correcto");
 
                 foreach (DataGridViewRow selectedRow in grdTienda.SelectedRows)
                 {
@@ -436,17 +464,43 @@ namespace Orkidea.ComisionesMH.UI
                     List<string> lsAdmin = lstVentas.Where(x => x.CODIGO_FILIAL == tienda).Select(x => x.GERENTE_LOJA).Distinct().ToList();
                     List<string> lsVendedor = lstVentas.Where(x => x.CODIGO_FILIAL == tienda).Select(x => x.VENDEDOR).Distinct().ToList();
 
+                    //if (mostrarError == 1)
+                    //    MessageBox.Show("Tienda, cumplimientos, vendedores y administradores correctos");
+
+
                     #region Ventas Admin
                     foreach (string item in lsAdmin)
                     {
                         decimal porComi = 0;
 
                         List<LojaVenda> tmpVtasAdmin = lstVentas.Where(x => x.GERENTE_LOJA == item && x.CODIGO_FILIAL == tienda).ToList();
+
+                        //if (mostrarError == 1)
+                        //{                            
+                        //    if (tmpVtasAdmin !=null)
+                        //        MessageBox.Show("tmpVtasAdmin correctos");
+                        //}
+
                         FORNECEDORES fornecedor = bizFornecedores.getFornecedores(new FORNECEDORES() { CGC_CPF = lstVendedores.Where(x => x.VENDEDOR == item).Select(x => x.CPF).FirstOrDefault() });
-                        if (cumple)
-                            porComi = lstParametroVendedor.Where(x => x.vendedor == item).Select(x => x.comisionCumple).First();
-                        else
-                            porComi = lstParametroVendedor.Where(x => x.vendedor == item).Select(x => x.comisionNoCumple).First();
+
+                        //if (mostrarError == 1)
+                        //    MessageBox.Show("Fornecedor correctos");
+
+                        try
+                        {
+                            if (cumple)
+                                porComi = lstParametroVendedor.Where(x => x.vendedor == item).Select(x => x.comisionCumple).First();
+                            else
+                                porComi = lstParametroVendedor.Where(x => x.vendedor == item).Select(x => x.comisionNoCumple).First();
+                        }
+                        catch (Exception)
+                        {
+                            porComi = 0;                            
+                        }
+                        
+
+                        if (mostrarError == 1)
+                            MessageBox.Show("por comi correcto");
 
                         LojaResumenVendaVendedor vtasAdmin = new LojaResumenVendaVendedor()
                         {
@@ -469,6 +523,9 @@ namespace Orkidea.ComisionesMH.UI
                         };
 
                         lstVtasAdmin.Add(vtasAdmin);
+
+                        if (mostrarError == 1)
+                            MessageBox.Show("Añadir admin correcto");
                     }
 
 
@@ -483,10 +540,17 @@ namespace Orkidea.ComisionesMH.UI
                         List<LojaVenda> tmpVtasVendedor = lstVentas.Where(x => x.VENDEDOR == item && x.CODIGO_FILIAL == tienda).ToList();
                         FORNECEDORES fornecedor = bizFornecedores.getFornecedores(new FORNECEDORES() { CGC_CPF = lstVendedores.Where(x => x.VENDEDOR == item).Select(x => x.CPF).FirstOrDefault() });
 
-                        if (cumple)
-                            porComi = lstParametroVendedor.Where(x => x.vendedor == item).Select(x => x.comisionCumple).First();
-                        else
-                            porComi = lstParametroVendedor.Where(x => x.vendedor == item).Select(x => x.comisionNoCumple).First();
+                        try
+                        {
+                            if (cumple)
+                                porComi = lstParametroVendedor.Where(x => x.vendedor == item).Select(x => x.comisionCumple).First();
+                            else
+                                porComi = lstParametroVendedor.Where(x => x.vendedor == item).Select(x => x.comisionNoCumple).First();
+                        }
+                        catch (Exception)
+                        {
+                            porComi = 0;
+                        }
 
 
                         LojaResumenVendaVendedor vtasVendedor = new LojaResumenVendaVendedor()
@@ -635,20 +699,28 @@ namespace Orkidea.ComisionesMH.UI
                 grdDetalle.Columns.Add("DATA_VENDA", "Fecha");
                 grdDetalle.Columns.Add("VENDEDOR", "Vendedor");
                 grdDetalle.Columns.Add("nombreVendedor", "Nombre Vendedor");
-                grdDetalle.Columns.Add("SellOutBruto", "Sell Out Bruto");
-                grdDetalle.Columns.Add("sellOutNeto", "Sell Out Neto");
-                grdDetalle.Columns.Add("vlrImpuestos", "Impuestos");
-                grdDetalle.Columns.Add("bonosVendidos", "Bonos Vendidos");
-                grdDetalle.Columns.Add("bonosRedimidos", "Bonos Redimidos");
+                grdDetalle.Columns.Add("SellOutBruto", "Venta Bruta");
+                grdDetalle.Columns.Add("vlrImpuestos", "IVA Venta");
+                grdDetalle.Columns.Add("ventaBrutasSinIva", "Venta sin IVA");
                 grdDetalle.Columns.Add("descuentoTotal", "Descuentos");
+                grdDetalle.Columns.Add("bonosVendidos", "Bonos Vendidos");
+                grdDetalle.Columns.Add("ivaBonosVendidos", "IVA Bonos Vendidos");
+                grdDetalle.Columns.Add("bonosVendidosSinIva", "Bonos Vendidos sin IVA");
+                grdDetalle.Columns.Add("bonosRedimidos", "Bonos Redimidos");
+                grdDetalle.Columns.Add("ivaBonosRedimidos", "IVA Bonos Redimidos");
+                grdDetalle.Columns.Add("bonosRedimidosSinIva", "Bonos Redimidos sin IVA");
                 grdDetalle.Columns.Add("pagosTarjeta", "Pagos Tarjeta");
+                grdDetalle.Columns.Add("ivaTarjetas", "IVA Pagos Tarjeta");
+                grdDetalle.Columns.Add("pagosTarjetaSinIva", "Pagos Tarjeta sin IVA");
                 grdDetalle.Columns.Add("comisionTarjetas", "Comision Tarjeta");
-                grdDetalle.Columns.Add("ivaBonosRedimidos", "Iva Bonos Redimidos");
-                grdDetalle.Columns.Add("ivaBonosVendidos", "Iva Bonos Vendidos");
-                grdDetalle.Columns.Add("comisionVendedor", "Comision Vendedor");
-                grdDetalle.Columns.Add("comisionAdministrador", "Comision Administrador");
+                grdDetalle.Columns.Add("pagosOtrasFormasDePAgo", "Otras formas de pago");
+                grdDetalle.Columns.Add("ivaOtrasFormasDePago", "IVA Otras formas de pago");
+                grdDetalle.Columns.Add("otrasFormasDePagoSinIva", "Otras formas de pago sin IVA");
                 grdDetalle.Columns.Add("porComisionVendedor", "% Comision Vendedor");
+                grdDetalle.Columns.Add("comisionVendedor", "Comision Vendedor");
                 grdDetalle.Columns.Add("porComisionAdministrador", "% Comision Administrador");
+                grdDetalle.Columns.Add("comisionAdministrador", "Comision Administrador");
+
 
                 grdDetalle.Columns[0].DataPropertyName = "CODIGO_FILIAL";
                 grdDetalle.Columns[1].DataPropertyName = "TICKET";
@@ -656,19 +728,26 @@ namespace Orkidea.ComisionesMH.UI
                 grdDetalle.Columns[3].DataPropertyName = "VENDEDOR";
                 grdDetalle.Columns[4].DataPropertyName = "nombreVendedor";
                 grdDetalle.Columns[5].DataPropertyName = "SellOutBruto";
-                grdDetalle.Columns[6].DataPropertyName = "sellOutNeto";
-                grdDetalle.Columns[7].DataPropertyName = "vlrImpuestos";
-                grdDetalle.Columns[8].DataPropertyName = "bonosVendidos";
-                grdDetalle.Columns[9].DataPropertyName = "bonosRedimidos";
-                grdDetalle.Columns[10].DataPropertyName = "descuentoTotal";
-                grdDetalle.Columns[11].DataPropertyName = "pagosTarjeta";
-                grdDetalle.Columns[12].DataPropertyName = "comisionTarjetas";
+                grdDetalle.Columns[6].DataPropertyName = "vlrImpuestos";
+                grdDetalle.Columns[7].DataPropertyName = "ventaBrutasSinIva";
+                grdDetalle.Columns[8].DataPropertyName = "descuentoTotal";
+                grdDetalle.Columns[9].DataPropertyName = "bonosVendidos";
+                grdDetalle.Columns[10].DataPropertyName = "ivaBonosVendidos";
+                grdDetalle.Columns[11].DataPropertyName = "bonosVendidosSinIva";
+                grdDetalle.Columns[12].DataPropertyName = "bonosRedimidos";
                 grdDetalle.Columns[13].DataPropertyName = "ivaBonosRedimidos";
-                grdDetalle.Columns[14].DataPropertyName = "ivaBonosVendidos";
-                grdDetalle.Columns[15].DataPropertyName = "comisionVendedor";
-                grdDetalle.Columns[16].DataPropertyName = "comisionAdministrador";
-                grdDetalle.Columns[17].DataPropertyName = "porComisionVendedor";
-                grdDetalle.Columns[18].DataPropertyName = "porComisionAdministrador";
+                grdDetalle.Columns[14].DataPropertyName = "bonosRedimidosSinIva";
+                grdDetalle.Columns[15].DataPropertyName = "pagosTarjeta";
+                grdDetalle.Columns[16].DataPropertyName = "ivaTarjetas";
+                grdDetalle.Columns[17].DataPropertyName = "pagosTarjetaSinIva";
+                grdDetalle.Columns[18].DataPropertyName = "comisionTarjetas";
+                grdDetalle.Columns[19].DataPropertyName = "pagosOtrasFormasDePAgo";
+                grdDetalle.Columns[20].DataPropertyName = "ivaOtrasFormasDePago";
+                grdDetalle.Columns[21].DataPropertyName = "otrasFormasDePagoSinIva";
+                grdDetalle.Columns[22].DataPropertyName = "porComisionVendedor";
+                grdDetalle.Columns[23].DataPropertyName = "comisionVendedor";
+                grdDetalle.Columns[24].DataPropertyName = "porComisionAdministrador";
+                grdDetalle.Columns[25].DataPropertyName = "comisionAdministrador";
 
                 grdDetalle.Columns[5].DefaultCellStyle.Format = "n2";
                 grdDetalle.Columns[6].DefaultCellStyle.Format = "n2";
@@ -684,12 +763,22 @@ namespace Orkidea.ComisionesMH.UI
                 grdDetalle.Columns[16].DefaultCellStyle.Format = "n2";
                 grdDetalle.Columns[17].DefaultCellStyle.Format = "n2";
                 grdDetalle.Columns[18].DefaultCellStyle.Format = "n2";
+                grdDetalle.Columns[19].DefaultCellStyle.Format = "n2";
+                grdDetalle.Columns[20].DefaultCellStyle.Format = "n2";
+                grdDetalle.Columns[21].DefaultCellStyle.Format = "n2";
+                grdDetalle.Columns[22].DefaultCellStyle.Format = "n2";
+                grdDetalle.Columns[23].DefaultCellStyle.Format = "n2";
+                grdDetalle.Columns[24].DefaultCellStyle.Format = "n2";
+                grdDetalle.Columns[25].DefaultCellStyle.Format = "n2";
 
                 grdDetalle.DataSource = lstVtasTienda.OrderBy(x => x.CODIGO_FILIAL).ToList();
                 #endregion
 
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Message" + (string.IsNullOrEmpty(ex.Message) ? "" : ex.Message) + "::::: Stack " + (string.IsNullOrEmpty(ex.StackTrace) ? "" : ex.StackTrace) + "::::: + inner" + (string.IsNullOrEmpty(ex.InnerException.Message) ? "" : ex.InnerException.Message));
+            }
         }
 
         private void FrmLiquidacion_FormClosing(object sender, FormClosingEventArgs e)
