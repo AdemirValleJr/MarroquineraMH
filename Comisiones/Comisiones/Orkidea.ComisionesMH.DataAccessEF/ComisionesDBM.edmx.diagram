@@ -24,13 +24,14 @@
         <EntityTypeShape EntityType="MHERPModel.FILIAIS" Width="1.5" PointX="11.75" PointY="5.75" />
         <EntityTypeShape EntityType="MHERPModel.CADASTRO_CLI_FOR" Width="1.5" PointX="13.75" PointY="0.75" />
         <EntityTypeShape EntityType="MHERPModel.PRODUTOS" Width="1.5" PointX="15.75" PointY="0.75" />
-        <EntityTypeShape EntityType="MHERPModel.CSS_PARAMETRO_VENDEDOR" Width="1.5" PointX="17.75" PointY="0.75" />
         <EntityTypeShape EntityType="MHERPModel.LOJAS_REDE" Width="1.5" PointX="2.684199712557811" PointY="11.806571086778572" />
         <AssociationConnector Association="MHERPModel.XFK13051_PRODUTOS" />
         <EntityTypeShape EntityType="MHERPModel.CSS_PRESUPUESTO_TIENDAS" Width="1.5" PointX="9.4735444977290673" PointY="19.194650077817332" />
         <EntityTypeShape EntityType="MHERPModel.FORNECEDORES" Width="1.5" PointX="0.89201570343785719" PointY="29.563395081815958" />
         <AssociationConnector Association="MHERPModel.XFK12594_FORNECEDORES" />
         <AssociationConnector Association="MHERPModel.XFK12598_PRODUTOS" />
+        <EntityTypeShape EntityType="MHERPModel.CSS_PARAMETRO_TIENDA" Width="1.5" PointX="4.2175608893006862" PointY="3.80833296655134" />
+        <EntityTypeShape EntityType="MHERPModel.CSS_PARAMETRO_VENDEDOR" Width="1.5" PointX="4.29576350948576" PointY="26.987848115613613" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,12 +12,9 @@ namespace Orkidea.ComisionesMH.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class CSS_PARAMETRO_VENDEDOR
+    public partial class CSS_PARAMETRO_TIENDA
     {
-        public string vendedor { get; set; }
-        public decimal comisionCumple { get; set; }
-        public decimal comisionNoCumple { get; set; }
-        public string clifor { get; set; }
-        public string cedula { get; set; }
+        public string tienda { get; set; }
+        public string admin { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace Orkidea.ComisionesMH.Business
                 using (var ctx = new MHERPEntities())
                 {
                     ctx.Configuration.ProxyCreationEnabled = false;
-                    lstLOJA_VENDEDORES = ctx.LOJA_VENDEDORES.Where(x => x.DATA_DESATIVACAO==null).ToList();
+                    lstLOJA_VENDEDORES = ctx.LOJA_VENDEDORES.ToList();//.Where(x => x.DATA_DESATIVACAO == null || x.DATA_DESATIVACAO >= DateTime.Now).ToList();
                 }
             }
             catch (Exception ex) { throw ex; }
@@ -37,7 +37,8 @@ namespace Orkidea.ComisionesMH.Business
                 {
                     ctx.Configuration.ProxyCreationEnabled = false;
                     lstLOJA_VENDEDORES = ctx.LOJA_VENDEDORES
-                        .Where(x => x.DATA_DESATIVACAO == null && x.CODIGO_FILIAL == tiendaTarget.COD_FILIAL)
+                        //.Where(x => (x.DATA_DESATIVACAO == null || x.DATA_DESATIVACAO >= DateTime.Now) && x.CODIGO_FILIAL == tiendaTarget.COD_FILIAL)
+                        .Where(x =>  x.CODIGO_FILIAL == tiendaTarget.COD_FILIAL)
                         .ToList();
                 }
             }
@@ -55,8 +56,9 @@ namespace Orkidea.ComisionesMH.Business
                 using (var ctx = new MHERPEntities())
                 {
                     ctx.Configuration.ProxyCreationEnabled = false;
-                    filial = ctx.LOJA_VENDEDORES.Where(x =>
-                        x.VENDEDOR == vendedorTarget.VENDEDOR && x.DATA_DESATIVACAO == null)
+                    filial = ctx.LOJA_VENDEDORES
+                        //.Where(x => x.VENDEDOR == vendedorTarget.VENDEDOR && x.DATA_DESATIVACAO == null)
+                        .Where(x => x.VENDEDOR == vendedorTarget.VENDEDOR)
                         .FirstOrDefault();
                 }
             }

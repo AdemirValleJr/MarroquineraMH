@@ -253,9 +253,6 @@ namespace Orkidea.ComisionesMH.UI
                     porComisionVendedor = parametroVendedor != null ? parametroVendedor.comisionNoCumple : 0;
                 }
 
-                decimal sellOutBrutoSinIvaSinComisionTarjetas = lstVentas[i].SellOutBruto - (lstVentas[i].vlrImpuestos + lstVentas[i].comisionTarjetas);
-                decimal sellOutBudgetCompare = lstVentas[i].SellOutBruto - (lstVentas[i].vlrImpuestos);
-
 
                 decimal ventaBonos = (lstVentas[i].bonosVendidos);
                 decimal redencionBonos = (lstVentas[i].bonosRedimidos);
@@ -271,8 +268,8 @@ namespace Orkidea.ComisionesMH.UI
 
                 decimal ventaBonosSinIvaComi = ventaBonosSinIva * (porVentaBonos / 100);
                 decimal redencionBonosSinIvaComi = redencionBonosSinIva * (porRedencionBonos / 100);
-                decimal ventaBonosSinIvaAdminComi = ventaBonosSinIvaAdmin * (porVentaBonos / 100);
-                decimal redencionBonosSinIvaAdminComi = redencionBonosSinIvaAdmin * (porRedencionBonos / 100);
+                decimal ventaBonosSinIvaAdminComi = ventaBonosSinIvaAdmin * (porVentaBonosAdmin / 100);
+                decimal redencionBonosSinIvaAdminComi = redencionBonosSinIvaAdmin * (porRedencionBonosAdmin / 100);
 
                 decimal descuentos = lstVentas[i].descuentoTotal;
 
@@ -280,14 +277,27 @@ namespace Orkidea.ComisionesMH.UI
                 //decimal sellOutNetoAdmin = sellOutBrutoSinIvaSinComisionTarjetas + ventaBonosSinIvaAdmin + redencionBonosSinIvaAdmin;
 
                 //decimal sellOutNeto = (sellOutBrutoSinIvaSinComisionTarjetas-descuentos) - (ventaBonos + redencionBonos) + (ventaBonosSinIvaComi + redencionBonosSinIvaComi);
-                //decimal sellOutNetoAdmin = (sellOutBrutoSinIvaSinComisionTarjetas-descuentos) - (ventaBonosAdmin + redencionBonosAdmin) + (ventaBonosSinIvaAdminComi + redencionBonosSinIvaAdminComi);
+                //decimal sellOutNetoAdmin = (sellOutBrutoSinIvaSinComisionTarjetas-descuentos) - (ventaBonosAdmin + redencionBonosAdmin) + (ventaBonosSinIvaAdminComi + redencionBonosSinIvaAdminComi);               
+
+                /*Campos detalle*/
+                if (ventaBonos == lstVentas[i].SellOutBruto)
+                {
+                    lstVentas[i].ventaBrutasSinIva = lstVentas[i].SellOutBruto;
+                    lstVentas[i].vlrImpuestos = 0;
+                    lstVentas[i].ivaTarjetas = 0;
+                }
+                else
+                    lstVentas[i].ventaBrutasSinIva = lstVentas[i].SellOutBruto - lstVentas[i].vlrImpuestos;
+
+                decimal sellOutBrutoSinIvaSinComisionTarjetas = lstVentas[i].SellOutBruto - (lstVentas[i].vlrImpuestos + lstVentas[i].comisionTarjetas);
+                decimal sellOutBudgetCompare = lstVentas[i].SellOutBruto - (lstVentas[i].vlrImpuestos);
 
                 decimal sellOutNeto = sellOutBrutoSinIvaSinComisionTarjetas - (ventaBonosSinIva + redencionBonosSinIva) + (ventaBonosSinIvaComi + redencionBonosSinIvaComi);
                 decimal sellOutNetoAdmin = sellOutBrutoSinIvaSinComisionTarjetas - (ventaBonosSinIvaAdmin + redencionBonosSinIvaAdmin) + (ventaBonosSinIvaAdminComi + redencionBonosSinIvaAdminComi);
 
+                if (sellOutNetoAdmin < 0)
+                    sellOutNetoAdmin = 0;
 
-                /*Campos detalle*/
-                lstVentas[i].ventaBrutasSinIva = lstVentas[i].SellOutBruto - lstVentas[i].vlrImpuestos;
                 lstVentas[i].pagosOtrasFormasDePAgo = lstVentas[i].SellOutBruto - (lstVentas[i].pagosTarjeta + lstVentas[i].bonosRedimidos);
                 lstVentas[i].ivaOtrasFormasDePago = lstVentas[i].vlrImpuestos - (lstVentas[i].ivaBonosRedimidos + lstVentas[i].ivaTarjetas);
                 lstVentas[i].pagosTarjetaSinIva = lstVentas[i].pagosTarjeta - lstVentas[i].ivaTarjetas;
@@ -444,7 +454,7 @@ namespace Orkidea.ComisionesMH.UI
 
                 //if (mostrarError == 1)
                 //    MessageBox.Show("Vendedores correctos");
-                
+
                 List<CSS_PARAMETRO_VENDEDOR> lstParametroVendedor = bizParametroVendedor.getParametroVendedorList();
 
                 //if (mostrarError == 1)
@@ -481,7 +491,7 @@ namespace Orkidea.ComisionesMH.UI
                         //        MessageBox.Show("tmpVtasAdmin correctos");
                         //}
 
-                        FORNECEDORES fornecedor = bizFornecedores.getFornecedores(new FORNECEDORES() { CGC_CPF = lstVendedores.Where(x => x.VENDEDOR == item).Select(x => x.CPF).FirstOrDefault() });
+                        //FORNECEDORES fornecedor = bizFornecedores.getFornecedores(new FORNECEDORES() { CGC_CPF = lstVendedores.Where(x => x.VENDEDOR == item).Select(x => x.CPF).FirstOrDefault() });
 
                         //if (mostrarError == 1)
                         //    MessageBox.Show("Fornecedor correctos");
@@ -495,9 +505,9 @@ namespace Orkidea.ComisionesMH.UI
                         }
                         catch (Exception)
                         {
-                            porComi = 0;                            
+                            porComi = 0;
                         }
-                        
+
 
                         if (mostrarError == 1)
                             MessageBox.Show("por comi correcto");
@@ -518,7 +528,7 @@ namespace Orkidea.ComisionesMH.UI
                             pagosTarjeta = tmpVtasAdmin.Sum(x => x.pagosTarjeta),
                             vlrImpuestos = tmpVtasAdmin.Sum(x => x.vlrImpuestos),
                             comision = tmpVtasAdmin.Sum(x => x.comisionAdministrador),
-                            terceroVendedor = fornecedor == null ? "*** Sin tercero ***" : fornecedor.CLIFOR,
+                            terceroVendedor = lstParametroVendedor.Where(x => x.vendedor == item).Select(x => x.clifor).First(),//fornecedor == null ? "*** Sin tercero ***" : fornecedor.CLIFOR,
                             porComision = porComi
                         };
 
@@ -538,7 +548,7 @@ namespace Orkidea.ComisionesMH.UI
                         decimal porComi = 0;
 
                         List<LojaVenda> tmpVtasVendedor = lstVentas.Where(x => x.VENDEDOR == item && x.CODIGO_FILIAL == tienda).ToList();
-                        FORNECEDORES fornecedor = bizFornecedores.getFornecedores(new FORNECEDORES() { CGC_CPF = lstVendedores.Where(x => x.VENDEDOR == item).Select(x => x.CPF).FirstOrDefault() });
+                        //FORNECEDORES fornecedor = bizFornecedores.getFornecedores(new FORNECEDORES() { CGC_CPF = lstVendedores.Where(x => x.VENDEDOR == item).Select(x => x.CPF).FirstOrDefault() });
 
                         try
                         {
@@ -569,7 +579,7 @@ namespace Orkidea.ComisionesMH.UI
                             pagosTarjeta = tmpVtasVendedor.Sum(x => x.pagosTarjeta),
                             vlrImpuestos = tmpVtasVendedor.Sum(x => x.vlrImpuestos),
                             comision = tmpVtasVendedor.Sum(x => x.comisionVendedor),
-                            terceroVendedor = fornecedor == null ? "*** Sin tercero ***" : fornecedor.CLIFOR,
+                            terceroVendedor = lstParametroVendedor.Where(x => x.vendedor == item).Select(x => x.clifor).First(),//fornecedor == null ? "*** Sin tercero ***" : fornecedor.CLIFOR,
                             porComision = porComi
                         };
 
@@ -808,6 +818,12 @@ namespace Orkidea.ComisionesMH.UI
                 //ToCsV(dataGridView1, @"c:\export.xls");
                 ToCsV(grdVendedor, sfd.FileName); // Here dataGridview1 is your grid view name 
             }
+        }
+
+        private void btnParTienda_Click(object sender, EventArgs e)
+        {
+            FrmParametroTienda form = new FrmParametroTienda();
+            form.ShowDialog();
         }
     }
 }

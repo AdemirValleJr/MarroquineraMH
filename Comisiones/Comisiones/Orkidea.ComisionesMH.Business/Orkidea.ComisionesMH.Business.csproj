@@ -61,6 +61,7 @@
     <Compile Include="BizLojaVendaProduto.cs" />
     <Compile Include="BizLojaVenda.cs" />
     <Compile Include="BizLojaVendedores.cs" />
+    <Compile Include="BizParametroTienda.cs" />
     <Compile Include="BizParametroVendedor.cs" />
     <Compile Include="BizPresupuestoTendas.cs" />
     <Compile Include="BizPropLojasVarejo.cs" />

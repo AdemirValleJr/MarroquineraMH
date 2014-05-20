@@ -37,6 +37,10 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.cmbTienda = new System.Windows.Forms.ComboBox();
             this.lblTienda = new System.Windows.Forms.Label();
+            this.txtCedula = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtClifor = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lstVendedores
@@ -117,11 +121,47 @@
             this.lblTienda.TabIndex = 104;
             this.lblTienda.Text = "Tienda";
             // 
+            // txtCedula
+            // 
+            this.txtCedula.Location = new System.Drawing.Point(394, 301);
+            this.txtCedula.Name = "txtCedula";
+            this.txtCedula.Size = new System.Drawing.Size(109, 20);
+            this.txtCedula.TabIndex = 108;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(391, 285);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 107;
+            this.label4.Text = "Documento";
+            // 
+            // txtClifor
+            // 
+            this.txtClifor.Location = new System.Drawing.Point(394, 250);
+            this.txtClifor.Name = "txtClifor";
+            this.txtClifor.Size = new System.Drawing.Size(109, 20);
+            this.txtClifor.TabIndex = 106;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(391, 234);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 13);
+            this.label5.TabIndex = 105;
+            this.label5.Text = "Código de Fornecedor";
+            // 
             // FrmParametroVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 473);
+            this.Controls.Add(this.txtCedula);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtClifor);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbTienda);
             this.Controls.Add(this.lblTienda);
             this.Controls.Add(this.btnGuardar);
@@ -153,5 +193,9 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.ComboBox cmbTienda;
         private System.Windows.Forms.Label lblTienda;
+        private System.Windows.Forms.TextBox txtCedula;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtClifor;
+        private System.Windows.Forms.Label label5;
     }
 }

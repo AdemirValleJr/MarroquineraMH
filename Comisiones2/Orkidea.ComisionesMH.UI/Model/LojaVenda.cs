@@ -67,8 +67,8 @@ namespace Orkidea.ComisionesMH.UI.Model
             VALOR_VENDA_BRUTA = lojaVenda.VALOR_VENDA_BRUTA;
             VALOR_TROCA = lojaVenda.VALOR_TROCA;
             TERMINAL = lojaVenda.TERMINAL;
-            GERENTE_LOJA = lojaVenda.GERENTE_LOJA;
-            GERENTE_PERIODO = lojaVenda.GERENTE_PERIODO;
+            //GERENTE_LOJA = lojaVenda.GERENTE_LOJA;
+            GERENTE_PERIODO = lojaDefinition.gerenteLoja.admin;//lojaVenda.GERENTE_PERIODO;
             LANCAMENTO_CAIXA = lojaVenda.LANCAMENTO_CAIXA;
             nombreVendedor = lojaDefinition.lstvendedores.Where(x => x.VENDEDOR == lojaVenda.VENDEDOR).Select(x => x.NOME_VENDEDOR).FirstOrDefault();
 
@@ -89,21 +89,25 @@ namespace Orkidea.ComisionesMH.UI.Model
                 bonosRedimidos = 0;
                 ivaTarjetas = 0;
 
+                
+
                 foreach (LOJA_VENDA_PRODUTO item in lstLojaVendaProduto)
                 {
                     if (item.QTDE_BRINDE == 0)
                     {
+                        decimal precio = (decimal)item.PRECO_LIQUIDO * (decimal)item.QTDE;
+
                         /* Bonos vendidos */
-                        if (lojaDefinition.lstProdBonos.Where(x => x.PRODUTO == item.PRODUTO).Count() > 0)
+                        if (lojaDefinition.lstProdBonos.Where(x => x.PRODUTO == item.PRODUTO.Trim()).Count() > 0)
                         {
-                            bonosVendidos += (decimal)item.PRECO_LIQUIDO;
-                            ivaBonosVendidos = ((decimal)item.PRECO_LIQUIDO * (decimal)lojaDefinition.IVA) / (100 + lojaDefinition.IVA);
+                            bonosVendidos += precio;
+                            ivaBonosVendidos = 0; //(precio * (decimal)lojaDefinition.IVA) / (100 + lojaDefinition.IVA);
                         }
-                        else
-                        {
-                            SellOutBruto += (decimal)item.PRECO_LIQUIDO;
-                            vlrImpuestos += (decimal)(item.PRECO_LIQUIDO * lojaDefinition.IVA) / (100 + lojaDefinition.IVA);
-                        }
+                        //else
+                        //{
+                        SellOutBruto += precio;
+                        vlrImpuestos += (precio * lojaDefinition.IVA) / (100 + lojaDefinition.IVA);
+                        //}
 
                         /* descuentos por item */
                         if (item.DESCONTO_ITEM != null)
@@ -111,6 +115,7 @@ namespace Orkidea.ComisionesMH.UI.Model
                     }
                 }
 
+                
                 foreach (LOJA_VENDA_PGTO item in lstLojaVendaPgto)
                 {
                     foreach (LOJA_VENDA_PARCELAS itemParcelas in item.LOJA_VENDA_PARCELAS)

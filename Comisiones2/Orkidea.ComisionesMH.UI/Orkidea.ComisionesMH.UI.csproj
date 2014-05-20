@@ -79,6 +79,12 @@
     <Compile Include="FrmLogIn.Designer.cs">
       <DependentUpon>FrmLogIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmParametroTienda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmParametroTienda.Designer.cs">
+      <DependentUpon>FrmParametroTienda.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmParametroVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogIn.resx">
       <DependentUpon>FrmLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmParametroTienda.resx">
+      <DependentUpon>FrmParametroTienda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmParametroVendedor.resx">
       <DependentUpon>FrmParametroVendedor.cs</DependentUpon>
@@ -135,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cash.ico" />
+    <Content Include="logo.JPG" />
     <Content Include="LOGOMH.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

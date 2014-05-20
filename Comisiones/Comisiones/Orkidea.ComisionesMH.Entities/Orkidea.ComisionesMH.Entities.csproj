@@ -52,6 +52,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="CSS_PARAMETRO_TIENDA.cs">
+      <DependentUpon>ComisionesEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CSS_PARAMETRO_VENDEDOR.cs">
       <DependentUpon>ComisionesEntityModel.tt</DependentUpon>
     </Compile>

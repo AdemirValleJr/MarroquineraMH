@@ -48,11 +48,15 @@ namespace Orkidea.ComisionesMH.UI
                 {
                     txtComiCumple.Text = parametroVendedor.comisionCumple.ToString();
                     txtComiNoCumple.Text = parametroVendedor.comisionNoCumple.ToString();
+                    txtCedula.Text = parametroVendedor.cedula;
+                    txtClifor.Text = parametroVendedor.clifor;
                 }
                 else
                 {
                     txtComiCumple.Text = "0";
                     txtComiNoCumple.Text = "0";
+                    txtCedula.Text = "";
+                    txtClifor.Text = "";
                 }
             }
         }
@@ -70,6 +74,8 @@ namespace Orkidea.ComisionesMH.UI
                 vendedor = lstVendedores.SelectedValue.ToString(),
                 comisionCumple = decimal.Parse(txtComiCumple.Text, style, provider),
                 comisionNoCumple = decimal.Parse(txtComiNoCumple.Text, style, provider),
+                cedula = txtCedula.Text,
+                clifor= txtClifor.Text
             };
 
             bizParametroVendedor.SaveParametroVendedor(parametroVendedor);

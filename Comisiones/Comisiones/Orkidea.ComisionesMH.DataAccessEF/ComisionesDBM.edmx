@@ -8,6 +8,7 @@
         <EntityContainer Name="MHERPModelStoreContainer">
           <EntitySet Name="ADMINISTRADORAS_CARTAO" EntityType="MHERPModel.Store.ADMINISTRADORAS_CARTAO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CADASTRO_CLI_FOR" EntityType="MHERPModel.Store.CADASTRO_CLI_FOR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CSS_PARAMETRO_TIENDA" EntityType="MHERPModel.Store.CSS_PARAMETRO_TIENDA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CSS_PARAMETRO_VENDEDOR" EntityType="MHERPModel.Store.CSS_PARAMETRO_VENDEDOR" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CSS_PRESUPUESTO_TIENDAS" EntityType="MHERPModel.Store.CSS_PRESUPUESTO_TIENDAS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FILIAIS" EntityType="MHERPModel.Store.FILIAIS" store:Type="Tables" Schema="dbo" />
@@ -181,6 +182,13 @@
           <Property Name="IM_ENTREGA" Type="varchar" MaxLength="14" />
           <Property Name="IM_COBRANCA" Type="varchar" MaxLength="14" />
         </EntityType>
+        <EntityType Name="CSS_PARAMETRO_TIENDA">
+          <Key>
+            <PropertyRef Name="tienda" />
+          </Key>
+          <Property Name="tienda" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="admin" Type="char" Nullable="false" MaxLength="4" />
+        </EntityType>
         <EntityType Name="CSS_PARAMETRO_VENDEDOR">
           <Key>
             <PropertyRef Name="vendedor" />
@@ -188,6 +196,8 @@
           <Property Name="vendedor" Type="char" Nullable="false" MaxLength="4" />
           <Property Name="comisionCumple" Type="decimal" Nullable="false" Precision="14" Scale="2" />
           <Property Name="comisionNoCumple" Type="decimal" Nullable="false" Precision="14" Scale="2" />
+          <Property Name="clifor" Type="varchar" MaxLength="10" />
+          <Property Name="cedula" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="CSS_PRESUPUESTO_TIENDAS">
           <Key>
@@ -831,7 +841,6 @@
           <EntitySet Name="FILIAIS" EntityType="MHERPModel.FILIAIS" />
           <EntitySet Name="CADASTRO_CLI_FOR" EntityType="MHERPModel.CADASTRO_CLI_FOR" />
           <EntitySet Name="PRODUTOS" EntityType="MHERPModel.PRODUTOS" />
-          <EntitySet Name="CSS_PARAMETRO_VENDEDOR" EntityType="MHERPModel.CSS_PARAMETRO_VENDEDOR" />
           <EntitySet Name="LOJAS_REDE" EntityType="MHERPModel.LOJAS_REDE" />
           <AssociationSet Name="XFK13051_PRODUTOS" Association="MHERPModel.XFK13051_PRODUTOS">
             <End Role="LOJAS_REDE" EntitySet="LOJAS_REDE" />
@@ -847,6 +856,8 @@
             <End Role="FORNECEDORES" EntitySet="FORNECEDORES" />
             <End Role="PRODUTOS" EntitySet="PRODUTOS" />
           </AssociationSet>
+          <EntitySet Name="CSS_PARAMETRO_TIENDA" EntityType="MHERPModel.CSS_PARAMETRO_TIENDA" />
+          <EntitySet Name="CSS_PARAMETRO_VENDEDOR" EntityType="MHERPModel.CSS_PARAMETRO_VENDEDOR" />
         </EntityContainer>
         <EntityType Name="ADMINISTRADORAS_CARTAO">
           <Key>
@@ -1498,14 +1509,6 @@
           <NavigationProperty Name="LOJAS_REDE" Relationship="MHERPModel.XFK13051_PRODUTOS" FromRole="PRODUTOS" ToRole="LOJAS_REDE" />
           <NavigationProperty Name="FORNECEDORES" Relationship="MHERPModel.XFK12598_PRODUTOS" FromRole="PRODUTOS" ToRole="FORNECEDORES" />
         </EntityType>
-        <EntityType Name="CSS_PARAMETRO_VENDEDOR">
-          <Key>
-            <PropertyRef Name="vendedor" />
-          </Key>
-          <Property Type="String" Name="vendedor" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Type="Decimal" Name="comisionCumple" Nullable="false" Precision="14" Scale="2" />
-          <Property Type="Decimal" Name="comisionNoCumple" Nullable="false" Precision="14" Scale="2" />
-        </EntityType>
         <EntityType Name="LOJAS_REDE">
           <Key>
             <PropertyRef Name="REDE_LOJAS" />
@@ -1595,6 +1598,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CSS_PARAMETRO_TIENDA">
+          <Key>
+            <PropertyRef Name="tienda" />
+          </Key>
+          <Property Type="String" Name="tienda" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="admin" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CSS_PARAMETRO_VENDEDOR">
+          <Key>
+            <PropertyRef Name="vendedor" />
+          </Key>
+          <Property Type="String" Name="vendedor" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="Decimal" Name="comisionCumple" Nullable="false" Precision="14" Scale="2" />
+          <Property Type="Decimal" Name="comisionNoCumple" Nullable="false" Precision="14" Scale="2" />
+          <Property Type="String" Name="clifor" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="cedula" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2157,15 +2177,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CSS_PARAMETRO_VENDEDOR">
-            <EntityTypeMapping TypeName="MHERPModel.CSS_PARAMETRO_VENDEDOR">
-              <MappingFragment StoreEntitySet="CSS_PARAMETRO_VENDEDOR">
-                <ScalarProperty Name="comisionNoCumple" ColumnName="comisionNoCumple" />
-                <ScalarProperty Name="comisionCumple" ColumnName="comisionCumple" />
-                <ScalarProperty Name="vendedor" ColumnName="vendedor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="LOJAS_REDE">
             <EntityTypeMapping TypeName="MHERPModel.LOJAS_REDE">
               <MappingFragment StoreEntitySet="LOJAS_REDE">
@@ -2214,6 +2225,25 @@
                 <ScalarProperty Name="TIPO" ColumnName="TIPO" />
                 <ScalarProperty Name="CENTRO_CUSTO" ColumnName="CENTRO_CUSTO" />
                 <ScalarProperty Name="FORNECEDOR" ColumnName="FORNECEDOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CSS_PARAMETRO_TIENDA">
+            <EntityTypeMapping TypeName="MHERPModel.CSS_PARAMETRO_TIENDA">
+              <MappingFragment StoreEntitySet="CSS_PARAMETRO_TIENDA">
+                <ScalarProperty Name="admin" ColumnName="admin" />
+                <ScalarProperty Name="tienda" ColumnName="tienda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CSS_PARAMETRO_VENDEDOR">
+            <EntityTypeMapping TypeName="MHERPModel.CSS_PARAMETRO_VENDEDOR">
+              <MappingFragment StoreEntitySet="CSS_PARAMETRO_VENDEDOR">
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="clifor" ColumnName="clifor" />
+                <ScalarProperty Name="comisionNoCumple" ColumnName="comisionNoCumple" />
+                <ScalarProperty Name="comisionCumple" ColumnName="comisionCumple" />
+                <ScalarProperty Name="vendedor" ColumnName="vendedor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

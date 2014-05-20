@@ -15,7 +15,8 @@ namespace Orkidea.ComisionesMH.UI.Model
         BizCadastroCliFor bizCadastroCliFor = new BizCadastroCliFor();
         BizPropLojasVarejo bizPropLojasVarejo = new BizPropLojasVarejo();
         BizPresupuestoTendas bizPresupuestoTendas = new BizPresupuestoTendas();
-        BizLojaVendedores bizLojaVendedores = new BizLojaVendedores();        
+        BizLojaVendedores bizLojaVendedores = new BizLojaVendedores();
+        BizParametroTienda bizParametroTienda = new BizParametroTienda();
 
         public string COD_FILIAL { get; set; }
         public string UF { get; set; }
@@ -33,6 +34,7 @@ namespace Orkidea.ComisionesMH.UI.Model
         public decimal P_11 { get; set; }
         public decimal P_12 { get; set; }
 
+        public CSS_PARAMETRO_TIENDA gerenteLoja { get; set; }
         public string porComisionAdministrador { get; set; }
         public string porComisionVendedor { get; set; }
         public List<PRODUTOS> lstProdBonos { get; set; }
@@ -46,13 +48,16 @@ namespace Orkidea.ComisionesMH.UI.Model
 
         public LojaDefinition(CADASTRO_CLI_FOR cadastroCliFor)
         {
+            #region Adminisrtador Tienda
+            gerenteLoja = bizParametroTienda.getParametroTienda(new CSS_PARAMETRO_TIENDA() { tienda = cadastroCliFor.CLIFOR });
+             
+            #endregion
+
             CADASTRO_CLI_FOR impostoLoja = bizCadastroCliFor.getCadastroCliFor(new CADASTRO_CLI_FOR() { CLIFOR = cadastroCliFor.CLIFOR });
 
             lstAdministradorasCartao = bizAdministradorasCartao.getAdministradorasCartaoList();
 
-            lstvendedores = bizLojaVendedores.GetVendedorList();//new FILIAIS() { COD_FILIAL = cadastroCliFor.CLIFOR });
-
-            
+            lstvendedores = bizLojaVendedores.GetVendedorList();//new FILIAIS() { COD_FILIAL = cadastroCliFor.CLIFOR });            
 
             #region Impuestos
             decimal imposto = 16;

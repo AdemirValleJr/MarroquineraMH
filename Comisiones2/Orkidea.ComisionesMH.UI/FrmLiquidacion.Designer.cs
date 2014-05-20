@@ -72,6 +72,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grdTienda = new System.Windows.Forms.DataGridView();
+            this.btnParTienda = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -142,6 +143,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnParTienda);
             this.panel1.Controls.Add(this.btnPresupuesto);
             this.panel1.Controls.Add(this.dtpHasta);
             this.panel1.Controls.Add(this.dtpDesde);
@@ -163,14 +165,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1115, 157);
+            this.panel1.Size = new System.Drawing.Size(1220, 157);
             this.panel1.TabIndex = 103;
             // 
             // btnPresupuesto
             // 
             this.btnPresupuesto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPresupuesto.AutoSize = true;
-            this.btnPresupuesto.Location = new System.Drawing.Point(838, 31);
+            this.btnPresupuesto.Location = new System.Drawing.Point(850, 31);
             this.btnPresupuesto.Name = "btnPresupuesto";
             this.btnPresupuesto.Size = new System.Drawing.Size(134, 23);
             this.btnPresupuesto.TabIndex = 117;
@@ -227,7 +229,7 @@
             // 
             this.btnDefComision.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDefComision.AutoSize = true;
-            this.btnDefComision.Location = new System.Drawing.Point(978, 32);
+            this.btnDefComision.Location = new System.Drawing.Point(991, 31);
             this.btnDefComision.Name = "btnDefComision";
             this.btnDefComision.Size = new System.Drawing.Size(134, 23);
             this.btnDefComision.TabIndex = 111;
@@ -335,7 +337,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 741);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1115, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1220, 22);
             this.statusStrip1.TabIndex = 105;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -347,7 +349,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 157);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1115, 584);
+            this.panel2.Size = new System.Drawing.Size(1220, 584);
             this.panel2.TabIndex = 106;
             // 
             // panel4
@@ -358,14 +360,14 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(503, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(612, 584);
+            this.panel4.Size = new System.Drawing.Size(717, 584);
             this.panel4.TabIndex = 2;
             // 
             // btnExportaDetalle
             // 
             this.btnExportaDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExportaDetalle.AutoSize = true;
-            this.btnExportaDetalle.Location = new System.Drawing.Point(513, 6);
+            this.btnExportaDetalle.Location = new System.Drawing.Point(618, 6);
             this.btnExportaDetalle.Name = "btnExportaDetalle";
             this.btnExportaDetalle.Size = new System.Drawing.Size(96, 23);
             this.btnExportaDetalle.TabIndex = 112;
@@ -381,7 +383,7 @@
             this.groupBox4.Controls.Add(this.grdDetalle);
             this.groupBox4.Location = new System.Drawing.Point(6, 35);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(603, 546);
+            this.groupBox4.Size = new System.Drawing.Size(708, 546);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Tienda";
@@ -395,7 +397,7 @@
             this.grdDetalle.Name = "grdDetalle";
             this.grdDetalle.ReadOnly = true;
             this.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDetalle.Size = new System.Drawing.Size(597, 527);
+            this.grdDetalle.Size = new System.Drawing.Size(702, 527);
             this.grdDetalle.TabIndex = 0;
             // 
             // splitter1
@@ -426,9 +428,9 @@
             this.panel7.Controls.Add(this.btnExportarVendedor);
             this.panel7.Controls.Add(this.groupBox3);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 416);
+            this.panel7.Location = new System.Drawing.Point(0, 339);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(498, 168);
+            this.panel7.Size = new System.Drawing.Size(498, 245);
             this.panel7.TabIndex = 5;
             // 
             // btnExportarVendedor
@@ -451,7 +453,7 @@
             this.groupBox3.Controls.Add(this.grdVendedor);
             this.groupBox3.Location = new System.Drawing.Point(6, 35);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(488, 138);
+            this.groupBox3.Size = new System.Drawing.Size(488, 220);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Vendedores";
@@ -465,14 +467,14 @@
             this.grdVendedor.Name = "grdVendedor";
             this.grdVendedor.ReadOnly = true;
             this.grdVendedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdVendedor.Size = new System.Drawing.Size(482, 119);
+            this.grdVendedor.Size = new System.Drawing.Size(482, 201);
             this.grdVendedor.TabIndex = 1;
             // 
             // splitter3
             // 
             this.splitter3.BackColor = System.Drawing.SystemColors.Control;
             this.splitter3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter3.Location = new System.Drawing.Point(0, 411);
+            this.splitter3.Location = new System.Drawing.Point(0, 334);
             this.splitter3.Name = "splitter3";
             this.splitter3.Size = new System.Drawing.Size(498, 5);
             this.splitter3.TabIndex = 4;
@@ -484,9 +486,9 @@
             this.panel6.Controls.Add(this.btnExportarAdmin);
             this.panel6.Controls.Add(this.groupBox2);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 288);
+            this.panel6.Location = new System.Drawing.Point(0, 193);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(498, 123);
+            this.panel6.Size = new System.Drawing.Size(498, 141);
             this.panel6.TabIndex = 3;
             // 
             // btnExportarAdmin
@@ -510,7 +512,7 @@
             this.groupBox2.Controls.Add(this.grdAdmin);
             this.groupBox2.Location = new System.Drawing.Point(6, 35);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(488, 82);
+            this.groupBox2.Size = new System.Drawing.Size(488, 100);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Administradores";
@@ -524,14 +526,14 @@
             this.grdAdmin.Name = "grdAdmin";
             this.grdAdmin.ReadOnly = true;
             this.grdAdmin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdAdmin.Size = new System.Drawing.Size(482, 63);
+            this.grdAdmin.Size = new System.Drawing.Size(482, 81);
             this.grdAdmin.TabIndex = 1;
             // 
             // splitter2
             // 
             this.splitter2.BackColor = System.Drawing.SystemColors.Control;
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter2.Location = new System.Drawing.Point(0, 283);
+            this.splitter2.Location = new System.Drawing.Point(0, 188);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(498, 5);
             this.splitter2.TabIndex = 2;
@@ -544,7 +546,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(498, 283);
+            this.panel5.Size = new System.Drawing.Size(498, 188);
             this.panel5.TabIndex = 0;
             // 
             // groupBox1
@@ -555,7 +557,7 @@
             this.groupBox1.Controls.Add(this.grdTienda);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(488, 271);
+            this.groupBox1.Size = new System.Drawing.Size(488, 176);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tienda";
@@ -568,15 +570,27 @@
             this.grdTienda.Name = "grdTienda";
             this.grdTienda.ReadOnly = true;
             this.grdTienda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdTienda.Size = new System.Drawing.Size(482, 252);
+            this.grdTienda.Size = new System.Drawing.Size(482, 157);
             this.grdTienda.TabIndex = 0;
             this.grdTienda.SelectionChanged += new System.EventHandler(this.grdTienda_SelectionChanged);
+            // 
+            // btnParTienda
+            // 
+            this.btnParTienda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnParTienda.AutoSize = true;
+            this.btnParTienda.Location = new System.Drawing.Point(1131, 31);
+            this.btnParTienda.Name = "btnParTienda";
+            this.btnParTienda.Size = new System.Drawing.Size(83, 23);
+            this.btnParTienda.TabIndex = 118;
+            this.btnParTienda.Text = "Admin Tienda";
+            this.btnParTienda.UseVisualStyleBackColor = true;
+            this.btnParTienda.Click += new System.EventHandler(this.btnParTienda_Click);
             // 
             // FrmLiquidacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 763);
+            this.ClientSize = new System.Drawing.Size(1220, 763);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
@@ -657,6 +671,7 @@
         private System.Windows.Forms.Button btnPresupuesto;
         private System.Windows.Forms.Button btnExportarVendedor;
         private System.Windows.Forms.Button btnExportarAdmin;
+        private System.Windows.Forms.Button btnParTienda;
     }
 }
 

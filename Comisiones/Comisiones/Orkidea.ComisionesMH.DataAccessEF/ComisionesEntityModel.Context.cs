@@ -39,9 +39,10 @@ namespace Orkidea.ComisionesMH.DataAccessEF
         public DbSet<FILIAIS> FILIAIS { get; set; }
         public DbSet<CADASTRO_CLI_FOR> CADASTRO_CLI_FOR { get; set; }
         public DbSet<PRODUTOS> PRODUTOS { get; set; }
-        public DbSet<CSS_PARAMETRO_VENDEDOR> CSS_PARAMETRO_VENDEDOR { get; set; }
         public DbSet<LOJAS_REDE> LOJAS_REDE { get; set; }
         public DbSet<CSS_PRESUPUESTO_TIENDAS> CSS_PRESUPUESTO_TIENDAS { get; set; }
         public DbSet<FORNECEDORES> FORNECEDORES { get; set; }
+        public DbSet<CSS_PARAMETRO_TIENDA> CSS_PARAMETRO_TIENDA { get; set; }
+        public DbSet<CSS_PARAMETRO_VENDEDOR> CSS_PARAMETRO_VENDEDOR { get; set; }
     }
 }
