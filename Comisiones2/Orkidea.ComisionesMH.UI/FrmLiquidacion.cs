@@ -471,7 +471,7 @@ namespace Orkidea.ComisionesMH.UI
                 {
                     string tienda = selectedRow.Cells["COD_FILIAL"].Value.ToString();
                     bool cumple = lstLojaDefinition.Where(x => x.COD_FILIAL == tienda).Select(x => x.cumplePresupuesto).FirstOrDefault();
-                    List<string> lsAdmin = lstVentas.Where(x => x.CODIGO_FILIAL == tienda).Select(x => x.GERENTE_LOJA).Distinct().ToList();
+                    List<string> lsAdmin = lstVentas.Where(x => x.CODIGO_FILIAL == tienda).Select(x => x.GERENTE_PERIODO).Distinct().ToList();
                     List<string> lsVendedor = lstVentas.Where(x => x.CODIGO_FILIAL == tienda).Select(x => x.VENDEDOR).Distinct().ToList();
 
                     //if (mostrarError == 1)
@@ -483,7 +483,7 @@ namespace Orkidea.ComisionesMH.UI
                     {
                         decimal porComi = 0;
 
-                        List<LojaVenda> tmpVtasAdmin = lstVentas.Where(x => x.GERENTE_LOJA == item && x.CODIGO_FILIAL == tienda).ToList();
+                        List<LojaVenda> tmpVtasAdmin = lstVentas.Where(x => x.GERENTE_PERIODO == item && x.CODIGO_FILIAL == tienda).ToList();
 
                         //if (mostrarError == 1)
                         //{                            

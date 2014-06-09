@@ -114,18 +114,18 @@ namespace Orkidea.ComisionesMH.UI.Model
 
             #region Presupuesto para el mes
 
-            P_01 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(1)).Select(x => x.presupuesto).FirstOrDefault();
-            P_02 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(2)).Select(x => x.presupuesto).FirstOrDefault();
-            P_03 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(3)).Select(x => x.presupuesto).FirstOrDefault();
-            P_04 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(4)).Select(x => x.presupuesto).FirstOrDefault();
-            P_05 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(5)).Select(x => x.presupuesto).FirstOrDefault();
-            P_06 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(6)).Select(x => x.presupuesto).FirstOrDefault();
-            P_07 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(7)).Select(x => x.presupuesto).FirstOrDefault();
-            P_08 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(8)).Select(x => x.presupuesto).FirstOrDefault();
-            P_09 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(9)).Select(x => x.presupuesto).FirstOrDefault();
-            P_10 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(10)).Select(x => x.presupuesto).FirstOrDefault();
-            P_11 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(11)).Select(x => x.presupuesto).FirstOrDefault();
-            P_12 = lstPresupuesto.Where(x => x.ano.Equals(año) && mes.Equals(12)).Select(x => x.presupuesto).FirstOrDefault();
+            P_01 = lstPresupuesto.Where(x => x.mes.Equals(1)).Select(x => x.presupuesto).FirstOrDefault();
+            P_02 = lstPresupuesto.Where(x => x.mes.Equals(2)).Select(x => x.presupuesto).FirstOrDefault();
+            P_03 = lstPresupuesto.Where(x => x.mes.Equals(3)).Select(x => x.presupuesto).FirstOrDefault();
+            P_04 = lstPresupuesto.Where(x => x.mes.Equals(4)).Select(x => x.presupuesto).FirstOrDefault();
+            P_05 = lstPresupuesto.Where(x => x.mes.Equals(5)).Select(x => x.presupuesto).FirstOrDefault();
+            P_06 = lstPresupuesto.Where(x => x.mes.Equals(6)).Select(x => x.presupuesto).FirstOrDefault();
+            P_07 = lstPresupuesto.Where(x => x.mes.Equals(7)).Select(x => x.presupuesto).FirstOrDefault();
+            P_08 = lstPresupuesto.Where(x => x.mes.Equals(8)).Select(x => x.presupuesto).FirstOrDefault();
+            P_09 = lstPresupuesto.Where(x => x.mes.Equals(9)).Select(x => x.presupuesto).FirstOrDefault();
+            P_10 = lstPresupuesto.Where(x => x.mes.Equals(10)).Select(x => x.presupuesto).FirstOrDefault();
+            P_11 = lstPresupuesto.Where(x => x.mes.Equals(11)).Select(x => x.presupuesto).FirstOrDefault();
+            P_12 = lstPresupuesto.Where(x => mes.Equals(12)).Select(x => x.presupuesto).FirstOrDefault();
 
             try
             {
