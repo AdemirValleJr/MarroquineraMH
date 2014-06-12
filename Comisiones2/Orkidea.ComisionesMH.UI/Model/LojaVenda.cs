@@ -13,14 +13,18 @@ namespace Orkidea.ComisionesMH.UI.Model
         public decimal SellOutBudgetCompare { get; set; }
         public decimal SellOutBruto { get; set; }
         public decimal sellOutNeto { get; set; }
+        public decimal sellOutNetoAdmin { get; set; }
         public decimal vlrImpuestos { get; set; }
         public decimal bonosVendidos { get; set; }
-        public decimal bonosRedimidos { get; set; }
+        public decimal bonosRedimidos { get; set; }               
+        
         public decimal descuentoTotal { get; set; }
         public decimal pagosTarjeta { get; set; }
         public decimal comisionTarjetas { get; set; }
         public decimal ivaBonosRedimidos { get; set; }
         public decimal ivaBonosVendidos { get; set; }
+        public decimal ivaBonosRedimidosAdmin { get; set; }
+        public decimal ivaBonosVendidosAdmin { get; set; }
 
         public decimal comisionVendedor { get; set; }
         public decimal comisionAdministrador { get; set; }
@@ -37,10 +41,17 @@ namespace Orkidea.ComisionesMH.UI.Model
         public decimal otrasFormasDePagoSinIva { get; set; }
         public decimal ivaTarjetas { get; set; }
         public decimal pagosTarjetaSinIva { get; set; }
+
         public decimal porBonosRedimidos { get; set; }
         public decimal porBonosVendidos { get; set; }
         public decimal bonosVendidosSinIva { get; set; }
         public decimal bonosRedimidosSinIva { get; set; }
+
+        public decimal porBonosRedimidosAdmin { get; set; }
+        public decimal porBonosVendidosAdmin { get; set; }
+        public decimal bonosVendidosSinIvaAdmin { get; set; }
+        public decimal bonosRedimidosSinIvaAdmin { get; set; }
+
         public decimal baseComisionBonosRedimidos { get; set; }
         public decimal baseComisionBonosVendidos { get; set; }
         public decimal baseComision { get; set; }

@@ -304,10 +304,13 @@ namespace Orkidea.ComisionesMH.UI
                 lstVentas[i].bonosRedimidosSinIva = lstVentas[i].bonosRedimidos - lstVentas[i].ivaBonosRedimidos;
                 lstVentas[i].bonosVendidosSinIva = lstVentas[i].bonosVendidos - lstVentas[i].ivaBonosVendidos;
 
+                lstVentas[i].bonosRedimidosSinIvaAdmin = redencionBonosSinIvaAdminComi;
+                lstVentas[i].bonosVendidosSinIvaAdmin = ventaBonosSinIvaAdminComi;
                 /*Fin Campos detalle*/
 
 
                 lstVentas[i].sellOutNeto = sellOutNeto;
+                lstVentas[i].sellOutNetoAdmin = sellOutNetoAdmin;
                 lstVentas[i].comisionAdministrador = (sellOutNetoAdmin * porComisionAdministrador) / 100;
                 lstVentas[i].comisionVendedor = (sellOutNeto * porComisionVendedor) / 100;
                 lstVentas[i].porComisionVendedor = porComisionVendedor;
@@ -335,12 +338,14 @@ namespace Orkidea.ComisionesMH.UI
             btnComission.Enabled = true;
             btnComission.BackColor = Color.LimeGreen;
 
+            #region Grid tienda
             grdTienda.DataSource = lstLojaDefinition.Where(x => x.ventasLoja > 0).OrderBy(x => x.COD_FILIAL).ToList();
             grdTienda.Columns["COD_FILIAL"].HeaderText = "Tienda";
             grdTienda.Columns["UF"].Visible = false;
             grdTienda.Columns["IVA"].Visible = false;
             grdTienda.Columns["porComisionAdministrador"].Visible = false;
             grdTienda.Columns["porComisionVendedor"].Visible = false;
+            grdTienda.Columns["gerenteLoja"].Visible = false;
 
             grdTienda.Columns["P_01"].Visible = dtpDesde.Value.Month.ToString() == "1" ? true : false;
             grdTienda.Columns["P_02"].Visible = dtpDesde.Value.Month.ToString() == "2" ? true : false;
@@ -389,7 +394,8 @@ namespace Orkidea.ComisionesMH.UI
 
             grdTienda.Columns["ventasLoja"].HeaderText = "Ventas";
             grdTienda.Columns["cumplePresupuesto"].HeaderText = "Cumple Presupuesto";
-
+            #endregion
+           
             toolStripProgressBar1.Value = 0;
             toolStripStatusLabel1.Text = "Proceso terminado";
             btnCalculate.Enabled = true;
@@ -518,9 +524,9 @@ namespace Orkidea.ComisionesMH.UI
                             VENDEDOR = item,
                             VENDEDOR_NOME = lstVendedores.Where(x => x.VENDEDOR == item).Select(x => x.NOME_VENDEDOR).FirstOrDefault(),
                             SellOutBruto = tmpVtasAdmin.Sum(x => x.SellOutBruto),
-                            sellOutNeto = tmpVtasAdmin.Sum(x => x.sellOutNeto),
-                            bonosRedimidos = tmpVtasAdmin.Sum(x => x.bonosRedimidos),
-                            bonosVendidos = tmpVtasAdmin.Sum(x => x.bonosVendidos),
+                            sellOutNeto = tmpVtasAdmin.Sum(x => x.sellOutNetoAdmin),
+                            bonosRedimidos = tmpVtasAdmin.Sum(x => x.bonosRedimidosSinIvaAdmin),
+                            bonosVendidos = tmpVtasAdmin.Sum(x => x.bonosVendidosSinIvaAdmin),
                             comisionTarjetas = tmpVtasAdmin.Sum(x => x.comisionTarjetas),
                             descuentoTotal = tmpVtasAdmin.Sum(x => x.descuentoTotal),
                             ivaBonosRedimidos = tmpVtasAdmin.Sum(x => x.ivaBonosRedimidos),
@@ -602,13 +608,13 @@ namespace Orkidea.ComisionesMH.UI
                 grdAdmin.Columns.Add("SellOutBruto", "Sell Out Bruto");
                 grdAdmin.Columns.Add("sellOutNeto", "Sell Out Neto");
                 grdAdmin.Columns.Add("vlrImpuestos", "Impuestos");
-                grdAdmin.Columns.Add("bonosVendidos", "Bonos Vendidos");
-                grdAdmin.Columns.Add("bonosRedimidos", "Bonos Redimidos");
+                grdAdmin.Columns.Add("bonosVendidos", "Bonos Vendidos sin IVA");
+                grdAdmin.Columns.Add("bonosRedimidos", "Bonos Redimidos sin IVA");
                 grdAdmin.Columns.Add("descuentoTotal", "Descuentos");
                 grdAdmin.Columns.Add("pagosTarjeta", "Pagos Tarjeta");
                 grdAdmin.Columns.Add("comisionTarjetas", "Comision Tarjeta");
-                grdAdmin.Columns.Add("ivaBonosRedimidos", "Iva Bonos Redimidos");
-                grdAdmin.Columns.Add("ivaBonosVendidos", "Iva Bonos Vendidos");
+                //grdAdmin.Columns.Add("ivaBonosRedimidos", "Iva Bonos Redimidos");
+                //grdAdmin.Columns.Add("ivaBonosVendidos", "Iva Bonos Vendidos");
                 grdAdmin.Columns.Add("comision", "Comision");
                 grdAdmin.Columns.Add("terceroVendedor", "Tercero");
                 grdAdmin.Columns.Add("porComision", "Porcentaje comisión");
@@ -624,11 +630,11 @@ namespace Orkidea.ComisionesMH.UI
                 grdAdmin.Columns[8].DataPropertyName = "descuentoTotal";
                 grdAdmin.Columns[9].DataPropertyName = "pagosTarjeta";
                 grdAdmin.Columns[10].DataPropertyName = "comisionTarjetas";
-                grdAdmin.Columns[11].DataPropertyName = "ivaBonosRedimidos";
-                grdAdmin.Columns[12].DataPropertyName = "ivaBonosVendidos";
-                grdAdmin.Columns[13].DataPropertyName = "comision";
-                grdAdmin.Columns[14].DataPropertyName = "terceroVendedor";
-                grdAdmin.Columns[15].DataPropertyName = "porComision";
+                //grdAdmin.Columns[11].DataPropertyName = "ivaBonosRedimidos";
+                //grdAdmin.Columns[12].DataPropertyName = "ivaBonosVendidos";
+                grdAdmin.Columns[11].DataPropertyName = "comision";
+                grdAdmin.Columns[12].DataPropertyName = "terceroVendedor";
+                grdAdmin.Columns[13].DataPropertyName = "porComision";
 
                 grdAdmin.Columns[3].DefaultCellStyle.Format = "n2";
                 grdAdmin.Columns[4].DefaultCellStyle.Format = "n2";
@@ -641,7 +647,7 @@ namespace Orkidea.ComisionesMH.UI
                 grdAdmin.Columns[11].DefaultCellStyle.Format = "n2";
                 grdAdmin.Columns[12].DefaultCellStyle.Format = "n2";
                 grdAdmin.Columns[13].DefaultCellStyle.Format = "n2";
-                grdAdmin.Columns[15].DefaultCellStyle.Format = "n2";
+                //grdAdmin.Columns[15].DefaultCellStyle.Format = "n2";
 
                 grdAdmin.DataSource = lstVtasAdmin.OrderBy(x => x.CODIGO_FILIAL).ToList();
                 #endregion
