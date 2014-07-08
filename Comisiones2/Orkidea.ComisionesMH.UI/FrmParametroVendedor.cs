@@ -46,8 +46,8 @@ namespace Orkidea.ComisionesMH.UI
 
                 if (parametroVendedor != null)
                 {
-                    txtComiCumple.Text = parametroVendedor.comisionCumple.ToString();
-                    txtComiNoCumple.Text = parametroVendedor.comisionNoCumple.ToString();
+                    txtComiCumple.Text = parametroVendedor.comisionCumple.ToString().Replace(',', '.');
+                    txtComiNoCumple.Text = parametroVendedor.comisionNoCumple.ToString().Replace(',', '.');
                     txtCedula.Text = parametroVendedor.cedula;
                     txtClifor.Text = parametroVendedor.clifor;
                 }

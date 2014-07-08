@@ -59,24 +59,31 @@ namespace Orkidea.ComisionesMH.UI
 
         private void btnBuscarPresupuesto_Click(object sender, EventArgs e)
         {
-            List<CSS_PRESUPUESTO_TIENDAS> lstPresupuesto = bizPresupuestoTendas.getPresupuestoVentasList(new FILIAIS() { COD_FILIAL = cmbTienda.SelectedValue.ToString() }, int.Parse(txtAno.Text));
-
-            if (lstPresupuesto.Count== 0)
+            try
             {
-                lstPresupuesto = new List<CSS_PRESUPUESTO_TIENDAS>();
+                List<CSS_PRESUPUESTO_TIENDAS> lstPresupuesto = bizPresupuestoTendas.getPresupuestoVentasList(new FILIAIS() { COD_FILIAL = cmbTienda.SelectedValue.ToString() }, int.Parse(txtAno.Text));
 
-                for (int i = 0; i < 12; i++)
-                    lstPresupuesto.Add(new CSS_PRESUPUESTO_TIENDAS() { tienda = cmbTienda.SelectedValue.ToString(), ano = int.Parse(txtAno.Text), mes = i+1, presupuesto = 0 });
+                if (lstPresupuesto.Count == 0)
+                {
+                    lstPresupuesto = new List<CSS_PRESUPUESTO_TIENDAS>();
+
+                    for (int i = 0; i < 12; i++)
+                        lstPresupuesto.Add(new CSS_PRESUPUESTO_TIENDAS() { tienda = cmbTienda.SelectedValue.ToString(), ano = int.Parse(txtAno.Text), mes = i + 1, presupuesto = 0 });
+                }
+
+                grdPresupuesto.DataSource = lstPresupuesto;
+                grdPresupuesto.Columns["mes"].HeaderText = "Mes";
+                grdPresupuesto.Columns["presupuesto"].HeaderText = "Presupuesto";
+
+                grdPresupuesto.Columns["tienda"].Visible = false;
+                grdPresupuesto.Columns["ano"].Visible = false;
+
+                grdPresupuesto.Columns["mes"].ReadOnly = true;
             }
-
-            grdPresupuesto.DataSource = lstPresupuesto;
-            grdPresupuesto.Columns["mes"].HeaderText = "Mes";
-            grdPresupuesto.Columns["presupuesto"].HeaderText = "Presupuesto";
-            
-            grdPresupuesto.Columns["tienda"].Visible = false;
-            grdPresupuesto.Columns["ano"].Visible = false;
-
-            grdPresupuesto.Columns["mes"].ReadOnly = true;
+            catch (Exception)
+            {
+                MessageBox.Show("Asegurese de seleccionar la tienda y el año a configurar");
+            }
 
             //grdPresupuesto.Columns["presupuesto"].
         }

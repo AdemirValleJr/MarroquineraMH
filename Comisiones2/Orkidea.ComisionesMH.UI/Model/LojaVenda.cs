@@ -68,27 +68,34 @@ namespace Orkidea.ComisionesMH.UI.Model
 
         public LojaVenda(LOJA_VENDA lojaVenda, LojaDefinition lojaDefinition)
         {
-            CODIGO_FILIAL = lojaVenda.CODIGO_FILIAL;
-            DATA_VENDA = lojaVenda.DATA_VENDA;
-            TICKET = lojaVenda.TICKET;
-            VENDEDOR = lojaVenda.VENDEDOR;
-            DESCONTO = lojaVenda.DESCONTO;
-            VALOR_TIKET = lojaVenda.VALOR_TIKET;
-            VALOR_PAGO = lojaVenda.VALOR_PAGO;
-            VALOR_VENDA_BRUTA = lojaVenda.VALOR_VENDA_BRUTA;
-            VALOR_TROCA = lojaVenda.VALOR_TROCA;
-            TERMINAL = lojaVenda.TERMINAL;
-            //GERENTE_LOJA = lojaVenda.GERENTE_LOJA;
-            GERENTE_PERIODO = lojaDefinition.gerenteLoja.admin;//lojaVenda.GERENTE_PERIODO;
-            LANCAMENTO_CAIXA = lojaVenda.LANCAMENTO_CAIXA;
-            nombreVendedor = lojaDefinition.lstvendedores.Where(x => x.VENDEDOR == lojaVenda.VENDEDOR).Select(x => x.NOME_VENDEDOR).FirstOrDefault();
+            if (lojaDefinition.gerenteLoja != null)
+            {
+                CODIGO_FILIAL = lojaVenda.CODIGO_FILIAL;
+                DATA_VENDA = lojaVenda.DATA_VENDA;
+                TICKET = lojaVenda.TICKET;
+                VENDEDOR = lojaVenda.VENDEDOR;
+                DESCONTO = lojaVenda.DESCONTO;
+                VALOR_TIKET = lojaVenda.VALOR_TIKET;
+                VALOR_PAGO = lojaVenda.VALOR_PAGO;
+                VALOR_VENDA_BRUTA = lojaVenda.VALOR_VENDA_BRUTA;
+                VALOR_TROCA = lojaVenda.VALOR_TROCA;
+                TERMINAL = lojaVenda.TERMINAL;
+                //GERENTE_LOJA = lojaVenda.GERENTE_LOJA;
+                GERENTE_PERIODO = lojaDefinition.gerenteLoja.admin; //OJO CORREGIR EXCEPCION DE FALTA DE PARAMETRIZACION;
+                LANCAMENTO_CAIXA = lojaVenda.LANCAMENTO_CAIXA;
+                nombreVendedor = lojaDefinition.lstvendedores.Where(x => x.VENDEDOR == lojaVenda.VENDEDOR).Select(x => x.NOME_VENDEDOR).FirstOrDefault();
 
-            lstLojaVendaProduto = bizLojaVendaProduto.getLojaVendaProdutoList(lojaVenda);
-            lstLojaVendaPgto = bizLojaVendaPgto.getLojaVendaPgtoList(lojaVenda);
+                lstLojaVendaProduto = bizLojaVendaProduto.getLojaVendaProdutoList(lojaVenda);
+                lstLojaVendaPgto = bizLojaVendaPgto.getLojaVendaPgtoList(lojaVenda);
 
-            CalculateCardCommission(lojaDefinition);
+                CalculateCardCommission(lojaDefinition);
 
-            SellOutBudgetCompare = SellOutBruto - (bonosVendidos + (VALOR_TROCA == null ? 0 : (decimal)VALOR_TROCA) + descuentoTotal + vlrImpuestos);
+                SellOutBudgetCompare = SellOutBruto - (bonosVendidos + (VALOR_TROCA == null ? 0 : (decimal)VALOR_TROCA) + descuentoTotal + vlrImpuestos);
+            }
+            else
+            {
+                throw new Exception("No tiene asociado un administrador a la tienda ");
+            }
         }
 
         public void CalculateCardCommission(LojaDefinition lojaDefinition)

@@ -177,9 +177,17 @@ namespace Orkidea.ComisionesMH.UI
                 LojaDefinition lojaDefinition = lstLojaDefinition
                     .Where(x => x.COD_FILIAL == lstLojaVenda[i].CODIGO_FILIAL).FirstOrDefault();
 
-                lstVentas.Add(new LojaVenda(lstLojaVenda[i], lojaDefinition));
+                try
+                {
+                    lstVentas.Add(new LojaVenda(lstLojaVenda[i], lojaDefinition));
 
-                SearchWorker.ReportProgress((i * 100) / numVentas, lstLojaVenda[i].TICKET + " de la tienda " + lojaDefinition.COD_FILIAL);
+                    SearchWorker.ReportProgress((i * 100) / numVentas, lstLojaVenda[i].TICKET + " de la tienda " + lojaDefinition.COD_FILIAL);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ese presento el siguiente error buscando informacion para la tienda " + lstLojaVenda[i].CODIGO_FILIAL + ex.Message + ". Por favor verifique e intente de nuevo");
+                    break;
+                }
             }
         }
 
@@ -831,5 +839,7 @@ namespace Orkidea.ComisionesMH.UI
             FrmParametroTienda form = new FrmParametroTienda();
             form.ShowDialog();
         }
+
+        
     }
 }
