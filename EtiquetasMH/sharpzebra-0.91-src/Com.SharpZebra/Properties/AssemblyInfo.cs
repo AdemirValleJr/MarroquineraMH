@@ -1,16 +1,14 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ImprimirEtiqueta")]
+[assembly: AssemblyTitle("Com.SharpZebra")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ImprimirEtiqueta")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyProduct("SharpZebra")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +18,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f318b144-dec5-40ca-9a70-8aa2fae4b932")]
+[assembly: Guid("4e5bca80-78b3-412a-9191-3fa3ecc9f9ab")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -29,8 +27,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Build and Revision Numbers 
+// You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]

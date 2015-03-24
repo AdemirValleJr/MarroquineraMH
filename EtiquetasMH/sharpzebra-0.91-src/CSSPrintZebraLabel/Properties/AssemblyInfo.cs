@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Orkidea.Etiquetas.Business")]
+[assembly: AssemblyTitle("CSSPrintZebraLabel")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Orkidea.Etiquetas.Business")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyProduct("CSSPrintZebraLabel")]
+[assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("55ed9143-13a3-4ea3-865b-c7dcd20418bc")]
+[assembly: Guid("0f19609e-c278-4ea6-a2fb-8bbd9c336e56")]
 
 // Version information for an assembly consists of the following four values:
 //
