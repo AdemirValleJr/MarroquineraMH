@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@Scripts.Render("~/bundles/jquery")
+<h1>Imprimir orden de compra</h1>
+<div>
+    <label>Ingrese la orden de compra </label> <input type="text" id="po" />
+    
+    <span><input type="radio" name="tipoReporte" value="M" checked />Materiales</span> <span><input type="radio" name="tipoReporte" value="P" />Productos</span>
+</div>
+<br />
+<div>
+    <input type="button" value="Imprimir" id="btnPrint" /> <input type="button" value="Exportar a XLS" id="btnExport" />
+</div>
+<script>
+    $('#btnPrint').click(function () {
+        var po = $('#po').val();
+        var tipo = $('input[name="tipoReporte"]:checked').val();
+        if (po != '') {
+            var link = '@Url.Action("PrintPO", new { id = "-1" })';
+            link = link.replace("-1", po + '|' + tipo);
+            window.open(link, '_blank');
+        }
+
+    })
+
+    $('#btnExport').click(function () {
+        var po = $('#po').val();
+        var tipo = $('input[name="tipoReporte"]:checked').val();
+        if (po != '') {
+            var link = '@Url.Action("ExportPO", new { id = "-1" })';
+            link = link.replace("-1", po + '|' + tipo);
+            window.open(link, '_blank');
+        }
+
+    })
+</script>
