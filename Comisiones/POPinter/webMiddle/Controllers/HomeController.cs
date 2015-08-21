@@ -27,22 +27,44 @@ namespace webMiddle.Controllers
                 string oConnStr = ConfigurationManager.ConnectionStrings["MHConnStr"].ToString();
                 string rutaRpt = "";
                 byte[] response = null;
-                
+
                 string ImgPath = "";
 
-                if (parameters[1] == "P")
+                switch (parameters[1])
                 {
-                    ImgPath = ConfigurationManager.AppSettings["ProductImgPath"].ToString();
-                    rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["ProductRptName"].ToString());
+                    case "Pes":
+                        ImgPath = ConfigurationManager.AppSettings["ProductImgPath"].ToString();
+                        rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["ProductRptNameES"].ToString());
+                        break;
+                    case "Pen":
+                        ImgPath = ConfigurationManager.AppSettings["ProductImgPath"].ToString();
+                        rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["ProductRptNameEN"].ToString());
+                        break;
+                    case "Mes":
+                        ImgPath = ConfigurationManager.AppSettings["MaterialImgPath"].ToString();
+                        rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["MaterialRptNameES"].ToString());
+                        break;
+                    case "Men":
+                        ImgPath = ConfigurationManager.AppSettings["MaterialImgPath"].ToString();
+                        rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["MaterialRptNameEN"].ToString());
+                        break;
+                    default:
+                        break;
                 }
-                else
-                {
-                    ImgPath = ConfigurationManager.AppSettings["MaterialImgPath"].ToString();
-                    rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["MaterialRptName"].ToString());
-                }
-                
+
+                //if (parameters[1] == "P")
+                //{
+                //    ImgPath = ConfigurationManager.AppSettings["ProductImgPath"].ToString();
+                //    rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["ProductRptName"].ToString());
+                //}
+                //else
+                //{
+                //    ImgPath = ConfigurationManager.AppSettings["MaterialImgPath"].ToString();
+                //    rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["MaterialRptName"].ToString());
+                //}
+
                 ReportDocument rpt = new ReportDocument();
-                SqlConnectionStringBuilder oConnBuilder = new SqlConnectionStringBuilder(oConnStr);                
+                SqlConnectionStringBuilder oConnBuilder = new SqlConnectionStringBuilder(oConnStr);
 
                 rpt.Load(rutaRpt);
 
@@ -108,16 +130,38 @@ namespace webMiddle.Controllers
 
                 string ImgPath = "";
 
-                if (parameters[1] == "P")
+                switch (parameters[1])
                 {
-                    ImgPath = ConfigurationManager.AppSettings["ProductImgPath"].ToString();
-                    rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["ProductRptName"].ToString());
+                    case "Pes":
+                        ImgPath = ConfigurationManager.AppSettings["ProductImgPath"].ToString();
+                        rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["ProductRptNameES"].ToString());
+                        break;
+                    case "Pen":
+                        ImgPath = ConfigurationManager.AppSettings["ProductImgPath"].ToString();
+                        rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["ProductRptNameEN"].ToString());
+                        break;
+                    case "Mes":
+                        ImgPath = ConfigurationManager.AppSettings["MaterialImgPath"].ToString();
+                        rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["MaterialRptNameES"].ToString());
+                        break;
+                    case "Men":
+                        ImgPath = ConfigurationManager.AppSettings["MaterialImgPath"].ToString();
+                        rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["MaterialRptNameEN"].ToString());
+                        break;
+                    default:
+                        break;
                 }
-                else
-                {
-                    ImgPath = ConfigurationManager.AppSettings["MaterialImgPath"].ToString();
-                    rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["MaterialRptName"].ToString());
-                }
+
+                //if (parameters[1] == "P")
+                //{
+                //    ImgPath = ConfigurationManager.AppSettings["ProductImgPath"].ToString();
+                //    rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["ProductRptName"].ToString());
+                //}
+                //else
+                //{
+                //    ImgPath = ConfigurationManager.AppSettings["MaterialImgPath"].ToString();
+                //    rutaRpt = Server.MapPath(ConfigurationManager.AppSettings["MaterialRptName"].ToString());
+                //}
 
                 ReportDocument rpt = new ReportDocument();
                 SqlConnectionStringBuilder oConnBuilder = new SqlConnectionStringBuilder(oConnStr);
