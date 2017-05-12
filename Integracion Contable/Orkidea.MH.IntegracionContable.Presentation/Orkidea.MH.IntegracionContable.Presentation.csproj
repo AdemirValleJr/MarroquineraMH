@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8F43E0CD-8160-4379-B37C-E221086545C7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Orkidea.MH.IntegracionContable.Presentation</RootNamespace>
+    <AssemblyName>Orkidea.MH.IntegracionContable.Presentation</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmCuentaAdministradora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCuentaAdministradora.Designer.cs">
+      <DependentUpon>FrmCuentaAdministradora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCuentaTipoPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCuentaTipoPago.Designer.cs">
+      <DependentUpon>FrmCuentaTipoPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIntegrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIntegrador.Designer.cs">
+      <DependentUpon>FrmIntegrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTrm.Designer.cs">
+      <DependentUpon>FrmTrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmCuentaAdministradora.resx">
+      <DependentUpon>FrmCuentaAdministradora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCuentaTipoPago.resx">
+      <DependentUpon>FrmCuentaTipoPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmIntegrador.resx">
+      <DependentUpon>FrmIntegrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTrm.resx">
+      <DependentUpon>FrmTrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Orkidea.MH.IntegracionContable.Business\Orkidea.MH.IntegracionContable.Business.csproj">
+      <Project>{7CF40182-89DB-4E8F-82C9-7195E2B5F98B}</Project>
+      <Name>Orkidea.MH.IntegracionContable.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orkidea.MH.IntegracionContable.Entities\Orkidea.MH.IntegracionContable.Entities.csproj">
+      <Project>{3019E2C7-440C-4A1C-B3BC-02CEE350FBFF}</Project>
+      <Name>Orkidea.MH.IntegracionContable.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

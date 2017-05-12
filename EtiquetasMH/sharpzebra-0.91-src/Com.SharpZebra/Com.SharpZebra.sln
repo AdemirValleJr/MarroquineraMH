@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testzebra", "..\testzebra\t
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSSPrintZebraLabel", "..\CSSPrintZebraLabel\CSSPrintZebraLabel.csproj", "{7E0A2BC2-FA51-4AC9-887A-74C342B9C2FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResizeImageFolder", "..\..\..\Documents\GitHub\EtiquetasMH\EtiquetasMH\ResizeImageFolder\ResizeImageFolder\ResizeImageFolder.csproj", "{331AD5EF-D877-4453-8C76-746E2D3AF55F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug Webpage|Any CPU = Debug Webpage|Any CPU
@@ -67,21 +65,6 @@ Global
 		{7E0A2BC2-FA51-4AC9-887A-74C342B9C2FA}.Release|Mixed Platforms.Build.0 = Release|x86
 		{7E0A2BC2-FA51-4AC9-887A-74C342B9C2FA}.Release|x86.ActiveCfg = Release|x86
 		{7E0A2BC2-FA51-4AC9-887A-74C342B9C2FA}.Release|x86.Build.0 = Release|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Debug Webpage|Any CPU.ActiveCfg = Debug|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Debug Webpage|Mixed Platforms.ActiveCfg = Debug|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Debug Webpage|Mixed Platforms.Build.0 = Debug|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Debug Webpage|x86.ActiveCfg = Debug|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Debug Webpage|x86.Build.0 = Debug|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Debug|x86.ActiveCfg = Debug|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Debug|x86.Build.0 = Debug|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Release|Any CPU.ActiveCfg = Release|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Release|Mixed Platforms.Build.0 = Release|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Release|x86.ActiveCfg = Release|x86
-		{331AD5EF-D877-4453-8C76-746E2D3AF55F}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

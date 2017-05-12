@@ -28,8 +28,8 @@ namespace testzebra
             //PrinterSettings ps = new PrinterSettings();
             using (var ps = new PrinterSettings())
             {
-                //ps.PrinterName = "ZDesigner GT800 (EPL)";
-                ps.PrinterName = "Generic / Text Only";
+                ps.PrinterName = "ZDesigner GT800 (ZPL)";
+                //ps.PrinterName = "Generic / Text Only";
                 ps.Width = 50;
                 ps.AlignLeft = -10;
                 ps.Darkness = 30;
@@ -147,23 +147,23 @@ namespace testzebra
             parametros.Append("M|");
             parametros.Append("50000|");
             parametros.Append("7701749544024|");
-            parametros.Append(@"C:\tmp\Imagenes\MS.BL.1306.bmp");
+            parametros.Append(@"C:\tmp\Imagenes\MS.VJ.1348.bmp");
             parametros.Append("~");
 
             //LABEL2
-            parametros.Append("MS.VJ.1350|");
+            parametros.Append("MS.BL.1306|");
             parametros.Append("ROJO|");
             parametros.Append("UNICA|");
             parametros.Append("PRODUCTO DERECHA|");
             parametros.Append("M|");
             parametros.Append("5000|");
             parametros.Append("7701749140257            |");
-            parametros.Append(@"C:\tmp\Imagenes\otro.bmp");
+            parametros.Append(@"C:\tmp\Imagenes\MS.BL.1306.bmp");
             parametros.Append("~");
-            parametros.Append("Generic / Text Only (Copiar 1)");
+            parametros.Append("ZDesigner GT800 (ZPL)");
             //ZPLCommands.WriteLabel(parametros.ToString());
 
-            executeIt.ShellExecuteA(0, "OPEN", @"C:\Users\DESARROLLO\Downloads\sharpzebra-0.91-src\CSSPrintZebraLabel\bin\Debug\CSSPrintZebraLabel.exe",'"' + parametros.ToString() + '"', "", 1);
+            executeIt.ShellExecuteA(0, "OPEN", @"C:\Users\Aguila1\Source\Repos\MarroquineraMH\EtiquetasMH\sharpzebra-0.91-src\CSSPrintZebraLabel\bin\Debug\CSSPrintZebraLabel.exe", '"' + parametros.ToString() + '"', "", 1);
         }
     }
 

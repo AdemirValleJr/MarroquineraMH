@@ -174,11 +174,17 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reporting\MaterialPOEN.cs">
+    <Compile Include="Reporting\MaterialPOEN1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MaterialPOEN.rpt</DependentUpon>
+      <DependentUpon>MaterialPOEN1.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporting\MaterialPOEN.cs">
+      <DependentUpon>MaterialPOEN.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Reporting\MaterialPOES.cs">
       <AutoGen>True</AutoGen>
@@ -272,6 +278,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reporting\MaterialPOEN1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MaterialPOEN1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporting\MaterialPOEN.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>MaterialPOEN.cs</LastGenOutput>
