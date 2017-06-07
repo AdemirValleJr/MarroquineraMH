@@ -417,7 +417,7 @@ namespace Orkidea.MH.IntegracionContable.Business
                 log.AppendLine(string.Format("Se crea el encabezado para el asiento con numero {0}", lanzamiento));
 
                 string sqlCreaLog = string.Format("insert into orkHistoricoIntegracion select '{0}', {1}, '{2}', getdate(), 'D'", asiento.codigoFilial, asiento.terminal, asiento.fecha);
-                SqlServer.ExecuteNonQuery(_connStrPos, CommandType.Text, sqlCreaLog);
+                //SqlServer.ExecuteNonQuery(_connStrPos, CommandType.Text, sqlCreaLog);
 
                 // creacion de las lineas
 
@@ -427,9 +427,9 @@ namespace Orkidea.MH.IntegracionContable.Business
                     {
                         string sqlLinea =
                                         string.Format("exec orkCrearLineaAsiento {0}, {1}, '{2}', '{3}', {4}, {5}, '{6}', '{7}', '{8}', '{9}', '{10}', {11}, {12}, {13}, '{14}'",
-                                        i + 1, lanzamiento, asiento.lineas[i].codClifor, asiento.lineas[i].contaContabil.Trim(), asiento.lineas[i].credito.ToString(), asiento.lineas[i].debito.ToString(),
+                                        i + 1, lanzamiento, asiento.lineas[i].codClifor, asiento.lineas[i].contaContabil.Trim(), asiento.lineas[i].credito.ToString().Replace(',', '.'), asiento.lineas[i].debito.ToString().Replace(',', '.'),
                                         asiento.lineas[i].historico, asiento.lineas[i].codigoHistorico, asiento.lineas[i].rateioCentroCusto, asiento.lineas[i].moeda, asiento.lineas[i].lxTipoLancamento,
-                                        asiento.lineas[i].debitoMoeda, asiento.lineas[i].creditoMoeda, asiento.lineas[i].cambioNaData, asiento.lineas[i].rateioFilial);
+                                        asiento.lineas[i].debitoMoeda.ToString().Replace(',', '.'), asiento.lineas[i].creditoMoeda.ToString().Replace(',', '.'), asiento.lineas[i].cambioNaData.ToString().Replace(',', '.'), asiento.lineas[i].rateioFilial);
 
                         int insertLinea = SqlServer.ExecuteNonQuery(_connStrErp, CommandType.Text, sqlLinea);
                         log.AppendLine(string.Format("**Registro numero {0} (cuenta {1}) creado con exito", i.ToString(), asiento.lineas[i].contaContabil.Trim()));

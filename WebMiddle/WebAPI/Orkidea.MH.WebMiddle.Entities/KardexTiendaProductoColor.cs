@@ -13,7 +13,7 @@ namespace Orkidea.MH.WebMiddle.Entities
         public string idProducto { get; set; }
         public string idColor { get; set; }
         public string idTienda { get; set; }
-        public DateTime fecha { get; set; }
+        public string fecha { get; set; }
         public string idPedidoRemision { get; set; }
         public int totalMov { get; set; }
         public int mov01 { get; set; }

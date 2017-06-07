@@ -5,7 +5,7 @@ import { SeguridadModule } from './seguridad/seguridad.module';
 import { ReportesModule } from './reportes/reportes.module';
 import { DataMaestraModule } from './data-maestra/data-maestra.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
@@ -25,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     SeguridadModule,
     AppRoutingModule
   ],
-  providers: [],    
+  providers: [    
+  ],    
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,12 +5,13 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Headers, Http, Request, RequestMethod, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx'
+import * as config from '../app.configuration';
 
 @Injectable()
 export class ReportesService {
 
-  API_BASE_URL: string = 'http://sapserver/mhwebapi/api';
-
+  //API_BASE_URL: string = 'http://sapserver/mhwebapi/api';
+  API_BASE_URL: string = config.appApiUrl;
   API_STOCK_SUCURSAL_PROD_COLOR_URL: string;
   API_PRODUCTO_TALLA_URL: string;
 

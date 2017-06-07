@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BizColor.cs" />
+    <Compile Include="BizGrupoProducto.cs" />
     <Compile Include="BizProducto.cs" />
     <Compile Include="BizReportesInventario.cs" />
     <Compile Include="BizProductoTalla.cs" />
+    <Compile Include="BizSubgrupoProducto.cs" />
     <Compile Include="BizTienda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

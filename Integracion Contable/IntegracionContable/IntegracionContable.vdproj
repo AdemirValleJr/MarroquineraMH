@@ -328,7 +328,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Integracion Contable MH"
         "ProductCode" = "8:{70FEEBE3-84AC-45DD-A2AB-B05EA4F30CD8}"
-        "PackageCode" = "8:{37D65C13-9AFF-4C1C-A0CE-A9ECEAFCC246}"
+        "PackageCode" = "8:{07BB9234-B04F-44A6-BD2C-DBCD9E160FDC}"
         "UpgradeCode" = "8:{9918FD6A-1FA2-47DB-BC9F-3FF49135A3B7}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

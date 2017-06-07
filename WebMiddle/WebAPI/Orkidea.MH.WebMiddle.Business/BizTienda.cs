@@ -12,7 +12,7 @@ namespace Orkidea.MH.WebMiddle.Business
     {
         public static IList<Tienda> GetList()
         {
-            return DbMngmt<Tienda>.executeSqlQueryToList("select COD_FILIAL id, FILIAL descripcion from FILIAIS order by FILIAL");
+            return DbMngmt<Tienda>.executeSqlQueryToList("select COD_FILIAL id, FILIAL descripcion from FILIAIS a where a.REDE_LOJAS in (1,12) order by FILIAL");
         }
 
         public static Tienda GetSingle(string id)

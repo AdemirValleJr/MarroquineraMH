@@ -1,37 +1,47 @@
-<p-dataTable [value]="_kardex" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,50, 100]" resizableColumns="true">
-    <p-headerColumnGroup>
-        <p-row>        
-            <p-column header="Tipo movimiento" rowspan="2"></p-column>
-            <p-column header="Documento" rowspan="2"></p-column>
-            <p-column header="Fecha" rowspan="2"></p-column>
-            <p-column header="Pedido/Remision" rowspan="2"></p-column>
-            <p-column header="Total Mov" rowspan="2"></p-column>
-            <p-column header="Total Saldo" rowspan="2"></p-column>
-            <p-column header="Movimiento" [colspan]="numTallas"></p-column>            
-            <p-column header="Saldo" [colspan]="numTallas"></p-column>            
-            <p-column header="Precio" rowspan="2"></p-column>
-            <p-column header="Valor" rowspan="2"></p-column>
-        </p-row>
-        <p-row>
-          <p-column *ngFor="let col of cols" [header]="col.header"></p-column>        
-        </p-row>
-        
-    </p-headerColumnGroup>
+<div class="panel panel-warning">
+    <div class="panel-body">
+        <p-dataTable [value]="_kardex" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,50, 100]" resizableColumns="true">
+            <p-headerColumnGroup>
+                <p-row>
+                    <p-column header="Tipo movimiento" rowspan="2"></p-column>
+                    <p-column header="Documento" rowspan="2"></p-column>
+                    <p-column header="Fecha" rowspan="2"></p-column>
+                    <!--p-column header="Pedido/Remision" rowspan="2"></p-column-->
+                    <p-column header="Total Mov" rowspan="2"></p-column>
+                    <p-column header="Total Saldo" rowspan="2"></p-column>
+                    <p-column header="Movimiento" [colspan]="numTallas"></p-column>
+                    <p-column header="Saldo" [colspan]="numTallas"></p-column>
+                    <!--p-column header="Precio" rowspan="2"></p-column>
+                    <p-column header="Valor" rowspan="2"></p-column-->
+                </p-row>
+                <p-row>
+                    <p-column *ngFor="let col of cols" [header]="col.header"></p-column>
+                </p-row>
 
-    <p-column field="tipoMovimiento" ></p-column>
-    <p-column field="documento" ></p-column>
-    <!--p-column field="(fecha | date: 'dd/MM/yyyy')" ></p-column-->
-    <p-column field="fecha">
-        <ng-template let-col let-reg="rowData" pTemplate="body">
-            <span> {{ reg[col.field]|  date: 'yyyy-MM-dd' }}</span>
-        </ng-template>
-    </p-column>
-    <p-column field="idPedidoRemision"></p-column>
-    <p-column field="totalMov" ></p-column>
-    <p-column field="totalSaldo" ></p-column>
-    <!--p-column *ngFor="let item of tallas" field="item[0]" header=item[1]></p-column-->
-    <p-column *ngFor="let col of cols" [field]="col.field" [styleClass]="col.style" ></p-column>
-    <p-column field="precio" ></p-column>
-    <p-column field="valor" ></p-column>
-</p-dataTable>
+            </p-headerColumnGroup>
 
+            <p-column field="tipoMovimiento"></p-column>
+            <p-column field="documento"></p-column>
+            <!--p-column field="fecha" ></p-column-->
+            <p-column field="fecha">
+                <ng-template let-col let-reg="rowData" pTemplate="body">
+                    <span> {{ reg[col.field]|  date: 'yyyy-MM-dd' }}</span>
+                </ng-template>
+            </p-column>
+            <!--p-column field="idPedidoRemision"></p-column-->
+            <p-column field="totalMov"></p-column>
+            <p-column field="totalSaldo"></p-column>
+            
+            <!--p-column *ngFor="let col of cols" [field]="col.field" [styleClass]="col.style"></p-column-->
+
+            <p-column *ngFor="let col of cols" [field]="col.field">
+                <ng-template let-reg="rowData" pTemplate="body">
+                    <span [style.color]="col.color">{{reg[col.field]}}</span>
+                </ng-template>
+            </p-column>
+
+            <!--p-column field="precio"></p-column>
+            <p-column field="valor"></p-column-->
+        </p-dataTable>
+    </div>
+</div>

@@ -796,10 +796,13 @@ namespace Orkidea.MH.IntegracionContable.Business
                         {
                             if (tercerosAsiento[i] != obtenerParametro("clienteGenerico"))
                             {
-                                tercero.Append(string.Format("'{0}'", tercerosAsiento[i]));
+                                if (!string.IsNullOrEmpty(tercerosAsiento[i]))
+                                {
+                                    tercero.Append(string.Format("'{0}'", tercerosAsiento[i]));
 
-                                if (i < tercerosAsiento.Length - 1)
-                                    tercero.Append(",");
+                                    if (i < tercerosAsiento.Length - 1)
+                                        tercero.Append(",");
+                                }
                             }
                             else
                             {
@@ -816,7 +819,7 @@ namespace Orkidea.MH.IntegracionContable.Business
                                 if (string.IsNullOrEmpty(item.codClifor))
                                     item.nombreCliente = string.Empty;
                                 else
-                                    item.nombreCliente = terceros.Where(x => x.nit.Trim() == item.codClifor.Trim()).FirstOrDefault().desCliente;
+                                    item.nombreCliente = terceros.Where(x => x.codClifor.Trim() == item.codClifor.Trim()).FirstOrDefault().desCliente;
                             }
                             catch (Exception)
                             {
@@ -910,6 +913,9 @@ namespace Orkidea.MH.IntegracionContable.Business
                 {
                     try
                     {
+                        if (asiento.lineas[i].lxTipoLancamento.Trim().ToUpper() == "LTC" || asiento.lineas[i].lxTipoLancamento.Trim().ToUpper() == "LTD")
+                            asiento.lineas[i].codigoHistorico = "LOP";
+
                         string sqlLinea =
                                         string.Format("exec orkCrearLineaAsiento {0}, {1}, '{2}', '{3}', {4}, {5}, '{6}', '{7}', '{8}', '{9}', '{10}', {11}, {12}, {13}, '{14}'",
                                         i + 1, lanzamiento, asiento.lineas[i].codClifor, asiento.lineas[i].contaContabil.Trim(), asiento.lineas[i].credito.ToString(), asiento.lineas[i].debito.ToString(),
@@ -995,7 +1001,7 @@ namespace Orkidea.MH.IntegracionContable.Business
 
         private List<Tercero> ObtenerTerceros(string terceros)
         {
-            string oSql = string.Format("select CLIFOR, ltrim(cgc_cpf) + ' ::: ' + RAZAO_SOCIAL NOME_CLIFOR, cgc_cpf from CADASTRO_CLI_FOR where cgc_cpf in ({0})", terceros);
+            string oSql = string.Format("select CLIFOR, ltrim(cgc_cpf) + ' ::: ' + RAZAO_SOCIAL NOME_CLIFOR, cgc_cpf from CADASTRO_CLI_FOR where CLIFOR in ({0})", terceros);
             DataSet ds = SqlServer.ExecuteDataset(_connStrErp, CommandType.Text, oSql);
 
             List<Tercero> list = new List<Tercero>();

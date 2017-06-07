@@ -67,7 +67,7 @@ export class StockProdColorSucursalDetalleComponent implements OnInit {
 
     this.numTallas = this._productoTalla.TAMANHOS_DIGITADOS;
 
-    let modelo = new Array<{ field: string, header: string }>();
+    let modelo = new Array<{ field: string, header: string, color:string }>();
 
     for (var index = 0; index < this.numTallas; index++) {
 
@@ -75,7 +75,7 @@ export class StockProdColorSucursalDetalleComponent implements OnInit {
       let etiqueta = this._productoTalla[`TAMANHO_${index + 1}`];
 
 
-      modelo.push({ field: campo, header: etiqueta });
+      modelo.push({ field: campo, header: etiqueta, color:'blue' });
     }
 
     for (var index = 0; index < this.numTallas; index++) {
@@ -84,7 +84,7 @@ export class StockProdColorSucursalDetalleComponent implements OnInit {
       let etiqueta = this._productoTalla[`TAMANHO_${index + 1}`];
 
 
-      modelo.push({ field: campo, header: etiqueta });
+      modelo.push({ field: campo, header: etiqueta, color:'green' });
     }
 
     this.cols = modelo;

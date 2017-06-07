@@ -1,3 +1,4 @@
+import { BsDropdownModule } from 'ngx-bootstrap';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
