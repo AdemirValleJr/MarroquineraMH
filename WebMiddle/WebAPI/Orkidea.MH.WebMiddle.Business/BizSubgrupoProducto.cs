@@ -14,7 +14,19 @@ namespace Orkidea.MH.WebMiddle.Business
         {
             StringBuilder oSql = new StringBuilder();
             oSql.Append("select a.CODIGO_SUBGRUPO id, a.SUBGRUPO_PRODUTO descripcion, b.CODIGO_GRUPO idGrupo ");
-            oSql.Append("from PRODUTOS_SUBGRUPO a inner join PRODUTOS_GRUPO b on a.GRUPO_PRODUTO = b.GRUPO_PRODUTO order by SUBGRUPO_PRODUTO");
+            oSql.Append("from PRODUTOS_SUBGRUPO a inner join PRODUTOS_GRUPO b on a.GRUPO_PRODUTO = b.GRUPO_PRODUTO ");
+            oSql.Append("order by SUBGRUPO_PRODUTO");
+
+            return DbMngmt<SubgrupoProducto>.executeSqlQueryToList(oSql.ToString());
+        }
+
+        public static IList<SubgrupoProducto> GetList(string idGrupoProducto)
+        {
+            StringBuilder oSql = new StringBuilder();
+            oSql.Append("select a.CODIGO_SUBGRUPO id, a.SUBGRUPO_PRODUTO descripcion, b.CODIGO_GRUPO idGrupo ");
+            oSql.Append("from PRODUTOS_SUBGRUPO a inner join PRODUTOS_GRUPO b on a.GRUPO_PRODUTO = b.GRUPO_PRODUTO ");
+            oSql.Append(string.Format("where a.GRUPO_PRODUTO = '{0}'", idGrupoProducto));
+            oSql.Append("order by SUBGRUPO_PRODUTO");
 
             return DbMngmt<SubgrupoProducto>.executeSqlQueryToList(oSql.ToString());
         }

@@ -13,9 +13,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class StockProdColorSucursalDetalleComponent implements OnInit {
 
-  //tienda: string = "";
-  //producto: string = "";
-  //color: string = "";
+  // tienda: string = "";
+  // producto: string = "";
+  // color: string = "";
 
   _kardex: KardexTiendaProductoColor[];
   _productoTalla: ProductoTalla;
@@ -27,13 +27,13 @@ export class StockProdColorSucursalDetalleComponent implements OnInit {
   ngOnInit() {
     this.suscripcion = this.route.params.subscribe(
       (params: any) => {
-        let cTienda = params["idTienda"];
-        let cProducto = params["idProducto"];
+        let cTienda = params['idTienda'];
+        let cProducto = params['idProducto'];
         let cColor = params['idColor'];
 
         this.generarReporte(cTienda, cProducto, cColor);
       }
-    );    
+    );
   }
 
   generarReporte(tienda, producto, color) {
@@ -42,9 +42,9 @@ export class StockProdColorSucursalDetalleComponent implements OnInit {
   }
 
   recibirReporte(data, producto) {
-    //console.log(data);
+    // console.log(data);
     this._kardex = data;
-    //console.log(this._kardex);
+    // console.log(this._kardex);
 
     this.consultarTallas(producto);
   }
@@ -56,7 +56,7 @@ export class StockProdColorSucursalDetalleComponent implements OnInit {
 
   recibirTallas(datos) {
     this._productoTalla = datos;
-    //console.log(this._productoTalla);
+    // console.log(this._productoTalla);
     this.trabajarDatos();
   }
 
@@ -94,12 +94,15 @@ export class StockProdColorSucursalDetalleComponent implements OnInit {
 
 
   pad(num: number, size: number): string {
-    var s = num + "";
-    while (s.length < size) s = "0" + s;
+    let s = num + '';
+
+    while (s.length < size) {
+      s = '0' + s;
+    }
     return s;
   }
 
-  ngOnDestroy() {
+  OnDestroy() {
     this.suscripcion.unsubscribe();
   }
 

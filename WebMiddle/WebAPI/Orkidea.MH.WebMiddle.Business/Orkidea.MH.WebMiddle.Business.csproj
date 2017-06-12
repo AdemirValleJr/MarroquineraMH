@@ -41,12 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BizColor.cs" />
+    <Compile Include="BizCommon.cs" />
+    <Compile Include="BizFabricante.cs" />
     <Compile Include="BizGrupoProducto.cs" />
+    <Compile Include="BizModelo.cs" />
     <Compile Include="BizProducto.cs" />
+    <Compile Include="BizRedTiendas.cs" />
     <Compile Include="BizReportesInventario.cs" />
     <Compile Include="BizProductoTalla.cs" />
     <Compile Include="BizSubgrupoProducto.cs" />
+    <Compile Include="BizTemporada.cs" />
     <Compile Include="BizTienda.cs" />
+    <Compile Include="BizTipoProducto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

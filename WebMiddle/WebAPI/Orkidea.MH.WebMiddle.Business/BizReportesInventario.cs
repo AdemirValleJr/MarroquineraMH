@@ -36,16 +36,46 @@ namespace Orkidea.MH.WebMiddle.Business
         }
 
 
-        public static void ReporteStock(string idTienda, string idGrupo, string idSubgrupo, string idModelo, string idFabricante, string idGenero, string idTemporada, string idTipoProducto, string idProducto, string talla) {
+        public static void SellTru(string productFilters, string storeFilters, string groupers) {
 
-            StringBuilder camposSql = new StringBuilder();
-            camposSql.Append("Select ");
+            //Obtener productos a consultar
+            string productFilter = string.Empty;
 
+            if (!string.IsNullOrEmpty(productFilters.Split('|')[7]))
+                productFilter = string.Format(" = '{0}'", productFilters.Split('|')[7]);
+            else
+                productFilter = string.Format(" in ({0})", BizCommon.ListToString('i', BizProducto.GetList(productFilters).ToList()));
+
+            // filtro por color
+            string colorFilter = string.Empty;
+
+            if (!string.IsNullOrEmpty(productFilters.Split('|')[8]))
+                colorFilter = string.Format("and cor_produto = '{0}'", productFilters.Split('|')[8]);
+
+            //Obtener tiendas a consultar
+            string storeFilter = string.Empty;
+
+            if (!string.IsNullOrEmpty(storeFilters.Split('|')[1]))
+                storeFilter = string.Format(" = '{0}'", storeFilters.Split('|')[1]);
+            else
+                storeFilter = string.Format(" in ({0})", BizCommon.ListToString('d', BizTienda.GetList(storeFilters.Split('|')[0]).ToList()));
+
+
+            //Obtener semanas desde entrada a la tienda            
+            StringBuilder oSqlWeeks = new StringBuilder();
+
+            oSqlWeeks.Append("select b.PRODUTO id, min(a.EMISSAO) valorFecha, DATEDIFF(Wk, min(a.emissao), getdate()) valorEntero ");
+            oSqlWeeks.Append("from LOJA_ENTRADAS a ");
+            oSqlWeeks.Append("inner join  LOJA_ENTRADAS_produto b on a.filial = b.filial and a.ROMANEIO_PRODUTO = b.ROMANEIO_PRODUTO ");
+            oSqlWeeks.Append(string.Format("where producto {0}", productFilter));
+            oSqlWeeks.Append(string.Format("and  a.filial {0}", storeFilter));
+            oSqlWeeks.Append(colorFilter);
+
+            IList<BaseReporte> semanasEntradaTienda = DbMngmt<BaseReporte>.executeSqlQueryToList(oSqlWeeks.ToString());
+
+            //Obtener stock
 
 
         }
-
-        
-
     }
 }
