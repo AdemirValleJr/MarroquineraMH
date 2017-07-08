@@ -17,14 +17,14 @@ namespace Orkidea.MH.WebMiddle.Business
 
         public static IList<Producto> GetList(string filter)
         {
-            string[] filters = filter.Split('|');
+            string[] filters = filter.Split('@');
             StringBuilder oSql = new StringBuilder();
             
             bool gotFilter = false, addAnd = false;
             
             oSql.Append("select PRODUTO id , DESC_PRODUTO descripcion from PRODUTOS ");
 
-            for (int i = 0; i < filters.Length; i++)
+            for (int i = 0; i < 7; i++)
             {
                 if (!string.IsNullOrEmpty(filters[i]))
                 {

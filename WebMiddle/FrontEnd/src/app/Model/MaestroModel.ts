@@ -1,4 +1,4 @@
-export class MaestroModel {    
+export class MaestroModel {
     id;
     descripcion;
 }

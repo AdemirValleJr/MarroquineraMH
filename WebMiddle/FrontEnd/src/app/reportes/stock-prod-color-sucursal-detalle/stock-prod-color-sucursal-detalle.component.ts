@@ -16,13 +16,11 @@ export class StockProdColorSucursalDetalleComponent implements OnInit {
   // tienda: string = "";
   // producto: string = "";
   // color: string = "";
-
+  suscripcion: Subscription;
   _kardex: KardexTiendaProductoColor[];
   _productoTalla: ProductoTalla;
 
   constructor(private route: ActivatedRoute, private reportesService: ReportesService) { }
-
-  suscripcion: Subscription;
 
   ngOnInit() {
     this.suscripcion = this.route.params.subscribe(

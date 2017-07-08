@@ -64,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProductoTalla.cs" />
     <Compile Include="RedTiendas.cs" />
+    <Compile Include="SellTru.cs" />
     <Compile Include="SubgrupoProducto.cs" />
     <Compile Include="Temporada.cs" />
     <Compile Include="Tienda.cs" />

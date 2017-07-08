@@ -37,7 +37,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -56,7 +55,7 @@
       <Project>{3019E2C7-440C-4A1C-B3BC-02CEE350FBFF}</Project>
       <Name>Orkidea.MH.IntegracionContable.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\Usuario\Dropbox\Empresa\Metodologia_y_recursos\Libraries\ClsAccesoDatos\ClsAccesoDatos\ClsAccesoDatos.vbproj">
+    <ProjectReference Include="C:\Users\User\Dropbox\Empresa\Metodologia_y_recursos\Libraries\ClsAccesoDatos\ClsAccesoDatos\ClsAccesoDatos.vbproj">
       <Project>{69903BC7-3BCF-4A6A-BAFA-87A16E2D7578}</Project>
       <Name>ClsAccesoDatos</Name>
     </ProjectReference>

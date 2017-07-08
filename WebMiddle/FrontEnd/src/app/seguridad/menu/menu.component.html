@@ -16,13 +16,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <!--li><a href="#">Reportes<span class="sr-only">(current)</span></a></li-->        
+        <!--li><a href="#">Reportes<span class="sr-only">(current)</span></a></li-->
         <li dropdown (isOpenChange)="toggled($event)">
           <!--a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a-->
           <a href dropdownToggle (click)="false">Reportes</a>
           <ul *dropdownMenu class="dropdown-menu">
-            <li routerLinkActive="active"><a class="dropdown-item" href="/stockSucursalProdColor">Stock Tienda-Producto-Color</a></li>
-            
+            <li routerLinkActive="active"><a class="dropdown-item" href="/reportes/kardex">Kardex</a></li>
+            <li routerLinkActive="active"><a class="dropdown-item" href="/reportes/sellthru">Sell thru</a></li>
+
             <!--li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>

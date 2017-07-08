@@ -1,0 +1,14 @@
+<p-dataTable [value]="redTiendas" [rows]="10" [paginator]="true">
+    <p-column field="id" header="Red tiendas" [filter]="true" filterMatchMode="contains" filterPlaceholder="Buscar..."></p-column>
+    <p-column field="descripcion" header="Descripcion" [filter]="true" filterMatchMode="contains" filterPlaceholder="Buscar..."></p-column>
+    <p-column styleClass="col-button">
+        <ng-template pTemplate="header">
+            Seleccione
+        </ng-template>
+        <ng-template let-color="rowData" pTemplate="body">
+            <button type="button" class="btn btn-default" id="sel" aria-hidden="true">
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </button>
+        </ng-template>
+    </p-column>
+</p-dataTable>

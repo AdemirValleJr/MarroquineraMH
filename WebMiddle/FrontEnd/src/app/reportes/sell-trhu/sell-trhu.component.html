@@ -1,0 +1,214 @@
+<h2>Sell thru</h2>
+<div class="row">
+  <div class="col-md-8">
+    <h4>Filtros</h4>
+    <hr>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtRed">Red tiendas</label>
+        <select class="form-control" [(ngModel)]="red" (change)="onRedSelect($event.target.value)">
+          <option value="">-- Todos --</option>
+          <option *ngFor="let red of redesTiendas" value= {{red.id}}>{{[red.descripcion]}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtTienda">Tienda</label>
+        <select class="form-control" [(ngModel)]="tienda" (change)="buildTiendaQuery()">
+          <option value="">-- Todos --</option>
+          <option *ngFor="let tienda of tiendas " value= {{tienda.id}}>{{tienda.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtGrupo">Grupo Pr.</label>
+        <select class="form-control" [(ngModel)]="grupo" (change)="onGrupoSelect($event.target.value)">
+          <option value="">-- Todos --</option>
+          <option *ngFor="let grupo of gruposProducto" value= {{grupo.id}}>{{[grupo.descripcion]}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtSubgrupo">Subgrupo Pr.</label>
+        <select class="form-control" [(ngModel)]="subgrupo" (change)="buildProdQuery()">
+          <option value="">-- Todos --</option>
+          <option *ngFor="let subGrupo of subgruposProd " value= {{subGrupo.id}}>{{subGrupo.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtModelo">Modelo</label>
+        <select class="form-control" [(ngModel)]="modelo" (change)="buildProdQuery()">
+          <option value="">-- Todos --</option>
+          <option *ngFor="let modelo of modelosProducto " value= {{modelo.id}}>{{modelo.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtColor">Color</label>
+        <select class="form-control" [(ngModel)]="color" (change)="buildProdQuery()">
+          <option value="">-- Todos --</option>
+          <option *ngFor="let color of colores " value= {{color.id}}>{{color.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtFabricante">Fabricante</label>
+        <select class="form-control" [(ngModel)]="fabricante" (change)="buildProdQuery()">
+          <option value="">-- Todos --</option>
+          <option *ngFor="let fabricante of fabricantes " value= {{fabricante.id}}>{{fabricante.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtTemporada">Temporada</label>
+        <select class="form-control" [(ngModel)]="temporada" (change)="buildProdQuery()">
+          <option value="">-- Todos --</option>
+          <option *ngFor="let temporada of temporadas " value= {{temporada.id}}>{{temporada.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtTipo">Tipo producto</label>
+        <select class="form-control" [(ngModel)]="tipo" (change)="buildProdQuery()">
+          <option value="">-- Todos --</option>
+          <option *ngFor="let tipo of tiposProd " value= {{tipo.id}}>{{tipo.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtSexo">Sexo</label>
+        <select class="form-control" [(ngModel)]="sexo" (change)="buildProdQuery()">
+          <option value="">-- Todos --</option>
+          <option *ngFor="let sexo of sexos " value= {{sexo.id}}>{{sexo.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtProducto"><a (click)="productoModal.show()">Producto</a></label>
+        <input [(ngModel)]="producto" type="text" class="form-control" id="txtProducto" placeholder="Producto" disabled>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtSexo">Corte a:</label><br>
+        <p-calendar [(ngModel)]="corte" [showIcon]="true" [inputStyle] ="{'padding':'6px 12px','max-width':'104px'}"
+        dateFormat="yy-mm-dd" [locale]="es" (click)="buildProdQuery()"></p-calendar>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h4>Columnas</h4>
+    <hr>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colRed" (change)="buildAgrupadores()">Red tiendas
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colTienda" (change)="buildAgrupadores()">Tienda
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colGrupo" (change)="buildAgrupadores()">Grupo prod.
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colSubgrupo" (change)="buildAgrupadores()">Subgr. prod.
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colModelo" (change)="buildAgrupadores()">Modelo
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colFabricante" (change)="buildAgrupadores()">Fabricante
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colTemporada" (change)="buildAgrupadores()">Temporada
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colSexo" (change)="buildAgrupadores()">Sexo
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colTipo" (change)="buildAgrupadores()">Tipo prod.
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colColor" (change)="buildAgrupadores()">Color
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colProducto" (change)="buildAgrupadores()">Producto
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <a [routerLink]="[queryProducto, queryTiendas, agrupadores]" class="btn btn-warning">Buscar</a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="modal fade" bsModal #productoModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true" (click)="seleccionaProd($event)">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Seleccione un producto</h4>
+        <span aria-hidden="true">&times;</span>
+      </div>
+      <div class="modal-body">
+        <app-producto></app-producto>
+      </div>
+    </div>
+  </div>
+</div>

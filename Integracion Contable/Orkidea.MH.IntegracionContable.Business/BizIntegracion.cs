@@ -27,7 +27,7 @@ namespace Orkidea.MH.IntegracionContable.Business
 
             StringBuilder oSql = new StringBuilder();
 
-            oSql.AppendLine(string.Format("select distinct a.DATA_VENDA from LOJA_VENDA a where CODIGO_FILIAL = '{0}' and DATA_VENDA >= '{1}' ", tienda, limiteInferior ));
+            oSql.AppendLine(string.Format("select distinct a.DATA_VENDA from LOJA_VENDA a where CODIGO_FILIAL = '{0}' and DATA_VENDA >= '{1}' ", tienda, limiteInferior));
             oSql.AppendLine(string.Format("and DATA_VENDA not in (select periodoIntegrado from orkHistoricoIntegracion where filial = '{0}' and tipoIntegracion = '{1}') order by DATA_VENDA", tienda, tipoIntegracion));
 
             DataSet ds = SqlServer.ExecuteDataset(_connStrPos, CommandType.Text, oSql.ToString());
@@ -788,7 +788,7 @@ namespace Orkidea.MH.IntegracionContable.Business
                     if (asiento.lineas.Count() > 0)
                     {
                         #region Terceros
-                        string[] tercerosAsiento = asiento.lineas.Select(x => x.codClifor).Distinct().ToArray();
+                        string[] tercerosAsiento = asiento.lineas.Where(x => !string.IsNullOrEmpty(x.codClifor)).Select(x => x.codClifor).Distinct().ToArray();
                         List<Tercero> terceros = new List<Tercero>();
                         StringBuilder tercero = new StringBuilder();
 
@@ -819,7 +819,18 @@ namespace Orkidea.MH.IntegracionContable.Business
                                 if (string.IsNullOrEmpty(item.codClifor))
                                     item.nombreCliente = string.Empty;
                                 else
-                                    item.nombreCliente = terceros.Where(x => x.codClifor.Trim() == item.codClifor.Trim()).FirstOrDefault().desCliente;
+                                    if (terceros.Where(x => x.codClifor.Trim() == item.codClifor.Trim()).Count() > 0)
+                                    {
+                                        item.nombreCliente = terceros.Where(x => x.codClifor.Trim() == item.codClifor.Trim()).FirstOrDefault().desCliente;
+                                        item.codClifor = terceros.Where(x => x.codClifor.Trim() == item.codClifor.Trim()).FirstOrDefault().codClifor;
+                                    }
+                                    else if (terceros.Where(x => x.nit.Trim() == item.codClifor.Trim()).Count() > 0)
+                                    {
+                                        item.nombreCliente = terceros.Where(x => x.nit.Trim() == item.codClifor.Trim()).FirstOrDefault().desCliente;
+                                        item.codClifor = terceros.Where(x => x.nit.Trim() == item.codClifor.Trim()).FirstOrDefault().codClifor;
+                                    }
+                                    else
+                                        throw new Exception("Cuenta no encontrada");
                             }
                             catch (Exception)
                             {
@@ -965,7 +976,7 @@ namespace Orkidea.MH.IntegracionContable.Business
             catch (Exception ex)
             {
                 return string.Format("No se pudo eliminar el asiento porque {0}", ex.Message);
-            }            
+            }
         }
 
         private bool EsReciboSeparados(string filial, string fecha, string recibo)
@@ -1001,7 +1012,7 @@ namespace Orkidea.MH.IntegracionContable.Business
 
         private List<Tercero> ObtenerTerceros(string terceros)
         {
-            string oSql = string.Format("select CLIFOR, ltrim(cgc_cpf) + ' ::: ' + RAZAO_SOCIAL NOME_CLIFOR, cgc_cpf from CADASTRO_CLI_FOR where CLIFOR in ({0})", terceros);
+            string oSql = string.Format("select CLIFOR, ltrim(cgc_cpf) + ' ::: ' + RAZAO_SOCIAL NOME_CLIFOR, cgc_cpf from CADASTRO_CLI_FOR where cgc_cpf in ({0})", terceros);
             DataSet ds = SqlServer.ExecuteDataset(_connStrErp, CommandType.Text, oSql);
 
             List<Tercero> list = new List<Tercero>();

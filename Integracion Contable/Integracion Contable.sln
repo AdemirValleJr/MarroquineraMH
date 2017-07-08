@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{140F2090-7CA1-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orkidea.MH.IntegracionContable.Presentation", "Orkidea.MH.IntegracionContable.Presentation\Orkidea.MH.IntegracionContable.Presentation.csproj", "{8F43E0CD-8160-4379-B37C-E221086545C7}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClsAccesoDatos", "C:\Users\Usuario\Dropbox\Empresa\Metodologia_y_recursos\Libraries\ClsAccesoDatos\ClsAccesoDatos\ClsAccesoDatos.vbproj", "{69903BC7-3BCF-4A6A-BAFA-87A16E2D7578}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClsAccesoDatos", "C:\Users\User\Dropbox\Empresa\Metodologia_y_recursos\Libraries\ClsAccesoDatos\ClsAccesoDatos\ClsAccesoDatos.vbproj", "{69903BC7-3BCF-4A6A-BAFA-87A16E2D7578}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Despliegue", "Despliegue", "{B2A3BF27-9C11-4240-9FF0-5872A03ABC9D}"
 EndProject

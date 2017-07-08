@@ -253,11 +253,19 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
+    <Compile Include="Controllers\FabricanteController.cs" />
+    <Compile Include="Controllers\GrupoProductoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModeloController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProductoTallaController.cs" />
+    <Compile Include="Controllers\RedTiendasController.cs" />
     <Compile Include="Controllers\ReporteKardexTiendaProductoColorController.cs" />
+    <Compile Include="Controllers\ReporteSellthruController.cs" />
+    <Compile Include="Controllers\SubgrupoProductoController.cs" />
+    <Compile Include="Controllers\TemporadaController.cs" />
     <Compile Include="Controllers\TiendaController.cs" />
+    <Compile Include="Controllers\TipoProductoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -309,6 +317,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
     <None Include="Properties\PublishProfiles\localPublish.pubxml" />
     <None Include="Properties\PublishProfiles\webApiMH.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -348,6 +357,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Fabricante\" />
+    <Folder Include="Views\ReporteSellthru\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -381,7 +392,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64182</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:64182/</IISUrl>
+          <IISUrl>http://localhost:64184</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

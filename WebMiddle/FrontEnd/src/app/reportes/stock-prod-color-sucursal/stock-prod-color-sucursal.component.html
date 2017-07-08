@@ -1,25 +1,22 @@
-<div class="panel panel-warning">
-  <div class="panel-heading">Reporte de stock por Tienda - Producto - Color</div>
-  <div class="panel-body">
-    <div class="form-inline">
-      <div class="form-group">
-        <label for="txtTienda"><a (click)="tiendaModal.show()">Tienda</a></label>
-        <input [(ngModel)]="cTienda" type="text" class="form-control" id="txtTienda" placeholder="Tienda" disabled>
-      </div>
-      <div class="form-group">
-        <label for="txtProducto"><a (click)="productoModal.show()">Producto</a></label>
-        <input [(ngModel)]="cProducto" type="text" class="form-control" id="txtProducto" placeholder="Producto" readonly>
-      </div>
-      <div class="form-group">
-        <label for="txtColor"><a (click)="colorModal.show()">Color</a></label>
-        <input [(ngModel)]="cColor" type="text" class="form-control" id="txtColor" placeholder="Color" disabled>
-      </div>
-      <!--button type="button" class="btn btn-default" (click)="consultar()">Consultar</button-->
-      <a [routerLink]="[cTienda, cProducto, cColor]" class="btn btn-default">Buscar</a>
+<h2>Reporte de stock por Tienda - Producto - Color</h2>
+<hr>
+<div class="row">
+  <div class="form-inline">
+    <div class="form-group col-md-4">
+      <label for="txtTienda"><a (click)="tiendaModal.show()">Tienda</a></label>
+      <input [(ngModel)]="cTienda" type="text" class="form-control" id="txtTienda" placeholder="Tienda" disabled>
     </div>
+    <div class="form-group col-md-4">
+      <label for="txtProducto"><a (click)="productoModal.show()">Producto</a></label>
+      <input [(ngModel)]="cProducto" type="text" class="form-control" id="txtProducto" placeholder="Producto" readonly>
+    </div>
+    <div class="form-group" col-md-4>
+      <label for="txtColor"><a (click)="colorModal.show()">Color</a></label>
+      <input [(ngModel)]="cColor" type="text" class="form-control" id="txtColor" placeholder="Color" disabled>
+    </div>
+    <a [routerLink]="[cTienda, cProducto, cColor]" class="btn btn-warning">Buscar</a>
   </div>
 </div>
-
 <div class="modal fade" bsModal #tiendaModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
   aria-hidden="true" (click)="selecciona($event, 't')">
   <div class="modal-dialog modal-lg">
@@ -50,6 +47,7 @@
   </div>
 </div>
 
+
 <div class="modal fade" bsModal #colorModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
   aria-hidden="true" (click)="selecciona($event, 'c')">
   <div class="modal-dialog modal-lg">
@@ -64,5 +62,6 @@
     </div>
   </div>
 </div>
-
-<router-outlet></router-outlet>
+<div class="row">
+  <router-outlet></router-outlet>
+</div>

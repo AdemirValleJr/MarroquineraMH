@@ -12,7 +12,7 @@ namespace Orkidea.MH.WebMiddle.Business
     {
         public static IList<Fabricante> GetList()
         {
-            return DbMngmt<Fabricante>.executeSqlQueryToList("select PRODUTO id , DESC_PRODUTO descripcion from PRODUTOS order by DESC_PRODUTO");
+            return DbMngmt<Fabricante>.executeSqlQueryToList("select distinct fabricante descripcion, b.clifor id from PRODUTOS a inner join fornecedores b on a.fabricante = b.fornecedor order by a.fabricante");
         }
     }
 }

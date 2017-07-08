@@ -6,6 +6,12 @@ import { ProductoComponent } from './producto/producto.component';
 import { TiendaComponent } from './tienda/tienda.component';
 import { ColorComponent } from './color/color.component';
 import { ProductoTallaComponent } from './producto-talla/producto-talla.component';
+import { FabricantesComponent } from './fabricantes/fabricantes.component';
+import { GrupoProductosComponent } from './grupo-productos/grupo-productos.component';
+import { SubgrupoProductosComponent } from './subgrupo-productos/subgrupo-productos.component';
+import { ModeloComponent } from './modelo/modelo.component';
+import { RedTiendasComponent } from './red-tiendas/red-tiendas.component';
+import { TemporadaComponent } from './temporada/temporada.component';
 
 
 @NgModule({
@@ -13,15 +19,28 @@ import { ProductoTallaComponent } from './producto-talla/producto-talla.componen
     CommonModule,
     DataTableModule
   ],
-  exports:[
-    ProductoComponent, 
-    TiendaComponent, 
-    ColorComponent
+  exports: [
+    ProductoComponent,
+    TiendaComponent,
+    ColorComponent,
+    FabricantesComponent,
+    GrupoProductosComponent,
+    SubgrupoProductosComponent,
+    ModeloComponent,
+    RedTiendasComponent,
+    TemporadaComponent
     ],
   declarations: [
-    ProductoComponent, 
-    TiendaComponent, 
-    ColorComponent, ProductoTallaComponent
+    ProductoComponent,
+    TiendaComponent,
+    ColorComponent,
+    ProductoTallaComponent,
+    FabricantesComponent,
+    GrupoProductosComponent,
+    SubgrupoProductosComponent,
+    ModeloComponent,
+    RedTiendasComponent,
+    TemporadaComponent
     ],
   providers: [DataMaestraService]
 })

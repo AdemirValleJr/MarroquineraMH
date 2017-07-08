@@ -17,11 +17,11 @@ namespace Orkidea.MH.WebMiddle.WebAPI.Controllers
             return BizTienda.GetList();
         }
 
-        //// GET: api/Tienda/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        // GET: api/Tienda/5
+        public IEnumerable<Tienda> Get(string id)
+        {
+            return BizTienda.GetList(id);
+        }
 
         //// POST: api/Tienda
         //public void Post([FromBody]string value)

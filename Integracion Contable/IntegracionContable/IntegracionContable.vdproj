@@ -15,62 +15,62 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0C2AE8BC37FDFA0347A16F395C7A7CF5"
-        "OwnerKey" = "8:_1FE5DE46D4A34E6E9D9236BB663A7DB0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0C2AE8BC37FDFA0347A16F395C7A7CF5"
-        "OwnerKey" = "8:_3F017A0237555A4F0E31E24D7B54E257"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1FE5DE46D4A34E6E9D9236BB663A7DB0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3F017A0237555A4F0E31E24D7B54E257"
+        "MsmKey" = "8:_272B7FC481E495637504ABCCCD129077"
         "OwnerKey" = "8:_1FE5DE46D4A34E6E9D9236BB663A7DB0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F103C63678068FA5F8F0D6B399992E1F"
-        "OwnerKey" = "8:_3F017A0237555A4F0E31E24D7B54E257"
+        "MsmKey" = "8:_3D681757491A7360225C3893755C7E9B"
+        "OwnerKey" = "8:_272B7FC481E495637504ABCCCD129077"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F103C63678068FA5F8F0D6B399992E1F"
+        "MsmKey" = "8:_3D681757491A7360225C3893755C7E9B"
+        "OwnerKey" = "8:_1FE5DE46D4A34E6E9D9236BB663A7DB0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_76C8D758C68CD3F1E9D6BA5DEE32DA7F"
+        "OwnerKey" = "8:_1FE5DE46D4A34E6E9D9236BB663A7DB0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_76C8D758C68CD3F1E9D6BA5DEE32DA7F"
+        "OwnerKey" = "8:_272B7FC481E495637504ABCCCD129077"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_1FE5DE46D4A34E6E9D9236BB663A7DB0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1FE5DE46D4A34E6E9D9236BB663A7DB0"
+        "OwnerKey" = "8:_272B7FC481E495637504ABCCCD129077"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3F017A0237555A4F0E31E24D7B54E257"
+        "OwnerKey" = "8:_3D681757491A7360225C3893755C7E9B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F103C63678068FA5F8F0D6B399992E1F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0C2AE8BC37FDFA0347A16F395C7A7CF5"
+        "OwnerKey" = "8:_76C8D758C68CD3F1E9D6BA5DEE32DA7F"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -178,45 +178,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0C2AE8BC37FDFA0347A16F395C7A7CF5"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ClsAccesoDatos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0C2AE8BC37FDFA0347A16F395C7A7CF5"
-                    {
-                    "Name" = "8:ClsAccesoDatos.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ClsAccesoDatos.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_79BDF3E81FEB4BCEB1C359067D04BF44"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3F017A0237555A4F0E31E24D7B54E257"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_272B7FC481E495637504ABCCCD129077"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Orkidea.MH.IntegracionContable.Business, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_3F017A0237555A4F0E31E24D7B54E257"
+                    "_272B7FC481E495637504ABCCCD129077"
                     {
                     "Name" = "8:Orkidea.MH.IntegracionContable.Business.dll"
                     "Attributes" = "3:512"
@@ -240,20 +209,51 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F103C63678068FA5F8F0D6B399992E1F"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3D681757491A7360225C3893755C7E9B"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Orkidea.MH.IntegracionContable.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F103C63678068FA5F8F0D6B399992E1F"
+                    "_3D681757491A7360225C3893755C7E9B"
                     {
                     "Name" = "8:Orkidea.MH.IntegracionContable.Entities.dll"
                     "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Orkidea.MH.IntegracionContable.Entities.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_79BDF3E81FEB4BCEB1C359067D04BF44"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_76C8D758C68CD3F1E9D6BA5DEE32DA7F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ClsAccesoDatos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_76C8D758C68CD3F1E9D6BA5DEE32DA7F"
+                    {
+                    "Name" = "8:ClsAccesoDatos.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ClsAccesoDatos.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_79BDF3E81FEB4BCEB1C359067D04BF44"
@@ -328,7 +328,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Integracion Contable MH"
         "ProductCode" = "8:{70FEEBE3-84AC-45DD-A2AB-B05EA4F30CD8}"
-        "PackageCode" = "8:{07BB9234-B04F-44A6-BD2C-DBCD9E160FDC}"
+        "PackageCode" = "8:{14993265-A50C-4AB2-AC6D-F47AD7A62809}"
         "UpgradeCode" = "8:{9918FD6A-1FA2-47DB-BC9F-3FF49135A3B7}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

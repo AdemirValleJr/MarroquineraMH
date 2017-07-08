@@ -100,7 +100,7 @@ namespace Orkidea.MH.WebMiddle.DAL
             IList<T> list;
 
             using (var context = new MHERPEntities())
-            {
+            {                
                 list = context.Database.SqlQuery<T>(sql).ToList();
             }
 
@@ -113,6 +113,7 @@ namespace Orkidea.MH.WebMiddle.DAL
 
             using (var context = new MHERPEntities())
             {
+                context.Database.CommandTimeout = 9000;
                 genericObject = context.Database.SqlQuery<T>(sql).FirstOrDefault();
             }
 

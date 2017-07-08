@@ -1,5 +1,4 @@
 import { ColorComponent } from './../../data-maestra/color/color.component';
-import { EventEmitter } from '@angular/core';
 import { KardexTiendaProductoColor } from './../../Model/KardexTiendaProductoColor';
 import { ReportesService } from './../reportes.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
@@ -12,28 +11,26 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class StockProdColorSucursalComponent implements OnInit {
 
-  cTienda: string = '';
-  cProducto: string = '';
-  cColor: string = '';
+  cTienda: string;
+  cProducto: string;
+  cColor: string;
 
-  modal: string = "";
-  nodos: any;
-  nodoSeleccionado: boolean = false;
-  seguirBuscando: boolean = false;
-  busquedaValida: boolean = false;
-  //busqueda: string = "";
-
+  modal: string;
+  busquedaValida: boolean;
   reporte: ReportesService;
-  emitirParametros = new EventEmitter<string[]>();
 
   @ViewChild('tiendaModal') public tiendaModal: ModalDirective;
   @ViewChild('productoModal') public productModal: ModalDirective;
   @ViewChild('colorModal') public colorModal: ModalDirective;
 
   constructor() { }
-  //constructor(private reportesService: ReportesService) { }
 
   ngOnInit() {
+    this.cTienda = '';
+    this.cProducto = '';
+    this.cColor = '';
+    this.modal = '';
+    this.busquedaValida = false;
     this.consultar();
   }
 
@@ -45,31 +42,32 @@ export class StockProdColorSucursalComponent implements OnInit {
       case 'p':
         this.productModal.hide();
         break;
-      default: this.colorModal.hide();;
+      default: this.colorModal.hide();
     }
   }
 
   selecciona(event: MouseEvent, modal) {
-    this.nodoSeleccionado = false;
+    let nodoSeleccionado: boolean;
+    let nodos: any;
+    let seguirBuscando: boolean;
 
-    //console.log((<HTMLInputElement>event.target).tagName);
-    if ((<HTMLInputElement>event.target).tagName == "BUTTON") {
-      this.nodos = (<HTMLInputElement>event.target).parentNode.parentNode.parentNode.childNodes;
-      this.nodoSeleccionado = true;
+    nodoSeleccionado = false;
+
+    if ((<HTMLInputElement>event.target).tagName === 'BUTTON') {
+      nodos = (<HTMLInputElement>event.target).parentNode.parentNode.parentNode.childNodes;
+      nodoSeleccionado = true;
+    } else if ((<HTMLInputElement>event.target).tagName === 'SPAN') {
+      nodos = (<HTMLInputElement>event.target).parentNode.parentNode.parentNode.parentNode.childNodes;
+      nodoSeleccionado = true;
     }
 
-    else if ((<HTMLInputElement>event.target).tagName == "SPAN") {
-      this.nodos = (<HTMLInputElement>event.target).parentNode.parentNode.parentNode.parentNode.childNodes;
-      this.nodoSeleccionado = true;
-    }
+    if (nodoSeleccionado) {
 
-    if (this.nodoSeleccionado) {
+      seguirBuscando = true;
 
-      this.seguirBuscando = true;
-
-      for (let entry of this.nodos) {
-        if ((<HTMLInputElement>entry).nodeName == 'TD') {
-          if (this.seguirBuscando) {
+      for (const entry of nodos) {
+        if ((<HTMLInputElement>entry).nodeName === 'TD') {
+          if (seguirBuscando) {
             switch (modal) {
               case 't':
                 this.cTienda = (<HTMLInputElement>entry).innerText;
@@ -79,7 +77,7 @@ export class StockProdColorSucursalComponent implements OnInit {
                 break;
               default: this.cColor = (<HTMLInputElement>entry).innerText;
             }
-            this.seguirBuscando = false;
+            seguirBuscando = false;
             this.hideModal(modal);
           }
         }
@@ -92,14 +90,10 @@ export class StockProdColorSucursalComponent implements OnInit {
 
     if (this.cTienda.length > 0 && this.cProducto.length > 0 && this.cColor.length > 0) {
       this.busquedaValida = true;
-      //ReportesService.emisorStockSucursalProdColorParams.emit([this.cTienda, this.cProducto, this.cColor]);
-      //console.log('se emitieron los parametros');
     }
   }
 
   reload() {
-    //this.zone.runOutsideAngular(() => {
     location.reload();
-    //});
   }
 }

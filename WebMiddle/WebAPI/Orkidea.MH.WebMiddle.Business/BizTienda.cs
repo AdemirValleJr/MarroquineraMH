@@ -19,7 +19,7 @@ namespace Orkidea.MH.WebMiddle.Business
         {
             if (!string.IsNullOrEmpty(idRedTiendas))
                 return DbMngmt<Tienda>.executeSqlQueryToList(
-                    string.Format("select COD_FILIAL id, FILIAL descripcion from FILIAIS a where a.REDE_LOJAS = {1} ", idRedTiendas));
+                    string.Format("select COD_FILIAL id, FILIAL descripcion from FILIAIS a where a.REDE_LOJAS = {0} ", idRedTiendas));
             else
                 return GetList();
         }
