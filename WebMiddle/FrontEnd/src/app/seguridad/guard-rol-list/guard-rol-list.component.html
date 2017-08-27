@@ -1,0 +1,31 @@
+<h2>Opciones por rol</h2>
+<hr>
+  <div class="row">
+    <div class="col-md-12">
+    <p-dataTable [value]="guardRoles" [rows]="5" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" emptyMessage="">
+      <p-column field="id" header="Opción"></p-column>
+      <p-column field="descripcion" header="Rol"></p-column>
+      <p-column styleClass="col-button" header="">
+          <ng-template let-rol="rowData" pTemplate="body">
+              <button type="button" class="btn btn-danger" pButton (click)="delete(rol.id, rol.descripcion)"><span class="glyphicon glyphicon-trash"></span>&nbsp; Eliminar</button>
+          </ng-template>
+      </p-column>
+    </p-dataTable>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-md-4">
+      <div class='col-md-offset-5'>
+      <a [routerLink]="['']"  class="btn btn-success"><span class="glyphicon glyphicon-home"></span>&nbsp;Inicio</a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <span> </span>
+    </div>
+    <div class="col-md-4">
+      <div class='col-md-offset-5'>
+      <a [routerLink]="['add']" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span>&nbsp;Nuevo</a>
+      </div>
+    </div>
+  </div>

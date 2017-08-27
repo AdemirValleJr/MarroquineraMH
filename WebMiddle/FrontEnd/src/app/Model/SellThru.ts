@@ -7,11 +7,12 @@ export interface Sellthru {
     DESC_MODELO,
     FABRICANTE,
     COLECAO,
+    LINHA,
     TIPO_PRODUTO,
     DESC_PRODUTO,
     DESC_COR,
     STOCK,
     PRECO_LIQUIDO,
     SEMANAS,
-    ventaPromedio
+    Venta
 }

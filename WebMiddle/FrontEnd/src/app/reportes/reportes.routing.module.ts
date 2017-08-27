@@ -1,3 +1,5 @@
+import { SellThruGuard } from './../Guards/sell-thru.guard';
+import { KardexGuard } from './../Guards/kardex.guard';
 import { SellTrhuDetalleComponent } from './sell-trhu-detalle/sell-trhu-detalle.component';
 import { SellTrhuComponent } from './sell-trhu/sell-trhu.component';
 import { StockProdColorSucursalDetalleComponent } from './stock-prod-color-sucursal-detalle/stock-prod-color-sucursal-detalle.component';
@@ -11,20 +13,24 @@ const reportesRoutes: Routes = [
     {
         path: 'reportes/kardex',
         component: StockProdColorSucursalComponent,
+        canActivate: [KardexGuard],
         children: [
             {
                 path: ':idTienda/:idProducto/:idColor',
-                component: StockProdColorSucursalDetalleComponent
+                component: StockProdColorSucursalDetalleComponent,
+                canActivateChild: [KardexGuard]
             }
         ]
     },
     {
         path: 'reportes/sellthru',
         component: SellTrhuComponent,
+        canActivate: [SellThruGuard],
         children: [
             {
-                path: ':idProductFilter/:idStoreFilter/:idGroupers',
-                component: SellTrhuDetalleComponent
+                path: ':idProductFilter/:idStoreFilter/:idGroupers/:idOtros',
+                component: SellTrhuDetalleComponent,
+                canActivateChild: [SellThruGuard]
             }
         ]
     },

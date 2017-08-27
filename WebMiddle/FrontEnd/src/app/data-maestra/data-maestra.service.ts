@@ -66,6 +66,12 @@ export class DataMaestraService {
       .map(res => <MaestroModel[]>res.json());
   }
 
+  obtenerColecciones() {
+    return this.http.get(`${config.appApiUrl}/coleccion`)
+      .map(res => <MaestroModel[]>res.json());
+  }
+
+
   obtenerTiposProducto() {
     return this.http.get(`${config.appApiUrl}/TipoProducto`)
       .map(res => <MaestroModel[]>res.json());

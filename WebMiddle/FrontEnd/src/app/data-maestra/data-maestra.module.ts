@@ -12,6 +12,7 @@ import { SubgrupoProductosComponent } from './subgrupo-productos/subgrupo-produc
 import { ModeloComponent } from './modelo/modelo.component';
 import { RedTiendasComponent } from './red-tiendas/red-tiendas.component';
 import { TemporadaComponent } from './temporada/temporada.component';
+import { ColeccionComponent } from './coleccion/coleccion.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { TemporadaComponent } from './temporada/temporada.component';
     SubgrupoProductosComponent,
     ModeloComponent,
     RedTiendasComponent,
-    TemporadaComponent
+    TemporadaComponent,
+    ColeccionComponent
     ],
   providers: [DataMaestraService]
 })

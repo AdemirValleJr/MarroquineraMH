@@ -1,4 +1,4 @@
 [{
     "id": "apiUrl",
-    "descripcion":"http://localhost:8999/api"
+    "descripcion":"http://sapserver/mhwebapi/api"
 }]

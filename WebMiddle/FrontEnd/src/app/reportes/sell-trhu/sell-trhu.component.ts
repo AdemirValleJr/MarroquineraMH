@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { SubgrupoProducto } from './../../Model/SubgrupoProducto';
 import { MaestroModel } from './../../Model/MaestroModel';
 import { ReportesService } from './../reportes.service';
@@ -19,6 +20,7 @@ export class SellTrhuComponent implements OnInit {
   colores: MaestroModel[];
   fabricantes: MaestroModel[];
   temporadas: MaestroModel[];
+  colecciones: MaestroModel[];
   tiposProd: MaestroModel[];
   sexos: MaestroModel[];
 
@@ -30,10 +32,12 @@ export class SellTrhuComponent implements OnInit {
   color: string;
   fabricante: string;
   temporada: string;
+  coleccion: string;
   tipo: string;
   sexo: string;
   producto: string;
-  corte: Date;
+  corteDesde: Date;
+  corteHasta: Date;
 
   colRed: boolean;
   colTienda: boolean;
@@ -43,6 +47,10 @@ export class SellTrhuComponent implements OnInit {
   colColor: boolean;
   colFabricante: boolean;
   colTemporada: boolean;
+  colColeccion: boolean;
+  colVentas: boolean;
+  colSemanas: boolean;
+
   colTipo: boolean;
   colSexo: boolean;
   colProducto: boolean;
@@ -50,35 +58,16 @@ export class SellTrhuComponent implements OnInit {
   queryTiendas: string;
   queryProducto: string;
   agrupadores: string;
+  otrasColumnas: string;
 
   es: any;
 
   @ViewChild('productoModal') public productModal: ModalDirective;
 
-  constructor(private _dataService: ReportesService) {
-    this.red = '';
-    this.tienda = '';
-    this.grupo  = '';
-    this.subgrupo  = '';
-    this.modelo  = '';
-    this.color = '';
-    this.fabricante = '';
-    this.temporada = '';
-    this.tipo = '';
-    this.sexo = '';
-    this.producto = 'Todos';
+  constructor(private _dataService: ReportesService, private router: Router) {
+    console.clear();
 
-    this.colRed = false;
-    this.colTienda = false;
-    this.colGrupo = false;
-    this.colSubgrupo = false;
-    this.colModelo = false;
-    this.colColor = false;
-    this.colFabricante = false;
-    this.colTemporada = false;
-    this.colTipo = false;
-    this.colSexo = false;
-    this.colProducto = false;
+    this.resetea();
 
     this._dataService.obtenerRedTiendas()
     .subscribe(res => this.redesTiendas = res);
@@ -98,12 +87,13 @@ export class SellTrhuComponent implements OnInit {
     this._dataService.obtenertemporadas()
     .subscribe(res => this.temporadas = res);
 
+    this._dataService.obtenerColecciones()
+    .subscribe(res => this.colecciones = res);
+
     this._dataService.obtenerTiposProducto()
     .subscribe(res => this.tiposProd = res);
 
     this.sexos = this._dataService.obtenerSexos();
-
-    this.corte = new Date();
 
     this.buildTiendaQuery();
     this.buildProdQuery();
@@ -173,7 +163,7 @@ export class SellTrhuComponent implements OnInit {
   }
 
   buildTiendaQuery() {
-    this.queryTiendas = this.red.trim() + '@' + this.tienda.trim();
+    this.queryTiendas = this.red.trim() + '--' + this.tienda.trim();
   }
 
   buildProdQuery() {
@@ -184,13 +174,27 @@ export class SellTrhuComponent implements OnInit {
     prod = this.producto.trim() !== 'Todos' ? this.producto.trim().replace(separador, '_') : '';
 
     this.queryProducto =
-      this.grupo.trim() + '@' + this.subgrupo.trim() + '@' + this.sexo.trim() + '@' +
-      this.modelo.trim() + '@' + this.fabricante.trim() + '@' + this.temporada.trim() + '@' +
-      this.tipo.trim() + '@' + prod +
-      '@' + this.color.trim() + '@' + this.corte.getFullYear() + '-' + (this.corte.getMonth() + 1) + '-' + this.corte.getDate();
+      this.grupo.trim() + '--' + this.subgrupo.trim() + '--' + this.sexo.trim() + '--' +
+      this.modelo.trim() + '--' + this.fabricante.trim() + '--' + this.temporada.trim() + '--' +
+      this.tipo.trim() + '--' + this.coleccion.trim() + '--' + prod + '--' + this.color.trim() + '--' +
+      this.corteDesde.getFullYear() + '-' + (this.corteDesde.getMonth() + 1) + '-' + this.corteDesde.getDate() + '--' +
+      this.corteHasta.getFullYear() + '-' + (this.corteHasta.getMonth() + 1) + '-' + this.corteHasta.getDate();
   }
 
   buildAgrupadores() {
+
+    this.otrasColumnas = '';
+    if ( this.colSemanas ) {
+      this.otrasColumnas = '1';
+    } else {
+      this.otrasColumnas = '';
+    }
+
+    if ( this.colVentas ) {
+      this.otrasColumnas += '--' + '1';
+    } else {
+      this.otrasColumnas += '--';
+    }
 
     this.agrupadores = '';
 
@@ -201,63 +205,104 @@ export class SellTrhuComponent implements OnInit {
     }
 
     if ( this.colTienda ) {
-      this.agrupadores += '@' + '1';
+      this.agrupadores += '--' + '1';
     } else {
-      this.agrupadores += '@';
+      this.agrupadores += '--';
     }
 
     if ( this.colGrupo ) {
-      this.agrupadores += '@' + '1';
+      this.agrupadores += '--' + '1';
     } else {
-      this.agrupadores += '@';
+      this.agrupadores += '--';
     }
 
     if ( this.colSubgrupo ) {
-      this.agrupadores += '@' + '1';
+      this.agrupadores += '--' + '1';
     } else {
-      this.agrupadores += '@';
+      this.agrupadores += '--';
     }
 
     if ( this.colModelo ) {
-      this.agrupadores += '@' + '1';
+      this.agrupadores += '--' + '1';
     } else {
-      this.agrupadores += '@';
+      this.agrupadores += '--';
     }
 
     if ( this.colFabricante ) {
-      this.agrupadores += '@' + '1';
+      this.agrupadores += '--' + '1';
     } else {
-      this.agrupadores += '@';
+      this.agrupadores += '--';
     }
 
     if ( this.colTemporada ) {
-      this.agrupadores += '@' + '1';
+      this.agrupadores += '--' + '1';
     } else {
-      this.agrupadores += '@';
+      this.agrupadores += '--';
     }
 
     if ( this.colSexo ) {
-      this.agrupadores += '@' + '1';
+      this.agrupadores += '--' + '1';
     } else {
-      this.agrupadores += '@';
+      this.agrupadores += '--';
     }
 
     if ( this.colTipo ) {
-      this.agrupadores += '@' + '1';
+      this.agrupadores += '--' + '1';
     } else {
-      this.agrupadores += '@';
+      this.agrupadores += '--';
     }
 
     if ( this.colColor ) {
-      this.agrupadores += '@' + '1';
+      this.agrupadores += '--' + '1';
     } else {
-      this.agrupadores += '@';
+      this.agrupadores += '--';
     }
 
     if ( this.colProducto ) {
-      this.agrupadores += '@' + '1';
+      this.agrupadores += '--' + '1';
     } else {
-      this.agrupadores += '@';
+      this.agrupadores += '--';
     }
+
+    if ( this.colColeccion ) {
+      this.agrupadores += '--' + '1';
+    } else {
+      this.agrupadores += '--';
+    }
+  }
+
+  resetea() {
+    this.red = '';
+    this.tienda = '';
+    this.grupo  = '';
+    this.subgrupo  = '';
+    this.modelo  = '';
+    this.color = '';
+    this.fabricante = '';
+    this.temporada = '';
+    this.coleccion = '';
+
+    this.tipo = '';
+    this.sexo = '';
+    this.producto = 'Todos';
+
+    this.colRed = false;
+    this.colTienda = false;
+    this.colGrupo = false;
+    this.colSubgrupo = false;
+    this.colModelo = false;
+    this.colColor = false;
+    this.colFabricante = false;
+    this.colTemporada = false;
+    this.colColeccion = false;
+    this.colTipo = false;
+    this.colSexo = false;
+    this.colProducto = false;
+    this.colVentas = false;
+    this.colSemanas = false;
+
+    this.corteDesde = new Date();
+    this.corteDesde.setDate(this.corteDesde.getDate() - 30);
+    this.corteHasta = new Date();
   }
 }

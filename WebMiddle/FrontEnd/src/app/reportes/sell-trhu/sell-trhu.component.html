@@ -6,7 +6,7 @@
     <div class="col-md-3">
       <div class="form-group">
         <label for="txtRed">Red tiendas</label>
-        <select class="form-control" [(ngModel)]="red" (change)="onRedSelect($event.target.value)">
+        <select id="red" class="form-control" [(ngModel)]="red" (change)="onRedSelect($event.target.value)">
           <option value="">-- Todos --</option>
           <option *ngFor="let red of redesTiendas" value= {{red.id}}>{{[red.descripcion]}}</option>
         </select>
@@ -75,6 +75,17 @@
         </select>
       </div>
     </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txtColeccion">Coleccion</label>
+        <select class="form-control" [(ngModel)]="coleccion" (change)="buildProdQuery()">
+          <option value="">-- Todos --</option>
+          <option *ngFor="let coleccion of colecciones " value= {{coleccion.id}}>{{coleccion.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+
     <div class="col-md-3">
       <div class="form-group">
         <label for="txtTipo">Tipo producto</label>
@@ -84,6 +95,7 @@
         </select>
       </div>
     </div>
+
     <div class="col-md-3">
       <div class="form-group">
         <label for="txtSexo">Sexo</label>
@@ -100,12 +112,28 @@
         <input [(ngModel)]="producto" type="text" class="form-control" id="txtProducto" placeholder="Producto" disabled>
       </div>
     </div>
+
     <div class="col-md-3">
       <div class="form-group">
-        <label for="txtSexo">Corte a:</label><br>
-        <p-calendar [(ngModel)]="corte" [showIcon]="true" [inputStyle] ="{'padding':'6px 12px','max-width':'104px'}"
+        <label for="txthasta">Ventas desde:</label><br>
+        <p-calendar [(ngModel)]="corteDesde" [showIcon]="true" [inputStyle] ="{'padding':'6px 12px','max-width':'104px'}"
         dateFormat="yy-mm-dd" [locale]="es" (click)="buildProdQuery()"></p-calendar>
       </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="txthasta">Ventas hasta:</label><br>
+        <p-calendar [(ngModel)]="corteHasta" [showIcon]="true" [inputStyle] ="{'padding':'6px 12px','max-width':'104px'}"
+        dateFormat="yy-mm-dd" [locale]="es" (click)="buildProdQuery()"></p-calendar>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <br>
+      <button class="btn" (click)="resetea()">Resetear</button>
+      <span>&nbsp;|&nbsp; </span>
+      <a [routerLink]="[queryProducto, queryTiendas, agrupadores, otrasColumnas]" class="btn btn-warning">Generar</a>
     </div>
   </div>
   <div class="col-md-4">
@@ -163,6 +191,13 @@
     <div class="col-md-6">
       <div class="checkbox">
         <label>
+          <input type="checkbox" [(ngModel)] ="colColeccion" (change)="buildAgrupadores()">Coleccion
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
           <input type="checkbox" [(ngModel)] ="colSexo" (change)="buildAgrupadores()">Sexo
         </label>
       </div>
@@ -189,7 +224,18 @@
       </div>
     </div>
     <div class="col-md-6">
-      <a [routerLink]="[queryProducto, queryTiendas, agrupadores]" class="btn btn-warning">Buscar</a>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colSemanas" (change)="buildAgrupadores()">Semanas
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)] ="colVentas" (change)="buildAgrupadores()">Ventas
+        </label>
+      </div>
     </div>
   </div>
 </div>

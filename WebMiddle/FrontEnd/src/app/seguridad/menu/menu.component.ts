@@ -1,3 +1,4 @@
+import { SeguridadService } from './../seguridad.service';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  usuarioLogueado: boolean;
+
+  constructor(private SeguridadService: SeguridadService) { }
 
   ngOnInit() {
+    this.SeguridadService.mostrarMenu.subscribe(
+      logueado => this.usuarioLogueado = logueado
+    );
   }
 
 }

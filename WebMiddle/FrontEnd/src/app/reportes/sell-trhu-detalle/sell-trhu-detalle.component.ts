@@ -23,11 +23,14 @@ export class SellTrhuDetalleComponent implements OnInit {
   showModelo: boolean;
   showFabricante: boolean;
   showTemporada: boolean;
+  showColeccion: boolean;
   showTipo: boolean;
   showProducto: boolean;
   showColor: boolean;
+  showSemanas: boolean;
+  showVentas: boolean;
 
-cols:string[];
+cols: string[];
 
   constructor(private route: ActivatedRoute, private reportesService: ReportesService) {
     this.showRed = false;
@@ -38,10 +41,12 @@ cols:string[];
     this.showModelo = false;
     this.showFabricante = false;
     this.showTemporada = false;
+    this.showColeccion = false;
     this.showTipo = false;
     this.showProducto = false;
     this.showColor = false;
-
+    this.showSemanas = false;
+    this.showVentas = false;
   }
 
   ngOnInit() {
@@ -50,9 +55,25 @@ cols:string[];
         const productFilter = params['idProductFilter'];
         const storeFilter = params['idStoreFilter'];
         const groupers = params['idGroupers'];
+        const otros = params['idOtros'];
+
+        let otrasCols: string[];
+        otrasCols = otros.split('--');
+
+        if (otrasCols[0].length > 0) {
+          this.showSemanas = true;
+        } else {
+          this.showSemanas = false;
+        }
+
+        if (otrasCols[1].length > 0) {
+          this.showVentas = true;
+        } else {
+          this.showVentas = false;
+        }
 
         let columnas: string[];
-        columnas = groupers.split('@');
+        columnas = groupers.split('--');
         this.cols = columnas;
 
         if ( columnas[0].length > 0 ) {
@@ -119,6 +140,12 @@ cols:string[];
           this.showProducto = true;
         } else {
           this.showProducto = false;
+        }
+
+        if ( columnas[11].length > 0 ) {
+          this.showColeccion = true;
+        } else {
+          this.showColeccion = false;
         }
 
         this.reportesService.obtenerSellThru(productFilter, storeFilter, groupers)

@@ -69,6 +69,10 @@ export class ReportesService {
     return this.dataMaestraService.obtenerTemporadas();
   }
 
+  obtenerColecciones() {
+    return this.dataMaestraService.obtenerColecciones();
+  }
+
   obtenerTiposProducto() {
     return this.dataMaestraService.obtenerTiposProducto();
   }

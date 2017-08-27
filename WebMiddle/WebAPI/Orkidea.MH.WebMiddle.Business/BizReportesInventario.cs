@@ -45,12 +45,12 @@ namespace Orkidea.MH.WebMiddle.Business
             #region filtro productos
             string productFilter = string.Empty;
 
-            string[] filters = productFilters.Split('@');
+            string[] filters = productFilters.Split(new[] { "--" }, StringSplitOptions.None);
             bool gotFilter = false, addAnd = false;
             StringBuilder oSql = new StringBuilder();
 
-            if (!string.IsNullOrEmpty(productFilters.Split('@')[7]))
-                productFilter = string.Format(" = '{0}'", productFilters.Split('@')[7]);
+            if (!string.IsNullOrEmpty(productFilters.Split(new[] { "--" }, StringSplitOptions.None)[8]))
+                productFilter = string.Format(" PRODUTO = '{0}'", productFilters.Split(new[] { "--" }, StringSplitOptions.None)[8].Replace('_', '.'));
             else
             {
                 for (int i = 0; i < 7; i++)
@@ -117,6 +117,14 @@ namespace Orkidea.MH.WebMiddle.Business
                                 addAnd = true;
                                 break;
 
+                            case 7:
+                                if (addAnd)
+                                    oSql.Append(" and ");
+
+                                oSql.Append(string.Format("COD_LINHA = '{0}' ", filters[i]));
+                                addAnd = true;
+                                break;
+
                             default:
                                 break;
                         }
@@ -130,48 +138,54 @@ namespace Orkidea.MH.WebMiddle.Business
             // filtro por color
             string colorFilter = string.Empty; 
 
-            if (!string.IsNullOrEmpty(productFilters.Split('@')[8]))
+            if (!string.IsNullOrEmpty(productFilters.Split(new[] { "--" }, StringSplitOptions.None)[9]))
             {
                 if (!string.IsNullOrEmpty(productFilter))                                 
                     colorFilter = " AND ";
 
-                colorFilter += string.Format("cor_produto = '{0}' ", productFilters.Split('@')[8]);
+                colorFilter += string.Format("cor_produto = '{0}' ", productFilters.Split(new[] { "--" }, StringSplitOptions.None)[9]);
             }
 
             // filtro por fecha
             string dateFilter = string.Empty;
+            string dateColumn = string.Empty;
 
-            if (!string.IsNullOrEmpty(productFilters.Split('@')[9]))
+            if (!string.IsNullOrEmpty(productFilters.Split(new[] { "--" }, StringSplitOptions.None)[10]) && !string.IsNullOrEmpty(productFilters.Split(new[] { "--" }, StringSplitOptions.None)[11]))
             {
-                if (!string.IsNullOrEmpty(productFilter + colorFilter))                    
-                    dateFilter = " AND ";
+                string dateFrom = productFilters.Split(new[] { "--" }, StringSplitOptions.None)[10];
+                string dateTo = productFilters.Split(new[] { "--" }, StringSplitOptions.None)[11];
 
-                dateFilter += string.Format("data_venda <= '{0}'", productFilters.Split('@')[9]);
+                dateFilter = string.Format("data_venda between '{0}' and '{1}'", dateFrom , dateTo);
+
+                if (dateFrom.Split('-')[1] == dateTo.Split('-')[1])
+                    dateColumn = "1";
+                else
+                    dateColumn = string.Format(" DATEDIFF(MM, '{0}','{1}')", dateFrom, dateTo);
             }
 
             //Obtener tiendas a consultar
             string storeFilter = string.Empty;
 
-            if (!string.IsNullOrEmpty(storeFilters.Split('@')[1]))
+            if (!string.IsNullOrEmpty(storeFilters.Split(new[] { "--" }, StringSplitOptions.None)[1]))
             {
-                if (!string.IsNullOrEmpty(productFilter + colorFilter + dateFilter))
+                if (!string.IsNullOrEmpty(productFilter + colorFilter))
                     storeFilter = " AND ";
 
-                storeFilter += string.Format("COD_FILIAL = '{0}' ", storeFilters.Split('@')[1]);
+                storeFilter += string.Format("COD_FILIAL = '{0}' ", storeFilters.Split(new[] { "--" }, StringSplitOptions.None)[1]);
             }
-            else if (!string.IsNullOrEmpty(storeFilters.Split('@')[0]))
+            else if (!string.IsNullOrEmpty(storeFilters.Split(new[] { "--" }, StringSplitOptions.None)[0]))
             {
-                if (!string.IsNullOrEmpty(productFilter + colorFilter + dateFilter))
+                if (!string.IsNullOrEmpty(productFilter + colorFilter))
                     storeFilter = " AND ";
 
-                storeFilter += string.Format("REDE_LOJAS = ({0}) ", storeFilters.Split('@')[0]);
+                storeFilter += string.Format("REDE_LOJAS = ({0}) ", storeFilters.Split(new[] { "--" }, StringSplitOptions.None)[0]);
             }
             else
                 storeFilter = "";
 
             //Obtener campos agrupadores
             #region Columnas
-            string[] agrupador = groupers.Split('@');
+            string[] agrupador = groupers.Split(new[] { "--" }, StringSplitOptions.None);
             string agrupadores = "";
 
             if (!string.IsNullOrEmpty(agrupador[0]))
@@ -237,6 +251,12 @@ namespace Orkidea.MH.WebMiddle.Business
                 else
                     agrupadores += ", DESC_PRODUTO";
 
+            if (!string.IsNullOrEmpty(agrupador[11]))
+                if (string.IsNullOrEmpty(agrupadores))
+                    agrupadores = "LINHA";
+                else
+                    agrupadores += ", LINHA";
+
             if (!string.IsNullOrEmpty(agrupadores))
                 agrupadores += ", ";
 
@@ -245,6 +265,8 @@ namespace Orkidea.MH.WebMiddle.Business
 
             // Obtener sell thru
             StringBuilder oSqlSellThru = new StringBuilder();
+
+            /*
             oSqlSellThru.Append(string.Format("SELECT {0} ", agrupadores));
             oSqlSellThru.Append(" SEMANAS, SUM(ESTOQUE) STOCK, SUM(qtde) Venta, AVG(qtde) ventaPromedio, round(cast(SUM(qtde) as decimal(14,2))/(SUM(ESTOQUE)+ SUM(qtde)), 2) sellThru, ");
             oSqlSellThru.Append(" round(cast(SUM(ESTOQUE)as decimal(14,2))/ SUM(qtde), 2) mesesInventario ");
@@ -254,6 +276,25 @@ namespace Orkidea.MH.WebMiddle.Business
             oSqlSellThru.Append(string.Format("{0} ", dateFilter));
             oSqlSellThru.Append(string.Format("{0} ", storeFilter));            
             oSqlSellThru.Append(string.Format("GROUP BY {0} SEMANAS ", agrupadores));
+            */
+
+            oSqlSellThru.Append(string.Format("SELECT {0} ", agrupadores));
+            oSqlSellThru.Append("LEFT(CONVERT(VARCHAR, EMISSAO, 120), 10) EMISSAO, SEMANAS, SUM(ESTOQUE) STOCK, SUM(qtde) Venta ");
+            oSqlSellThru.Append(",case when SUM(ESTOQUE) + SUM(qtde) > 0 then round(cast(SUM(qtde) as decimal(14,2))/(SUM(ESTOQUE)+ SUM(qtde)), 2) else 0 end sellThru ");
+            //oSqlSellThru.Append(",case when SUM(qtde) > 0 then round(cast(SUM(ESTOQUE)as decimal(14,2))/ SUM(qtde), 2) else 0 end mesesInventario ");            
+            oSqlSellThru.Append(string.Format(",case when SUM(ESTOQUE) + SUM(qtde) > 0 then round(SUM(ESTOQUE)/(SUM(cast(qtde as decimal(14,2)))/{0}), 2) else 0 end mesesInventario ", dateColumn));
+            oSqlSellThru.Append("from (select a.CODIGO_GRUPO, a.GRUPO_PRODUTO, a.CODIGO_SUBGRUPO, a.SUBGRUPO_PRODUTO, a.SEXO_TIPO, a.DESC_SEXO_TIPO, a.MODELAGEM, a.DESC_MODELO, a.CLIFOR ");
+            oSqlSellThru.Append(", a.FABRICANTE, a.COLECAO, a.COD_TIPO_PRODUTO, a.TIPO_PRODUTO, a.PRODUTO, a.PRODUTO + ':' + a.DESC_PRODUTO DESC_PRODUTO  , a.COR_PRODUTO, a.DESC_COR ");
+            oSqlSellThru.Append(", a.REDE_LOJAS, a.DESC_REDE_LOJAS, a.COD_FILIAL, a.FILIAL, a.ESTOQUE, b.QTDE, a.COD_LINHA, a.LINHA, SEMANAS, EMISSAO ");
+            oSqlSellThru.Append("from ORK_SELLTHRU_STOCK a inner join (SELECT PRODUTO, COR_PRODUTO, COD_FILIAL, sum(QTDE) QTDE ");
+            oSqlSellThru.Append(string.Format("from ORK_SELLTHRU_VENTA where {0} group by PRODUTO, COR_PRODUTO, COD_FILIAL ) b ON ", dateFilter));
+            oSqlSellThru.Append("a.PRODUTO = b.PRODUTO AND a.COR_PRODUTO = b.COR_PRODUTO AND a.COD_FILIAL = b.COD_FILIAL ");
+            oSqlSellThru.Append("LEFT JOIN ORK_SELLTHRU_SEMANAS_INVENTARIO c ON a.PRODUTO = c.PRODUTO ) c ");
+
+            oSqlSellThru.Append(string.Format("WHERE {0} ", productFilter));
+            oSqlSellThru.Append(colorFilter);
+            oSqlSellThru.Append(string.Format("{0} ", storeFilter));
+            oSqlSellThru.Append(string.Format("GROUP BY {0} LEFT(CONVERT(VARCHAR, EMISSAO, 120), 10), SEMANAS ", agrupadores));
 
             return DbMngmt<SellTru>.executeSqlQueryToList(oSqlSellThru.ToString());
         }
