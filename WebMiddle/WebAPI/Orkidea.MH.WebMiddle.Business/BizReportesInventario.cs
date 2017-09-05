@@ -53,7 +53,7 @@ namespace Orkidea.MH.WebMiddle.Business
                 productFilter = string.Format(" PRODUTO = '{0}'", productFilters.Split(new[] { "--" }, StringSplitOptions.None)[8].Replace('_', '.'));
             else
             {
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 8; i++)
                 {
                     if (!string.IsNullOrEmpty(filters[i]))
                     {
@@ -131,19 +131,21 @@ namespace Orkidea.MH.WebMiddle.Business
                     }
                 }
 
-                productFilter = oSql.ToString();
+                productFilter = oSql.ToString().Trim().Length> 0? string.Format("and {0}", oSql.ToString()):"";
             }
             #endregion            
 
             // filtro por color
             string colorFilter = string.Empty; 
+            string colorSemanas = "'vacio'";
 
             if (!string.IsNullOrEmpty(productFilters.Split(new[] { "--" }, StringSplitOptions.None)[9]))
             {
-                if (!string.IsNullOrEmpty(productFilter))                                 
+                //if (!string.IsNullOrEmpty(productFilter))                                 
                     colorFilter = " AND ";
 
                 colorFilter += string.Format("cor_produto = '{0}' ", productFilters.Split(new[] { "--" }, StringSplitOptions.None)[9]);
+                colorSemanas = "a.cor_produto";
             }
 
             // filtro por fecha
@@ -168,14 +170,14 @@ namespace Orkidea.MH.WebMiddle.Business
 
             if (!string.IsNullOrEmpty(storeFilters.Split(new[] { "--" }, StringSplitOptions.None)[1]))
             {
-                if (!string.IsNullOrEmpty(productFilter + colorFilter))
+                //if (!string.IsNullOrEmpty(productFilter + colorFilter))
                     storeFilter = " AND ";
 
-                storeFilter += string.Format("COD_FILIAL = '{0}' ", storeFilters.Split(new[] { "--" }, StringSplitOptions.None)[1]);
+                storeFilter += string.Format("a.COD_FILIAL = '{0}' ", storeFilters.Split(new[] { "--" }, StringSplitOptions.None)[1]);
             }
             else if (!string.IsNullOrEmpty(storeFilters.Split(new[] { "--" }, StringSplitOptions.None)[0]))
             {
-                if (!string.IsNullOrEmpty(productFilter + colorFilter))
+                //if (!string.IsNullOrEmpty(productFilter + colorFilter))
                     storeFilter = " AND ";
 
                 storeFilter += string.Format("REDE_LOJAS = ({0}) ", storeFilters.Split(new[] { "--" }, StringSplitOptions.None)[0]);
@@ -240,10 +242,14 @@ namespace Orkidea.MH.WebMiddle.Business
                     agrupadores += ", TIPO_PRODUTO";
 
             if (!string.IsNullOrEmpty(agrupador[9]))
+            {
                 if (string.IsNullOrEmpty(agrupadores))
-                    agrupadores = "DESC_COR";
+                    agrupadores = "DESC_COR, a.cor_produto";
                 else
-                    agrupadores += ", DESC_COR";
+                    agrupadores += ", DESC_COR, a.cor_produto";
+
+                colorSemanas = "a.cor_produto";
+            }
 
             if (!string.IsNullOrEmpty(agrupador[10]))
                 if (string.IsNullOrEmpty(agrupadores))
@@ -278,23 +284,69 @@ namespace Orkidea.MH.WebMiddle.Business
             oSqlSellThru.Append(string.Format("GROUP BY {0} SEMANAS ", agrupadores));
             */
 
-            oSqlSellThru.Append(string.Format("SELECT {0} ", agrupadores));
-            oSqlSellThru.Append("LEFT(CONVERT(VARCHAR, EMISSAO, 120), 10) EMISSAO, SEMANAS, SUM(ESTOQUE) STOCK, SUM(qtde) Venta ");
-            oSqlSellThru.Append(",case when SUM(ESTOQUE) + SUM(qtde) > 0 then round(cast(SUM(qtde) as decimal(14,2))/(SUM(ESTOQUE)+ SUM(qtde)), 2) else 0 end sellThru ");
-            //oSqlSellThru.Append(",case when SUM(qtde) > 0 then round(cast(SUM(ESTOQUE)as decimal(14,2))/ SUM(qtde), 2) else 0 end mesesInventario ");            
-            oSqlSellThru.Append(string.Format(",case when SUM(ESTOQUE) + SUM(qtde) > 0 then round(SUM(ESTOQUE)/(SUM(cast(qtde as decimal(14,2)))/{0}), 2) else 0 end mesesInventario ", dateColumn));
-            oSqlSellThru.Append("from (select a.CODIGO_GRUPO, a.GRUPO_PRODUTO, a.CODIGO_SUBGRUPO, a.SUBGRUPO_PRODUTO, a.SEXO_TIPO, a.DESC_SEXO_TIPO, a.MODELAGEM, a.DESC_MODELO, a.CLIFOR ");
-            oSqlSellThru.Append(", a.FABRICANTE, a.COLECAO, a.COD_TIPO_PRODUTO, a.TIPO_PRODUTO, a.PRODUTO, a.PRODUTO + ':' + a.DESC_PRODUTO DESC_PRODUTO  , a.COR_PRODUTO, a.DESC_COR ");
-            oSqlSellThru.Append(", a.REDE_LOJAS, a.DESC_REDE_LOJAS, a.COD_FILIAL, a.FILIAL, a.ESTOQUE, b.QTDE, a.COD_LINHA, a.LINHA, SEMANAS, EMISSAO ");
-            oSqlSellThru.Append("from ORK_SELLTHRU_STOCK a inner join (SELECT PRODUTO, COR_PRODUTO, COD_FILIAL, sum(QTDE) QTDE ");
-            oSqlSellThru.Append(string.Format("from ORK_SELLTHRU_VENTA where {0} group by PRODUTO, COR_PRODUTO, COD_FILIAL ) b ON ", dateFilter));
-            oSqlSellThru.Append("a.PRODUTO = b.PRODUTO AND a.COR_PRODUTO = b.COR_PRODUTO AND a.COD_FILIAL = b.COD_FILIAL ");
-            oSqlSellThru.Append("LEFT JOIN ORK_SELLTHRU_SEMANAS_INVENTARIO c ON a.PRODUTO = c.PRODUTO ) c ");
+            //oSqlSellThru.Append(string.Format("SELECT {0} ", agrupadores));
+            //oSqlSellThru.Append("LEFT(CONVERT(VARCHAR, EMISSAO, 120), 10) EMISSAO, SEMANAS, SUM(ESTOQUE) STOCK, SUM(qtde) Venta ");
+            //oSqlSellThru.Append(",case when SUM(ESTOQUE) + SUM(qtde) > 0 then round(cast(SUM(qtde) as decimal(14,2))/(SUM(ESTOQUE)+ SUM(qtde)), 2) else 0 end sellThru ");
+            ////oSqlSellThru.Append(",case when SUM(qtde) > 0 then round(cast(SUM(ESTOQUE)as decimal(14,2))/ SUM(qtde), 2) else 0 end mesesInventario ");            
+            //oSqlSellThru.Append(string.Format(",case when SUM(ESTOQUE) + SUM(qtde) > 0 then round(SUM(ESTOQUE)/(SUM(cast(qtde as decimal(14,2)))/{0}), 2) else 0 end mesesInventario ", dateColumn));
+            //oSqlSellThru.Append("from (select a.CODIGO_GRUPO, a.GRUPO_PRODUTO, a.CODIGO_SUBGRUPO, a.SUBGRUPO_PRODUTO, a.SEXO_TIPO, a.DESC_SEXO_TIPO, a.MODELAGEM, a.DESC_MODELO, a.CLIFOR ");
+            //oSqlSellThru.Append(", a.FABRICANTE, a.COLECAO, a.COD_TIPO_PRODUTO, a.TIPO_PRODUTO, a.PRODUTO, a.PRODUTO + ':' + a.DESC_PRODUTO DESC_PRODUTO  , a.COR_PRODUTO, a.DESC_COR ");
+            //oSqlSellThru.Append(", a.REDE_LOJAS, a.DESC_REDE_LOJAS, a.COD_FILIAL, a.FILIAL, a.ESTOQUE, b.QTDE, a.COD_LINHA, a.LINHA, SEMANAS, EMISSAO ");
+            //oSqlSellThru.Append("from ORK_SELLTHRU_STOCK a inner join (SELECT PRODUTO, COR_PRODUTO, COD_FILIAL, sum(QTDE) QTDE ");
+            //oSqlSellThru.Append(string.Format("from ORK_SELLTHRU_VENTA where {0} group by PRODUTO, COR_PRODUTO, COD_FILIAL ) b ON ", dateFilter));
+            //oSqlSellThru.Append("a.PRODUTO = b.PRODUTO AND a.COR_PRODUTO = b.COR_PRODUTO AND a.COD_FILIAL = b.COD_FILIAL ");
+            //oSqlSellThru.Append("LEFT JOIN ORK_SELLTHRU_SEMANAS_INVENTARIO c ON a.PRODUTO = c.PRODUTO ) c ");
 
-            oSqlSellThru.Append(string.Format("WHERE {0} ", productFilter));
-            oSqlSellThru.Append(colorFilter);
-            oSqlSellThru.Append(string.Format("{0} ", storeFilter));
-            oSqlSellThru.Append(string.Format("GROUP BY {0} LEFT(CONVERT(VARCHAR, EMISSAO, 120), 10), SEMANAS ", agrupadores));
+            //oSqlSellThru.Append(string.Format("WHERE {0} ", productFilter));
+            //oSqlSellThru.Append(colorFilter);
+            //oSqlSellThru.Append(string.Format("{0} ", storeFilter));
+            //oSqlSellThru.Append(string.Format("GROUP BY {0} LEFT(CONVERT(VARCHAR, EMISSAO, 120), 10), SEMANAS ", agrupadores));
+
+            oSqlSellThru.AppendLine("declare @ventas table (rede_lojas varchar(6), cod_filial varchar(5), produto varchar(15), cor_produto varchar(5), qtde int) ");
+            oSqlSellThru.AppendLine("declare @stock table (rede_lojas varchar(6), cod_filial varchar(5), produto varchar(15), cor_produto varchar(5), stock int) ");
+            oSqlSellThru.AppendLine("declare @baseSellThru table (rede_lojas varchar(6), cod_filial varchar(5), produto varchar(15), cor_produto varchar(5), qtde int, stock int) ");
+            oSqlSellThru.AppendLine("");
+            oSqlSellThru.AppendLine("insert into @ventas ");
+            oSqlSellThru.AppendLine("SELECT a.REDE_LOJAS, COD_FILIAL, a.PRODUTO, COR_PRODUTO, sum(QTDE) QTDE ");
+            oSqlSellThru.AppendLine("from ORK_SELLTHRU_VENTA a INNER JOIN ORK_PRODUTO b on a.produto = b.produto");
+            oSqlSellThru.AppendLine(string.Format("where {0} ", dateFilter));
+            oSqlSellThru.AppendLine(string.Format("{0} ", productFilter));
+            oSqlSellThru.AppendLine(string.Format("{0} ", colorFilter));
+            oSqlSellThru.AppendLine(string.Format("{0} ", storeFilter));
+            oSqlSellThru.AppendLine("group by a.REDE_LOJAS, a.PRODUTO, COR_PRODUTO, COD_FILIAL ");
+            oSqlSellThru.AppendLine("");            
+            oSqlSellThru.AppendLine("");
+            oSqlSellThru.AppendLine("insert into @stock ");
+            oSqlSellThru.AppendLine("SELECT a.REDE_LOJAS, COD_FILIAL, a.PRODUTO, COR_PRODUTO, sum(estoque) QTDE  ");
+            oSqlSellThru.AppendLine("from ORK_SELLTHRU_STOCK a INNER JOIN ORK_PRODUTO b on a.produto = b.produto");
+            oSqlSellThru.AppendLine(string.Format("where {0} ", " 1 = 1"));
+            oSqlSellThru.AppendLine(string.Format("{0} ", productFilter));
+            oSqlSellThru.AppendLine(string.Format("{0} ", colorFilter));
+            oSqlSellThru.AppendLine(string.Format("{0} ", storeFilter));
+            oSqlSellThru.AppendLine("group by a.REDE_LOJAS, a.PRODUTO, COR_PRODUTO, COD_FILIAL ");
+            oSqlSellThru.AppendLine("");
+            oSqlSellThru.AppendLine("");
+            oSqlSellThru.AppendLine("insert into @baseSellThru ");
+            oSqlSellThru.AppendLine("select a.rede_lojas, a.cod_filial, a.produto, a.cor_produto, qtde, stock ");
+            oSqlSellThru.AppendLine("from @ventas a inner join @stock b on a.produto = b.produto and a.cor_produto = b.cor_produto ");
+            oSqlSellThru.AppendLine("");
+            oSqlSellThru.AppendLine("");
+            oSqlSellThru.AppendLine(string.Format("SELECT {0} ", agrupadores));
+            oSqlSellThru.AppendLine("SUM(a.stock) STOCK, ");
+            oSqlSellThru.AppendLine("SUM(qtde) Venta, ");
+            oSqlSellThru.AppendLine("case when SUM(a.stock) + SUM(qtde) > 0 then round(cast(SUM(qtde) as decimal(14,2))/(SUM(a.stock)+ SUM(qtde)), 2) else 0 end sellThru, ");
+            oSqlSellThru.AppendLine(string.Format("case when SUM(a.stock) + SUM(qtde) > 0 then round(SUM(a.stock)/(SUM(cast(qtde as decimal(14,2)))/{0}), 2) else 0 end mesesInventario, ", dateColumn));
+            oSqlSellThru.AppendLine(string.Format("LEFT(CONVERT(VARCHAR, dbo.ORK_OBTENER_LLEGADA_INVENTARIO(a.produto, {0}), 120), 10) EMISSAO, ", colorSemanas));
+            oSqlSellThru.AppendLine(string.Format("DATEDIFF(Wk, min(dbo.ORK_OBTENER_LLEGADA_INVENTARIO(a.produto, {0})), getdate()) SEMANAS ", colorSemanas));
+            oSqlSellThru.AppendLine("from @baseSellThru a inner join ORK_PRODUTO b on a.produto = b.PRODUTO ");
+            oSqlSellThru.AppendLine("inner join FILIAIS c ON a.cod_filial = c.cod_filial inner join LOJAS_REDE d ON c.REDE_LOJAS = d.REDE_LOJAS ");
+            oSqlSellThru.AppendLine("INNER JOIN CORES_BASICAS e ON a.COR_PRODUTO = e.COR ");
+            oSqlSellThru.AppendLine(string.Format("GROUP BY {0} a.produto", agrupadores));
+            oSqlSellThru.AppendLine("");
+            oSqlSellThru.AppendLine("");
+            
+            
+            
 
             return DbMngmt<SellTru>.executeSqlQueryToList(oSqlSellThru.ToString());
         }
