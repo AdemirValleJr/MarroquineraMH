@@ -328,14 +328,14 @@ namespace Orkidea.MH.WebMiddle.Business
             oSqlSellThru.AppendLine("");
             oSqlSellThru.AppendLine("insert into @baseSellThru ");
             oSqlSellThru.AppendLine("select a.rede_lojas, a.cod_filial, a.produto, a.cor_produto, qtde, stock ");
-            oSqlSellThru.AppendLine("from @ventas a inner join @stock b on a.produto = b.produto and a.cor_produto = b.cor_produto ");
+            oSqlSellThru.AppendLine("from @ventas a inner join @stock b on a.produto = b.produto and a.cor_produto = b.cor_produto and a.cod_filial = b.cod_filial");
             oSqlSellThru.AppendLine("");
             oSqlSellThru.AppendLine("");
             oSqlSellThru.AppendLine(string.Format("SELECT {0} ", agrupadores));
             oSqlSellThru.AppendLine("SUM(a.stock) STOCK, ");
             oSqlSellThru.AppendLine("SUM(qtde) Venta, ");
             oSqlSellThru.AppendLine("case when SUM(a.stock) + SUM(qtde) > 0 then round(cast(SUM(qtde) as decimal(14,2))/(SUM(a.stock)+ SUM(qtde)), 2) else 0 end sellThru, ");
-            oSqlSellThru.AppendLine(string.Format("case when SUM(a.stock) + SUM(qtde) > 0 then round(SUM(a.stock)/(SUM(cast(qtde as decimal(14,2)))/{0}), 2) else 0 end mesesInventario, ", dateColumn));
+            oSqlSellThru.AppendLine(string.Format("case when SUM(a.stock) > 0 and SUM(qtde) > 0 then round(SUM(a.stock)/(SUM(cast(qtde as decimal(14,2)))/{0}), 2) else 0 end mesesInventario, ", dateColumn));
             oSqlSellThru.AppendLine(string.Format("LEFT(CONVERT(VARCHAR, dbo.ORK_OBTENER_LLEGADA_INVENTARIO(a.produto, {0}), 120), 10) EMISSAO, ", colorSemanas));
             oSqlSellThru.AppendLine(string.Format("DATEDIFF(Wk, min(dbo.ORK_OBTENER_LLEGADA_INVENTARIO(a.produto, {0})), getdate()) SEMANAS ", colorSemanas));
             oSqlSellThru.AppendLine("from @baseSellThru a inner join ORK_PRODUTO b on a.produto = b.PRODUTO ");

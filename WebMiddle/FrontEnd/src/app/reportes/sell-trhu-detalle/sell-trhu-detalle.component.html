@@ -6,18 +6,18 @@
             <button type="button" pButton icon="fa-file-o" iconPos="left" label="Exportar" (click)="dt.exportCSV()" style="float:left"></button>
         </div>
       </p-header>
-      <p-column *ngIf="showRed" field="DESC_REDE_LOJAS" header="Red tiendas" [sortable]="true" [style]="{'width': '90px'}"></p-column>
-      <p-column *ngIf="showTienda" field="FILIAL" header="Tienda" [sortable]="true" [style]="{'width': '90px'}"></p-column>
-      <p-column *ngIf="showGrupo" field="GRUPO_PRODUTO" header="Grupo Pr." [sortable]="true" [style]="{'width': '90px'}"></p-column>
-      <p-column *ngIf="showSubGrupo" field="SUBGRUPO_PRODUTO" header="Subgrupo Pr." [sortable]="true" [style]="{'width': '90px'}"></p-column>
-      <p-column *ngIf="showModelo" field="DESC_MODELO" header="Modelo" [sortable]="true" [style]="{'width': '90px'}"></p-column>
-      <p-column *ngIf="showFabricante" field="FABRICANTE" header="Fabricante" [sortable]="true" [style]="{'width': '90px'}"></p-column>
-      <p-column *ngIf="showTemporada" field="COLECAO" header="Temporada" [sortable]="true" [style]="{'width': '60px'}"></p-column>
-      <p-column *ngIf="showColeccion" field="LINHA" header="Colección" [sortable]="true" [style]="{'width': '60px'}"></p-column>
-      <p-column *ngIf="showSex" field="DESC_SEXO_TIPO" header="Sexo" [sortable]="true" [style]="{'width': '90px'}"></p-column>
-      <p-column *ngIf="showTipo" field="TIPO_PRODUTO" header="Tipo Pr." [sortable]="true" [style]="{'width': '90px'}"></p-column>
-      <p-column *ngIf="showColor" field="DESC_COR" header="Color" [sortable]="true" [style]="{'width': '90px'}"></p-column>
-      <p-column *ngIf="showProducto" field="DESC_PRODUTO" header="Producto" [sortable]="true" [style]="{'width': '90px'}"></p-column>
+      <p-column *ngIf="showRed" field="DESC_REDE_LOJAS" header="Red tiendas" [sortable]="true"  [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..." [style]="{'width': '90px'}"></p-column>
+      <p-column *ngIf="showTienda" field="FILIAL" header="Tienda" [sortable]="true" [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..." [style]="{'width': '90px'}"></p-column>
+      <p-column *ngIf="showGrupo" field="GRUPO_PRODUTO" header="Grupo Pr." [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..."  [sortable]="true" [style]="{'width': '90px'}"></p-column>
+      <p-column *ngIf="showSubGrupo" field="SUBGRUPO_PRODUTO" header="Subgrupo Pr." [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..."  [sortable]="true" [style]="{'width': '90px'}"></p-column>
+      <p-column *ngIf="showModelo" field="DESC_MODELO" header="Modelo" [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..."  [sortable]="true" [style]="{'width': '90px'}"></p-column>
+      <p-column *ngIf="showFabricante" field="FABRICANTE" header="Fabricante" [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..."  [sortable]="true" [style]="{'width': '90px'}"></p-column>
+      <p-column *ngIf="showTemporada" field="COLECAO" header="Temporada" [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..."  [sortable]="true" [style]="{'width': '60px'}"></p-column>
+      <p-column *ngIf="showColeccion" field="LINHA" header="Colección" [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..."  [sortable]="true" [style]="{'width': '60px'}"></p-column>
+      <p-column *ngIf="showSex" field="DESC_SEXO_TIPO" header="Sexo" [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..."  [sortable]="true" [style]="{'width': '90px'}"></p-column>
+      <p-column *ngIf="showTipo" field="TIPO_PRODUTO" header="Tipo Pr." [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..."  [sortable]="true" [style]="{'width': '90px'}"></p-column>
+      <p-column *ngIf="showColor" field="DESC_COR" header="Color" [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..."  [sortable]="true" [style]="{'width': '90px'}"></p-column>
+      <p-column *ngIf="showProducto" field="DESC_PRODUTO" header="Producto" [sortable]="true" [filter]="true" filterMatchMode="contains" filterPlaceholder="buscar..."  [style]="{'width': '90px'}"></p-column>
 
       <p-column *ngIf="showSemanas" field="EMISSAO" header="Llegada a tiendas" [sortable]="true" [style]="{'width': '50px'}"></p-column>
       <p-column *ngIf="showSemanas" field="SEMANAS" header="Semanas" [sortable]="true" [style]="{'width': '50px'}"></p-column>
